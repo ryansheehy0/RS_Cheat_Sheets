@@ -1,68 +1,56 @@
 [Home](../README.md)
 
 # Make files
-Make files are used to automate the building and compiling of a project.
-
-This is most often used for C style languages.
-
-- Make files allow you to compile just the changed files instead of re-compiling everything.
+Make files are used to automate the compiling of a project. It allows you to compile just the changed files instead of re-compiling everything.
+- This is most often used for C style languages.
 
 Example: * means a file has changed.
-
 ```
 +--------------+      +---------------+
 |  *file1.c    |      |    file2.c    |
 +--------------+      +---------------+
-       |                      |
+       |       Compiler       |
        v                      v
 +--------------+      +---------------+
 |  *file1.o    |      |    file2.o    |
 +--------------+      +---------------+
         \                     /
-          \                 /
+          \     Linker      /
             \             /
               v         v
            +---------------+
            |  *executable  |
            +---------------+
 ```
-- Because file2.c wasn't changed there is no reason to re-compile it to create file2.o again.
 
+## [Steps for creating](#make-files)
 1. Create a file called `makefile` or `Makefile`
 1. Add rules
 1. Run `make` when ready to compile
 
-<!-- TOC -->
-
-- [List of ifs](#list-of-ifs)
-
-<!-- /TOC -->
-
-# [Comments](#make-files)
+## [Comments](#make-files)
 Comments start with #
 
-# [Rules](#make-files)
-- If the dependency changes then the command is run to regenerate the target
+## [Rules](#make-files)
+If any of the dependencies change, then the commands are run to regenerate the target.
 
 ```
 target: dependencies
-    command
-
-# Example:
-file1.o: file1.c
-    gcc file1.c
+	command
 ```
 
-# [Clean](#make-files)
-There is often a clean target that usually removes the .o files and the executable.
-- To use clean just run `make clean`
+- Tabs have to be used instead of spaces for the indentation.
+- Having an extra tab will throw an error.
+
+## [Clean](#make-files)
+There is often a clean target that usually removes the .o files and the executable. This is ran by doing `make clean`
 
 ```
 clean:
     rm -f *.o executable
 ```
 
-# [Variables](#make-files)
+## [Variables](#make-files)
 
 |                  |              |
 |------------------|--------------|

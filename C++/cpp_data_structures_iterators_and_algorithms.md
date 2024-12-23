@@ -174,6 +174,15 @@ while (currNode != nullptr) {
 	- If the queue is empty, pop() has undefined behavior. The size should be checked before pop.
 
 ### [deque](#c-data-structures-iterators-and-algorithms)
+- Container of ordered elements that supports insertion and remove at both ends.
+- `deque<T> newDeque;`
+- `push_front()`, `push_back()`
+- `front()`, `back()` - Returns the first/last element.
+	- If it's empty, the behavior is undefined.
+- `pop_front()`, `pop_back()` - Just removes the front/last value. Doesn't return anything.
+	- If it's empty, the behavior is undefined.
+- `size()`
+
 `std::deque<type>` is a linked list of arrays. This sort of mixes the advantages and disadvantages of a list and vector.
 - Advantages
 	- Can change size
@@ -331,6 +340,16 @@ std::transform(list.begin(), list.end(),
 - std::unique
 - std::max_element
 - std::erase
+
+- `iterator find(iteratorFirst, iteratorLast, value)` - finds an element.
+	- The data type needs to support the equality operator(`==`)
+	- Returns an iterator to the first element found equal to value.
+		- If not found, then it returns iteratorLast.
+- `iterator find_if(iteratorFirst, iteratorLast, bool boolFunction(T value))` - finds the first element that makes the boolFunction return true.
+- `void sort(iteratorFirst, iteratorLast)` - Sorts in ascending order. Low to high.
+	- The data type needs to support the less than operator(`<`)
+	- `void sort(iteratorFirst, iteratorLast, bool compareFunction(T a, T b))`
+		- returns true if the first element should appear before the second element when sorted.
 
 ### [Sort](#c-data-structures-iterators-and-algorithms)
 - The data type needs to overload the < operator
