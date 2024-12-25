@@ -7,11 +7,10 @@
 - [Point plotting](#point-plotting)
 - [Common equations and their graphs](#common-equations-and-their-graphs)
 	- [Lines](#lines)
-- [Shifting Origin](#shifting-origin)
-- [Squeezing](#squeezing)
-- [Quadratic Equation](#quadratic-equation)
-- [Trigonometry Functions](#trigonometry-functions)
-- [Square root](#square-root)
+	- [Polynomials](#polynomials)
+- [Function transformations](#function-transformations)
+- [Elementary functions](#elementary-functions)
+	- [Algebraic functions](#algebraic-functions)
 - [Points of intersection](#points-of-intersection)
 
 <!-- /TOC -->
@@ -25,16 +24,31 @@ Point plotting is plotting points until the shape of the function is apparent.
 - Y-intercepts are points that lie on the y-axis, so X coordinate is 0.
 
 Knowing the **symmetry** of a graph can cut the amount of points you need by half.
-- Symmetry around the **y-axis** where (X, Y) equals (-X, Y)
-- Symmetry around the **x-axis** where (X, Y) equals (X, -Y)
-- Symmetry around the **origin** where (X, Y) equals (-X, -Y)
+- Symmetry around the **y-axis**:
+	- $f(x) = f(-x)$
+	- Also called **even** functions.
+- Symmetry around the **x-axis**:
+	- $f(x) = -f(x)$
+	- Also called **odd** functions.
+- Symmetry around the **origin**:
+	- $f(x) = -f(-x)$
+
 In order to test for symmetry, replace your function's X and/or Y with the corresponding -X and/or -Y for the symmetry you are checking and see if the functions are equal. If they are equal, it is symmetrical around that axis.
 
 1. Find X and Y intersections
 2. Test symmetries
 3. Plot points
 
+- **Domain** - Inputs(x)
+- **Range** - Outputs(y)
+
 ## [Common equations and their graphs](#basic-graphing)
+
+| Name  | Function  | Image                               | Name        | Function          | Image                                     |
+|-------|-----------|-------------------------------------|-------------|-------------------|-------------------------------------------|
+| Line  | $y = x$   | <img width="200" src="./line.png">  | Squared     | $y = x^2$         | <img width="200" src="./squared.png">     |
+| Cubed | $y = x^3$ | <img width="200" src="./cubed.png"> | Square root | $y = \sqrt{x}$    | <img width="200" src="./square_root.png"> |
+| Abs   | $y = x$   | <img width="200" src="./abs.png">   | Rational    | $y = \frac{1}{x}$ | <img width="200" src="./rational.png">    |
 
 ### [Lines](#basic-graphing)
 
@@ -56,36 +70,57 @@ $slope = m = \frac{rise}{run} = \frac{y_1 - y_2}{x_1 - x_2} = \frac{y_2 - y_1}{x
 
 - For the slope intercept form, the Y-intercept is (0, b).
 
+### [Polynomials](#basic-graphing)
+$f(x) = a_{n}x^n + a_{n-1}x^{n-1} + ... + a_{2}x^2 + a_{1}x^1 + a_0$
+- $n$ is the degree of the polynomial
+- $a$ s are the coefficients
+- $a_n$ is the leading coefficient
+- $a_0$ is the constant term
 
-## [Shifting Origin](#basic-graphing)
+Even degree polynomials:
 
-$f(x - a)$ shifts the graph along the X-axis $a$ positions positive(to the right).
+| $a_n > 0$ Positive                          | $a_n < 0$ Negative                          |
+|---------------------------------------------|---------------------------------------------|
+| <img width="200" src="./even_pos_poly.png"> | <img width="200" src="./even_neg_poly.png"> |
 
-$f(x) + b$ shifts the graph along the Y-axis $b$ positions positive(upwards).
+Odd degree polynomials:
 
-## [Squeezing](#basic-graphing)
+| $a_n > 0$ Positive                         | $a_n < 0$ Negative                         |
+|--------------------------------------------|--------------------------------------------|
+| <img width="200" src="./odd_pos_poly.png"> | <img width="200" src="./odd_neg_poly.png"> |
 
-$f(ax)$ squeezes $f(x)$ by a factor of $a$
+## [Function transformations](#basic-graphing)
 
-$f(\frac{x}{a})$ stretches $f(x)$ by a factor of $a$
+| Name           | Function         | Example               |
+|----------------|------------------|-----------------------|
+| Shift left     | $f(x + c)$       | $y = (x + 2)^2$       |
+| Shift right    | $f(x - c)$       | $y = (x - 2)^2$       |
+| Shift up       | $f(x) + c$       | $y = x^2 + 2$         |
+| Shift down     | $f(x) - c$       | $y = x^2 - 2$         |
+| Reflect y-axis | $f(-x)$          | $y = (-x)^2 = x^2$    |
+| Reflect x-axis | $-f(x)$          | $y = -x^2$            |
+| Reflect origin | $-f(-x)$         | $y = -(-x)^2 = -x^2$  |
+| Squeeze x-axis | $f(ax)$          | $y = (ax)^2$          |
+| Stretch x-axis | $f(\frac{x}{a})$ | $y = (\frac{x}{a})^2$ |
 
-## [Quadratic Equation](#basic-graphing)
+## [Elementary functions](#basic-graphing)
+Elementary functions are functions that can represent many real world phenomena.
+- Algebraic functions
+- Trigonometric functions
+- Exponential and logarithmic functions
 
-$a x^2 + b x + c$
+### [Algebraic functions](#basic-graphing)
+Algebraic functions are functions that can combine multiple algebraic operations on polynomials.
 
-| Variable | Description                                                                                                                             |
-|----------|-----------------------------------------------------------------------------------------------------------------------------------------|
-| $a$      | $\|a\| > 1$ parabola narrower, $\|a\| < 1$ parabola wider, $a$ positive `/\`, and $a$ negative `\/`                                     |
-| $b$      | $a$ positive and ($b$ positive left down or $b$ negative right down). $a$ negative and ($b$ positive right up or $b$ negative left up). |
-| $c$      | $c$ positive shift upwards and $c$ negative shift down.                                                                                 |
+| Operation name | Function Shorthand | Function Extended       |
+|----------------|--------------------|-------------------------|
+| Sum            | $(f + g)(x)$       | $f(x) + g(x)$           |
+| Difference     | $(f - g)(x)$       | $f(x) - g(x)$           |
+| Product        | $(fg)(x)$          | $f(x) * g(x)$           |
+| Quotient       | $(f/g)(x)$         | $f(x) / g(x)$           |
+| Composition    | $(f \circ g)(x)$   | $f(g(x))$               |
 
-## [Trigonometry Functions](#basic-graphing)
-
-$sin(x)$ starts at (0,0), peaks upwards($y = 1$) at $\frac{pi}{2}$, and is 0 at $pi$
-
-$cos(x)$ starts at (0,1), peaks downwards($y = -1$) at $\frac{pi}{2}$, and is 0 at $pi$
-
-## [Square root](#basic-graphing)
+Radical functions are the same as square root: $f(x) = \sqrt[n]{g(x)}$
 
 ## [Points of intersection](#basic-graphing)
 - A point that satisfies both equations.
