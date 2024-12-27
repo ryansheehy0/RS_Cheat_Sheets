@@ -196,6 +196,8 @@ int main() {
 }
 ```
 
+- `.emplace(constructor args)` - used to construct a new object of the optional type.
+
 - There's the `optionalVar.value_or(value)` which returns the value in optionalVar if it's there or the value inside the `()`s if it's not.
 
 ## [characters functions](#c-standard-libraries)

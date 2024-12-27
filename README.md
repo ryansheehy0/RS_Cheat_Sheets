@@ -4,6 +4,7 @@
 - [Tools](#tools)
 - [HTML/CSS/JS](#htmlcssjs)
 - [C++](#c)
+- [Math](#math)
 - [Algorithms](#algorithms)
 - [Data Structures](#data-structures)
 
@@ -23,10 +24,6 @@
     - [Linux Commands](./Tools/Linux/linux_commands.md)
     - [Bash Scripting](./Tools/Linux/bash_scripting.md)
 - [How A CPU Works](./Tools/How_A_CPU_Works/how_a_cpu_works.md)
-- Math
-    - [Matrices](./Tools/Math/matrices.md)
-    - [Probabilities](./Tools/Math/Probability/probability.md)
-    - [Basic Graphing](./Tools/Math/basic_graphing.md)
 
 ## HTML/CSS/JS
 - [HTML](./HTML_CSS_JS/html.md)
@@ -47,6 +44,12 @@
 - [C++ Standard Libraries](./C++/cpp_standard_libraries.md)
 - [C++ Non Standard Libraries](./C++/cpp_non_standard_libraries.md)
 - [Make Files](./C++/make_files.md)
+
+## Math
+- [Matrices](./Math/matrices.md)
+- [Probabilities](./Math/Probability/probability.md)
+- [Basic Graphing](./Math/Basic_Graphing/basic_graphing.md)
+- [Trigonometric Functions](./Math/trigonometric_functions.md)
 
 ## Algorithms
 - [Search Algorithms](./Algorithms/search_algorithms.md)
