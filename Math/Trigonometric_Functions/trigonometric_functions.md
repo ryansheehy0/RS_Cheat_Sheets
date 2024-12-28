@@ -1,4 +1,4 @@
-[Home](../README.md)
+[Home](../../README.md)
 
 # Trigonometric Functions
 **Radians** are the arc length of a unit circle.
@@ -36,7 +36,7 @@ $\mp$ means the opposite sign as the $\pm$ before it.
 
 ### Law of Cosines
 
-<img width="200" src="./">
+<img width="350" src="./law_of_cosines.jpeg">
 
 ### Power Reducing Formulas
 - $\sin^{2}{\theta} = \frac{1 - \cos{2\theta}}{2}$
@@ -64,13 +64,11 @@ $\mp$ means the opposite sign as the $\pm$ before it.
 ## Reference angles
 Reference angles can be used to know the values fir angles in other quadrants besides the 1st quadrant.
 
-<img width="200" src="./">
+<img width="300" src="./reference_angles.jpeg">
 
 The reference angle is always based off the x-axis.
 
-|                            |                            |                            |
-|----------------------------|----------------------------|----------------------------|
-| <img width="200" src="./"> | <img width="200" src="./"> | <img width="200" src="./"> |
+<img width="600" src="./reference_angles_based_off_x_axis.jpeg">
 
 ## Solving Trig Equations
 1. Find the angle in the 1st quadrant(assume the value is positive).
