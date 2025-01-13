@@ -18,6 +18,7 @@
         - How to get the location of the camera given a new image of a retro-reflective object and a previously known position with a corresponding image?
 - Quantum computers
 - AWK programming langue
+- Designing data intensive applications book
 
 # Future Cheat Sheets
 - Optimizations in cpp

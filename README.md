@@ -12,6 +12,7 @@
 
 ## Tools
 - [Vim](./Tools/vim.md)
+- [Keyboard Shortcuts](./Tools/keyboard_shortcuts.md)
 - [Markdown](./Tools/markdown.md)
     - [LaTeX](./Tools/latex.md)
 - [Git](./Tools/git.md)
@@ -41,11 +42,15 @@
 ## C++
 - [C++](./C++/cpp.md)
 - [C++ Data Structures, Iterators, and Algorithms](./C++/cpp_data_structures_iterators_and_algorithms.md)
+- [C++ Smart Pointers](./C++/cpp_smart_pointers.md)
 - [C++ Standard Libraries](./C++/cpp_standard_libraries.md)
 - [C++ Non Standard Libraries](./C++/cpp_non_standard_libraries.md)
 - [Make Files](./C++/make_files.md)
 
 ## Math
+Math is about identifying different concepts and applying the corresponding algorithms to solve those concepts.
+There are two forms of algorithms. The first are optimized to be solved by thought. And second are optimized to be solved by a calculator.
+
 - [Matrices](./Math/matrices.md)
 - [Probabilities](./Math/Probability/probability.md)
 - [Basic Graphing](./Math/Basic_Graphing/basic_graphing.md)
