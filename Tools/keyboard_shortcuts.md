@@ -22,7 +22,7 @@ Lazy Vim is a distribution for Neovim.
 | ctrl + / | Open/Close terminal |
 | z, = |  Show spell checker |
 | space + e | Toggle explorer |
-| z + a | Fold |
+| z + a | Toggle fold |
 | ctrl + h | Move to left window |
 | ctrl + l | Move to right window |
 | shift + h | Move to left tab |
@@ -33,6 +33,10 @@ Lazy Vim is a distribution for Neovim.
 | space, f, f | Open fuzzy finder |
 | select, g, c | Comment block of code |
 | :Mtoc | Insert table of contents for markdown files |
+
+- How to follow markdown link?
+- How to fold with indentation?
+- Scrolling shouldn't move mouse.
 
 ## Linux Mint
 
