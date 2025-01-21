@@ -12,7 +12,6 @@
 
 ## Tools
 - [Vim](./Tools/vim.md)
-- [Keyboard Shortcuts](./Tools/keyboard_shortcuts.md)
 - [Markdown](./Tools/markdown.md)
     - [LaTeX](./Tools/latex.md)
 - [Git](./Tools/git.md)

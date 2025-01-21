@@ -1,26 +1,24 @@
 [Home](../README.md)
 
 # Vim commands
-- This will only cover the commands I use the most
 
-<!-- TOC -->
+<!-- mtoc-start -->
 
-- [Movement](#movement)
-- [Save/Quit](#savequit)
-- [Comment/Uncomment](#commentuncomment)
-- [Increment numbers](#increment-numbers)
-- [Uppercase and Lowercase](#uppercase-and-lowercase)
-- [Modes](#modes)
-- [Delete](#delete)
-- [Change](#change)
-- [Undo and redo](#undo-and-redo)
-- [Copy, Paste, and Cut](#copy-paste-and-cut)
-- [Find on page/Search](#find-on-pagesearch)
-	- [Special characters in replace](#special-characters-in-replace)
-- [Macros](#macros)
-- [Swp files](#swp-files)
+* [Movement](#movement)
+* [Save/Quit](#savequit)
+* [Modes](#modes)
+* [Delete](#delete)
+* [Change](#change)
+* [Undo and redo](#undo-and-redo)
+* [Copy, Paste, and Cut](#copy-paste-and-cut)
+* [Find on page/Search](#find-on-pagesearch)
+  * [Special characters in replace](#special-characters-in-replace)
+* [Macros](#macros)
+* [Visual Modes](#visual-modes)
+  * [Visual Line Mode](#visual-line-mode)
+  * [Visual Block Mode](#visual-block-mode)
 
-<!-- /TOC -->
+<!-- mtoc-end -->
 
 ## [Movement](#vim-commands)
 
@@ -29,23 +27,23 @@
 | h          | left                                      |
 | j          | down                                      |
 | k          | up                                        |
-| l          | left                                      |
+| l          | right                                      |
 | gg         | go to top                                 |
 | G          | go to bottom                              |
 | w          | next word                                 |
 | b          | back a word                               |
+| e          | Move to the end of a word                 |
 | : + number | go to line number                         |
 | 0          | Move to beginning of line                 |
 | $          | Move to end of line                       |
-| zz         | Center cursor                             |
-| zt         | Put cursor at the top                     |
-| <          | Remove indent                             |
-| >          | Indent                                    |
-| g + j      | Move down one line without the line break |
-| g + k      | Move up one line without the line break   |
 | g + 0      | Beginning of line without the line break  |
 | g + $      | End of line without the line break        |
-| e          | Move to the end of a word                 |
+| zz         | Center cursor                             |
+| ctrl + u | Move up half a page |
+| ctrl + d | Move down half a page |
+
+- A number can be placed in front of hjkl to move relative to the current line.
+	- Ex: 10k moves up 10 lines relative to the current line.
 
 ## [Save/Quit](#vim-commands)
 
@@ -55,32 +53,6 @@
 | :q   | quit                  |
 | :wq  | save and quit         |
 | :wq! | force a save and quit |
-
-## [Comment/Uncomment](#vim-commands)
-
-|           |              |
-|-----------|--------------|
-| ctrl + v  | select lines |
-| shift + i | comment      |
-| esc       |              |
-
-## [Increment numbers](#vim-commands)
-
-|                                     |                                            |
-|-------------------------------------|--------------------------------------------|
-| ctrl + v                            | select lines                               |
-| ctrl + v then shift + I             | Insert in front of the lines you selected. |
-| select numbers then ctrl + a        | increment number by 1                      |
-| select numbers then ctrl + x        | decrement number by 1                      |
-| select numbers then g then ctrl + a | progressively increment. 1 2 3 4 etc.      |
-| select number then g then ctrl + x  | progressively decrement. 4 3 2 1 etc.      |
-
-## [Uppercase and Lowercase](#vim-commands)
-
-|                       |           |
-|-----------------------|-----------|
-| select then shift + u | Uppercase |
-| select then u         | Lowercase |
 
 ## [Modes](#vim-commands)
 
@@ -102,11 +74,12 @@
 
 ## [Change](#vim-commands)
 
-|           |                |
-|-----------|----------------|
-| c         | change         |
-| c + i + w | change in word |
-| r         | replace letter |
+|            |                  |
+|----------  | ---------------  |
+| c i w  | change in word   |
+| r          | replace letter   |
+| select U   | Uppercase        |
+| select u   | Lowercase        |
 
 ## [Undo and redo](#vim-commands)
 
@@ -120,28 +93,25 @@
 
 |              |                               |
 |--------------|-------------------------------|
-| yy           | copy line to default register |
-| p            | paste below default register  |
-| P            | paste above default register  |
-| " + char + y | copy to char register         |
-| " + char + p | paste from char register      |
-| " + +        | clipboard register            |
+| yy           | Copy line to default register |
+| p            | Paste below default register  |
+| P            | Paste above default register  |
+| " char y | Copy to char register         |
+| " char p | Paste from char register      |
+
+- The + register is the system clipboard register
 
 ## [Find on page/Search](#vim-commands)
 
-|                                     |                                                                      |
-|-------------------------------------|----------------------------------------------------------------------|
-| / + regex + enter                   | Search forward on page                                               |
-| ? + regex + enter                   | Search backward on page                                              |
-| n                                   | got to next                                                          |
-| N                                   | go back one                                                          |
-| :noh                                | remove highlight                                                     |
-| :let @/=''                          | remove the current search                                            |
-| :s/regex/replace                    | search and replace. You can also do this for selected text.          |
-| f + character                       | Go to the next occurrence of that character in the current line.     |
-| shift + f + character               | Go to the previous occurrence of that character in the current line. |
-| s/\\(.\\)$/\1 add to end of lines/g | Add something to the end of selected lines                           |
-| s/\\(^.*$\\)$/Begin \1 End/g        | Add something to beginning and  end of selected lines                |
+ |                                       |                                                                        |
+ | ------------------------------------- | ---------------------------------------------------------------------- |
+ | / regex enter                     | Search forward on page                                                 |
+ | ? regex enter                     | Search backward on page                                                |
+ | n                                     | go to next instance                                                    |
+ | N                                     | go back one instance                                                   |
+ | :noh                                  | remove highlight                                                       |
+ | f + char                              | Go to the next occurrence of that char in the current line             |
+ | F + char                              | Go to prev occurrence of that char in the current line                 |
 
 ### [Special characters in replace](#vim-commands)
 
@@ -152,17 +122,40 @@
 
 ## [Macros](#vim-commands)
 
-|                      |                                 |
-|----------------------|---------------------------------|
-| q + macro + keys + q | record keys and put it in macro |
-| @ + macro            | play macro                      |
+|                         |                                                                |
+| ----------------------  | ---------------------------------                              |
+| q macroChar keys q      | record keys and put it in macro char that can be played again  |
+| @ macroChar             | play the macro                                                 |
 
-## [Swp files](#vim-commands)
+## [Visual Modes](#vim-commands)
 
-|           |                                                                                                                     |
-|-----------|---------------------------------------------------------------------------------------------------------------------|
-| (O)pen    | Read only mode                                                                                                      |
-| (E)dit    | The last save                                                                                                       |
-| (R)ecover | Read in all data. Need to delete .swp file after. Use when .swp file contains changes you know you want to restore. |
-| (Q)uit    | Quits the 1st command for vim. Same as abort if only opening 1 file                                                 |
-| (A)bort   | Go back to terminal                                                                                                 |
+|           |                    |
+|          -|                   -|
+| V         | Visual Line Mode   |
+| ctrl + v  | Visual Block Mode  |
+
+### [Visual Line Mode](#vim-commands)
+- First select text in visual line mode then you can run these commands
+
+|                     |                                                            |
+|                    -|                                                           -|
+| <                   | Remove indent                                              |
+| >                   | Indent                                                     |
+| :s/regex/replace/g  | Search and replace in selected text.                       |
+| :s/\. /\. \r/g      | Split a line into multiple lines by periods.               |
+| J                   | Combine lines into one line with a space between them.     |
+| g J                 | Combine lines into one line without a space between them.  |
+
+- \r is used as a new line in :s
+
+### [Visual Block Mode](#vim-commands)
+- First select text in visual block mode then you can run these commands
+
+|                               |                                                      |
+|                              -|                                                     -|
+| SelectBeginning I characters  | Add characters in front of all the lines selected    |
+| SelectEnd A characters        | Add characters at the end of all the lines selected  |
+| SelectNumbers ctrl + a        | Incrmeent numbers by 1                               |
+| SelectNumbers ctrl + x        | Decrement numbers by 1                               |
+| SelectNumbers g ctrl + a      | Progressively incrment. 1 2 3 4 etc.                 |
+| SelectNumbers g ctrl + x      | Progressively decrement. 4 3 2 1 etc.                |
