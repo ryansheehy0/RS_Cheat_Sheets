@@ -23,7 +23,6 @@
 - Linux
     - [Linux Commands](./Tools/Linux/linux_commands.md)
     - [Bash Scripting](./Tools/Linux/bash_scripting.md)
-- [How A CPU Works](./Tools/How_A_CPU_Works/how_a_cpu_works.md)
 
 ## HTML/CSS/JS
 - [HTML](./HTML_CSS_JS/html.md)
@@ -45,6 +44,12 @@
 - [C++ Standard Libraries](./C++/cpp_standard_libraries.md)
 - [C++ Non Standard Libraries](./C++/cpp_non_standard_libraries.md)
 - [Make Files](./C++/make_files.md)
+
+## Embedded Programming
+- [How A CPU Works](./Embedded_Programming/How_A_CPU_Works/how_a_cpu_works.md)
+- [x86 Assembly](./Embedded_Programming/x86_assembly.md)
+- [Low Level Number Systems](./Embedded_Programming/low_level_number_systems.md)
+- [STM32]
 
 ## Math
 Math is about identifying different concepts and applying the corresponding algorithms to solve those concepts.

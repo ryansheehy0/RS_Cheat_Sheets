@@ -1,4 +1,26 @@
 # Prioritized future cheat sheets
+
+- STM32 discovery kit
+	- Uses arm Cortex-M
+	- Program in C
+	- STM32 cubed
+- XMC48
+- Ti microcontrollers
+- C/C++
+- Digital signals processing
+	- Finite impulse response
+	- Infinite impulse response
+- Serial communications
+	- Ethercat
+	- I2C
+	- UART
+- Real time OS
+	- FreeRTOS
+	- RTX5
+	- ThreadX
+
+
+
 - A*
     - Also include a variable length
 - PIDs

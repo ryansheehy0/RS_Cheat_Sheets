@@ -17,6 +17,7 @@
 * [Visual Modes](#visual-modes)
   * [Visual Line Mode](#visual-line-mode)
   * [Visual Block Mode](#visual-block-mode)
+* [Markers](#markers)
 
 <!-- mtoc-end -->
 
@@ -159,3 +160,14 @@
 | SelectNumbers ctrl + x        | Decrement numbers by 1                               |
 | SelectNumbers g ctrl + a      | Progressively incrment. 1 2 3 4 etc.                 |
 | SelectNumbers g ctrl + x      | Progressively decrement. 4 3 2 1 etc.                |
+
+## [Markers](#vim-commands)
+
+|                 |                                                        |
+|                -|                                                       -|
+| m char          | Set a marker at that line with the character           |
+| ` char          | Jump to the character marker line                      |
+| :delmarks char  | Delete the character marker                            |
+| :delmarks!      | Delete all lower case character markers for that file  |
+
+- Upper case markers are global markers that exist across files.
