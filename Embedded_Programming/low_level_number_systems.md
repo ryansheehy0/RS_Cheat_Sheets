@@ -2,24 +2,26 @@
 
 # Low level number systems
 
-<!-- mtoc-start -->
+<!-- TOC -->
 
-* [Memory sizes](#memory-sizes)
-* [Number systems](#number-systems)
-  * [Definitions](#definitions)
-  * [Hex](#hex)
-  * [Converting](#converting)
-* [Unsigned ints](#unsigned-ints)
-  * [Addition](#addition)
-  * [Subtractions](#subtractions)
-* [Signed ints/2's complement](#signed-ints2s-complement)
-  * [Addition](#addition-1)
-  * [Subtractions](#subtractions-1)
-* [Floats](#floats)
-  * [Convert decimal to float](#convert-decimal-to-float)
-  * [Special cases](#special-cases)
+- [Memory sizes](#memory-sizes)
+- [Number systems](#number-systems)
+	- [Definitions](#definitions)
+	- [Hex](#hex)
+	- [Converting](#converting)
+- [Unsigned ints](#unsigned-ints)
+	- [Addition](#addition)
+	- [Subtractions](#subtractions)
+- [Signed ints/2's complement](#signed-ints2s-complement)
+	- [Addition](#addition)
+	- [Subtractions](#subtractions)
+- [Floats](#floats)
+	- [Convert decimal to float](#convert-decimal-to-float)
+	- [Special cases](#special-cases)
+- [Bitwise](#bitwise)
+	- [Bit sets](#bit-sets)
 
-<!-- mtoc-end -->
+<!-- /TOC -->
 
 ## Memory sizes
 - Unsigned ints are useful for representing memory locations
@@ -118,8 +120,7 @@ Example:
 ### Subtractions
 - A negative/opposite number is defined as the number added to another to produce 0.
 	- Computers allows two positive numbers added together to produce 0 by way of overflowing.
-- There is no overflow for unsigned subtraction.
-	- This is not accurate if the 2nd number is greater than the 1st number.
+- Overflow happens if the 2nd number is greater than the 1st number.
 1. Find the opposite of the negative number
 	1. Subtract each hex with F
 	2. Add 1
@@ -279,7 +280,7 @@ Example of a negative exponent:
 
 Sign: 1
 Biased exponent = -5 + 127 = 122 = 0111 1010
-Fraction 
+Fraction
 	0.372 * 2 = 0.744   -> 0
 	0.744 * 2 = 1.488   -> 1
 	0.488 * 2 = 0.976   -> 0
@@ -292,3 +293,13 @@ Fraction
 	- Why is NaN necessary?
 	- Exponent of -127 is a special case
 
+
+## Bitwise
+- Setting a bit to 1
+	- var |= 0x4;
+- Setting a bit to 0
+	- var &= ~0x4;
+- Toggling a bit
+	- var ^= 0x4;
+- Check if a bit is set
+	- bool isSet = var & 0x4;

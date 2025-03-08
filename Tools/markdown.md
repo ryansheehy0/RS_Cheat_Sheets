@@ -14,6 +14,12 @@
 	- [More Complex Lists](#more-complex-lists)
 - [Tables](#tables)
 - [Math](#math)
+	- [Special characters](#special-characters)
+	- [Exponents and subscripts](#exponents-and-subscripts)
+	- [Comparisons](#comparisons)
+	- [Special operations](#special-operations)
+	- [Trig](#trig)
+	- [Other](#other)
 
 <!-- /TOC -->
 
@@ -114,3 +120,75 @@ Text
 - Use `$ LaTeX $` for inline math expressions.
 - Use `$$ LaTeX $$` for block math expressions.
     - You can also use ` ```math ` as well.
+
+### [Special characters](#markdown)
+
+| LaTeX   | Symbol    |
+|---------|-----------|
+| \pi     | $\pi$     |
+| \infty  | $\infty$  |
+| \Delta  | $\Delta$  |
+| \alpha  | $\alpha$  |
+| \theta  | $\theta$  |
+| \lambda | $\lambda$ |
+| \sigma  | $\sigma$  |
+| \mu     | $\mu$     |
+| \bigcap | $\bigcap$ |
+| \bigcup | $\bigcup$ |
+
+### [Exponents and subscripts](#markdown)
+
+| LaTeX           | Symbol            |
+|-----------------|-------------------|
+| a_b             | $a_b$             |
+| a^b             | $a^b$             |
+| a_b^c           | $a_b^c$           |
+| a \atop b       | $a \atop b$       |
+| \underset{a}{b} | $\underset{a}{b}$ |
+| \overset{a}{b}  | $\overset{a}{b}$  |
+
+### [Comparisons](#markdown)
+
+| LaTeX   | Symbol    |
+|---------|-----------|
+| >       | $>$       |
+| <       | $<$       |
+| \le     | $\le$     |
+| \ge     | $\ge$     |
+| =       | $=$       |
+| \ne     | $\ne$     |
+| \approx | $\approx$ |
+
+### [Special operations](#markdown)
+
+| LaTeX                         | Symbol                          |
+|-------------------------------|---------------------------------|
+| \frac{a}{b}                   | $\frac{a}{b}$                   |
+| f'                            | $f'$                            |
+| \sqrt[a]{b}                   | $\sqrt[a]{b}$                   |
+| \sum_{k=1}^n a_k b_k          | $\sum_{k=1}^n a_k b_k$          |
+| \int_0^{10} a b               | $\int_0^{10} a b$               |
+| \underset{x \to \infty}{\lim} | $\underset{x \to \infty}{\lim}$ |
+
+### [Trig](#markdown)
+
+| LaTeX   | Symbol    |
+|---------|-----------|
+| \sin    | $\sin$    |
+| \cos    | $\cos$    |
+| \tan    | $\tan$    |
+| \arcsin | $\arcsin$ |
+| \arccos | $\arccos$ |
+| \arctan | $\arctan$ |
+
+### [Other](#markdown)
+
+| LaTeX                    | Symbol                     |
+|--------------------------|----------------------------|
+| \textcolor{#22BB22}{abc} | $\textcolor{#22BB22}{abc}$ |
+| \sout{abc}               | $\cancel{abc}$             |
+| \leftarrow               | $\leftarrow$               |
+| \rightarrow              | $\rightarrow$              |
+| \leftrightarrow          | $\leftrightarrow$          |
+| \dots                    | $\dots$                    |
+| \vdots                   | $\vdots$                   |

@@ -1,4 +1,22 @@
+# Good links
+- https://freecomputerbooks.com/
+
 # Prioritized future cheat sheets
+- Other
+- C++/C
+- Embedded programming
+    - Arm Assembly
+    - STM32
+    - Digital EE
+    - Other Embedded programming concepts
+- Algos
+- Web dev
+    - HTML
+    - CSS
+    - JS
+    - React
+
+
 
 - STM32 discovery kit
 	- Uses arm Cortex-M
