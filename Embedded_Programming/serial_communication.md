@@ -3,6 +3,13 @@
 # Serial Communication
 The purpose of serial communication is to transfer information between devices while using fewer wires than parallel communication.
 
+- Light(AM and FM)
+- Ti Calculators
+- USB Serial Protocol
+- UART
+- I2C
+- Can Bus
+
 ## Terms
 - **Synchronous** - Uses a clock signal to 
 	- **Asynchronous** - Doesn't have a clock signal and relies on a predetermined time for each bit(**baud rate**).

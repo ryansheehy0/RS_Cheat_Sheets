@@ -1,6 +1,6 @@
 [Home](../README.md)
 
-# Low level number systems
+# Low level concepts
 
 <!-- TOC -->
 
@@ -19,7 +19,6 @@
 	- [Convert decimal to float](#convert-decimal-to-float)
 	- [Special cases](#special-cases)
 - [Bitwise](#bitwise)
-	- [Bit sets](#bit-sets)
 
 <!-- /TOC -->
 
