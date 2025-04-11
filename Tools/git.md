@@ -16,6 +16,8 @@ A version control system that manages changes to files.
 - [Stashing](#stashing)
 - [Setting Personal Access Tokens](#setting-personal-access-tokens)
 - [First push](#first-push)
+	- [SSH](#ssh)
+	- [HTTPS](#https)
 - [Rebasing](#rebasing)
 - [Pull Requests](#pull-requests)
 	- [When your branch says behind main](#when-your-branch-says-behind-main)
@@ -112,13 +114,23 @@ Settings $\rightarrow$ Developer settings $\rightarrow$ Personal access tokens $
 | git remote set-url {location} https://{username}:{personal access token}@github.com/{owner's username}/{repository}.git | Gives permissions for the location. |
 
 ## [First push](#git-cheat-sheet)
+Recommended {location} is `origin` and {branch} is `master`.
+
 1. git init
-1. git add -A
-1. git commit -m "{Title}" -m "{Description}"
-1. git remote add {location} {https}
-1. git remote set-url {location} https://{username}:{personal access token}@github.com/{owner's username}/{repository}.git
-1. git push {location} {branch}
-- The recommended {location} is origin and the recommended {branch} is master/main.
+2. git add -A
+3. git commit -m "{Title}" -m "{Description}"
+
+### [SSH](#git-cheat-sheet)
+This is recommended over HTTPS.
+
+4. git remote add {location} {ssh}
+5. git push {location} {branch}
+
+### [HTTPS](#git-cheat-sheet)
+
+4. git remote add {location} {https}
+5. git remote set-url {location} https://{username}:{personal access token}@github.com/{owner's username}/{repository}.git
+6. git push {location} {branch}
 
 ## [Rebasing](#git-cheat-sheet)
 

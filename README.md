@@ -60,9 +60,7 @@
     - A Star
     - PIDs
     - Fast Fourier transform
-- Data structures
-    - Trees
-    - Hash tables
+- [Data Structures](./Algorithms/data_structures.md)
 - Compression
     - [Huffman codes](https://www.youtube.com/watch?v=B3y0RsVCyrw)
     - [JPEG](https://www.youtube.com/watch?v=0me3guauqOU)

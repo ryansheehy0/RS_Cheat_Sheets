@@ -1,4 +1,4 @@
-[Home](../../README.md)
+[Home](../README.md)
 
 # React
 A javascript UI framework that makes creating single page applications easier.
