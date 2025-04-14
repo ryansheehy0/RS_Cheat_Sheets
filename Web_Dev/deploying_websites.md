@@ -117,7 +117,7 @@ On Porkbun
 1. On your domain name click options -> Set up Netlify DNS
 1. Verify -> Add domain -> Continue -> You should get ~4 domain name servers. Make sure to copy these.
 
-On your register website(Not netlify) paste those ~4 domain name servers in.
+On your register website(Not netlify) paste those ~4 domain name servers in NS.
 
 ## [Vercel](#deploying-websites)
 Vercel doesn't allow you to make monetary transactions on the free tear.

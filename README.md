@@ -1,5 +1,4 @@
 # Ryan Sheehy Cheat Sheets
-- https://freecomputerbooks.com/
 
 <!-- TOC -->
 
@@ -32,12 +31,12 @@
 
 ## C/C++
 - C
-- [C++](./C++/cpp.md)
-- [C++ Data Structures, Iterators, and Algorithms](./C++/cpp_data_structures_iterators_and_algorithms.md)
-- [C++ Smart Pointers](./C++/cpp_smart_pointers.md)
-- [C++ Standard Libraries](./C++/cpp_standard_libraries.md)
-- [C++ Non Standard Libraries](./C++/cpp_non_standard_libraries.md)
-- [Make Files](./C++/make_files.md)
+- [C++](./C_C++//cpp.md)
+- [C++ Data Structures, Iterators, and Algorithms](./C_C++/cpp_data_structures_iterators_and_algorithms.md)
+- [C++ Smart Pointers](./C_C++/cpp_smart_pointers.md)
+- [C++ Standard Libraries](./C_C++/cpp_standard_libraries.md)
+- [C++ Non Standard Libraries](./C_C++/cpp_non_standard_libraries.md)
+- [Make Files](./C_C++/make_files.md)
 - GNU Debugger
 
 ## Embedded Programming
