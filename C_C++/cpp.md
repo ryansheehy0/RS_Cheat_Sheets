@@ -57,6 +57,7 @@ My personal notes on C++.
 		- [Virtual and Override](#virtual-and-override)
 			- [Abstract classes](#abstract-classes)
 		- [Composition vs Inheritance](#composition-vs-inheritance)
+	- [Inline functions](#inline-functions)
 
 <!-- /TOC -->
 
@@ -837,3 +838,16 @@ Composition is used when you have a "has a" relationship between classes. Inheri
 - Composition is having an instance of one class as a member of another class.
 	- Ex: A car has a engine so you should use composition.
 	- Ex: A truck is a car so you should use inheritance.
+
+### [Inline functions](#c)
+Methods that are defined inside a class declaration are automatically `inline`.
+
+Ex: These functions are the same
+
+```C++
+Class {
+	public:
+		void func() {return 1;}
+		inline void func2() {return 1;}
+}
+```

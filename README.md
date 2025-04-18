@@ -50,6 +50,7 @@
 
 ## Algorithms
 - Algos
+    - [Big O](./Algorithms/big_o_notation.md)
     - [Search Algorithms](./Algorithms/search_algorithms.md)
     - [Sort Algorithms](./Algorithms/sort_algorithms.md)
     - [Unique Permutations](./Algorithms/unique_permutations.md)

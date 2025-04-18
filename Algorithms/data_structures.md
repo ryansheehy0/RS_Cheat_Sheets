@@ -9,12 +9,20 @@ The 4 most common operations are create/add/insert, read/get/access, update, and
 - Ex: A bad is unordered because you pull things out in no particular order, while cubby boxes are ordered, you place items in specific spots.
 **Sorted** means that the ordering is arranged in a specific way.
 
+<!-- TOC -->
 
-- Algo with a polynomial runtime is efficient.
-- NP-complete problems - Set of problems which no known efficient algo exists.
-	- No efficient algo has been found.
-	- No one has proven than an efficient algo is impossible.
-	- If an efficient alo exists for one NP problem, then all NP problems can be solved efficiently.
+- [Abstract data types](#abstract-data-types)
+	- [Stack](#stack)
+		- [Common operations](#common-operations)
+		- [Pseudocode Implementation](#pseudocode-implementation)
+		- [Common use cases](#common-use-cases)
+	- [Queues](#queues)
+		- [Common operations](#common-operations)
+		- [Pseudocode Implementation](#pseudocode-implementation)
+		- [Common use cases](#common-use-cases)
+- [Concrete data structures](#concrete-data-structures)
+
+<!-- /TOC -->
 
 ## Abstract data types
 Abstract data types(ADTs) define which operation can be used, but not how the data is to be stored and organized.
@@ -93,11 +101,55 @@ Abstract data types(ADTs) define which operation can be used, but not how the da
 	- If operation, pop from stack as the right argument and pop again for the left argument. The result gets pushed onto the stack.
 		- Ex: Stack = |3, 2, 7| and operation = *. 2 * 3 = 6. New Stack = |6, 7|
 	- At the end, the only value on the stack should be the result if it was a valid postfix expression.
-- Backtracking - Searching for solutions based on trial and error/brute force.
+- Backtracking - Searching for solutions based on trial and error/brute force. Use stack instead of recursion.
 	- Push the first possible move on the stack.
 	- Repeatedly check if the current stack represents a complete and valid solution.
 	- If not, try extending it by pushing a new move.
 	- If no valid moves are left, backtrack by popping the last move and trying alternatives.
+
+### Queues
+**First in first out(FIFO)** - The first item added to the collection si the first one to be taken out.
+
+#### Common operations
+- `bool enqueue(Type x)` - Insert an item at the end.
+- `Type dequeue()` - Removes and returns the item at the front.
+- `Type peek()` - Returns the item at the front.
+- `Type peekRear()` - Returns the item at the rear.
+- `bool isEmpty()`
+- `int getLength()`
+
+#### Pseudocode Implementation
+- Arrays
+	- Queue starts at `arr[frontIndex]` and continue through `length` items. if the array's end is met before encountering all items, remaining items are stored starting at index 0.
+		- You might also have a `rearIndex`.
+	- Enqueue
+		- Check if `length` equals `maxLength`
+		- `arr[frontIndex + length] % arr.length() = x`
+			- Increment rearIndex
+			- Assign rearIndex with x
+		- Increment length
+	- Dequeue
+		- Local var of `arr[frontIndex]`
+		- Decrement `length`
+		- Increment `frontIndex`, if greater than `arr.length()`, then set to 0.
+		- Return local var
+- Linked list
+	- Enqueue
+		- Crease a new node
+		- Check if the creation worked
+		- Assign the node's data with x
+		- Assign the endNode->next to the new node
+	- Dequeue
+		- Local var of frontNode->data
+		- Save the front node as the old front node
+		- Assign frontNode to its next node
+		- Delete the old front node
+		- return the local var
+
+		- What if there is only 1 node in the que?
+			- If only 1 node, then rear = null
+
+#### Common use cases
 
 ## Concrete data structures
 Concrete data structures are specific implementations of ADTs that define how data is stored and how operations are performed on memory.
