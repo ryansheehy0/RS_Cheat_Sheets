@@ -6,7 +6,7 @@
 - [Math](#math)
 - [C/C++](#cc)
 - [Embedded Programming](#embedded-programming)
-- [Algorithms](#algorithms)
+- [Algorithms_Data_Structures](#algorithms_data_structures)
 - [Web Dev](#web-dev)
 
 <!-- /TOC -->
@@ -48,19 +48,19 @@
 - STM32s
 - FreeRTOS
 
-## Algorithms
+## Algorithms and Data Structures
 - Algos
-    - [Big O](./Algorithms/big_o_notation.md)
-    - [Search Algorithms](./Algorithms/search_algorithms.md)
-    - [Sort Algorithms](./Algorithms/sort_algorithms.md)
-    - [Unique Permutations](./Algorithms/unique_permutations.md)
-    - [Newtons Method](./Algorithms/Newtons_Method/newtons_method.md)
-    - [Taylor Series](./Algorithms/Taylor_Series/taylor_series.md)
+    - [Big O](./Algorithms_Data_Structures/big_o_notation.md)
+    - [Search Algorithms_Data_Structures](./Algorithms/search_algorithms.md)
+    - [Sort Algorithms_Data_Structures](./Algorithms/sort_algorithms.md)
+    - [Unique Permutations](./Algorithms_Data_Structures/unique_permutations.md)
+    - [Newtons Method](./Algorithms_Data_Structures/Newtons_Method/newtons_method.md)
+    - [Taylor Series](./Algorithms_Data_Structures/Taylor_Series/taylor_series.md)
     - Depth first and breadth first search
     - A Star
     - PIDs
     - Fast Fourier transform
-- [Data Structures](./Algorithms/data_structures.md)
+- [Data Structures](./Algorithms_Data_Structures/data_structures.md)
 - Compression
     - [Huffman codes](https://www.youtube.com/watch?v=B3y0RsVCyrw)
     - [JPEG](https://www.youtube.com/watch?v=0me3guauqOU)

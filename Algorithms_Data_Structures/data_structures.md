@@ -21,6 +21,7 @@ The 4 most common operations are create/add/insert, read/get/access, update, and
 		- [Pseudocode Implementation](#pseudocode-implementation)
 		- [Common use cases](#common-use-cases)
 - [Concrete data structures](#concrete-data-structures)
+	- [Linked List](#linked-list)
 
 <!-- /TOC -->
 
@@ -137,17 +138,20 @@ Abstract data types(ADTs) define which operation can be used, but not how the da
 	- Enqueue
 		- Crease a new node
 		- Check if the creation worked
-		- Assign the node's data with x
-		- Assign the endNode->next to the new node
-	- Dequeue
-		- Local var of frontNode->data
-		- Save the front node as the old front node
-		- Assign frontNode to its next node
-		- Delete the old front node
-		- return the local var
-
-		- What if there is only 1 node in the que?
-			- If only 1 node, then rear = null
+		- Assign the new node's data with x
+		- Assign the new node's next with null
+		- If there isn't a front, then assign front with new node
+		- If there is a front, then assign the rear node's next with the new node
+		- Assign the rear node to the new node
+		- Increment length
+	- Dequeue - Assume queue has at least one node
+		- Create a temporary local variable equal to front's data.
+		- Create a new front equal to the front's next pointer.
+		- Delete front
+		- Set front to new front
+		- If new front is null, then set rear to null
+		- Decrement length
+		- Return the temporary local variable.
 
 #### Common use cases
 
@@ -164,3 +168,16 @@ Concrete data structures are specific implementations of ADTs that define how da
 	- **Max-Heap** - Parent node is greater than or equal to it's children.
 	- **Min-Heap** - Parent node is less than or equal to it's children.
 - **Graph** - Represents connection between items(vertices) connected by edges.
+
+### Linked List
+
+```C++
+// Destructor
+LinkedList::~LinkedList() {
+	while (top) {
+		ListNode* deleteNode = top;
+		top = top->next;
+		delete deleteNode;
+	}
+}
+```
