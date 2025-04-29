@@ -6,7 +6,8 @@
 - [Math](#math)
 - [C/C++](#cc)
 - [Embedded Programming](#embedded-programming)
-- [Algorithms_Data_Structures](#algorithms_data_structures)
+- [Algorithms](#algorithms)
+- [Data Structures](#data-structures)
 - [Web Dev](#web-dev)
 
 <!-- /TOC -->
@@ -48,19 +49,18 @@
 - STM32s
 - FreeRTOS
 
-## Algorithms and Data Structures
+## Algorithms
 - Algos
-    - [Big O](./Algorithms_Data_Structures/big_o_notation.md)
+    - [Big O](./Algorithms/big_o_notation.md)
     - [Search Algorithms_Data_Structures](./Algorithms/search_algorithms.md)
     - [Sort Algorithms_Data_Structures](./Algorithms/sort_algorithms.md)
-    - [Unique Permutations](./Algorithms_Data_Structures/unique_permutations.md)
-    - [Newtons Method](./Algorithms_Data_Structures/Newtons_Method/newtons_method.md)
-    - [Taylor Series](./Algorithms_Data_Structures/Taylor_Series/taylor_series.md)
+    - [Unique Permutations](./Algorithms/unique_permutations.md)
+    - [Newtons Method](./Algorithms/Newtons_Method/newtons_method.md)
+    - [Taylor Series](./Algorithms/Taylor_Series/taylor_series.md)
     - Depth first and breadth first search
     - A Star
     - PIDs
     - Fast Fourier transform
-- [Data Structures](./Algorithms_Data_Structures/data_structures.md)
 - Compression
     - [Huffman codes](https://www.youtube.com/watch?v=B3y0RsVCyrw)
     - [JPEG](https://www.youtube.com/watch?v=0me3guauqOU)
@@ -71,6 +71,16 @@
 - Error correction
     - Read-Solomon Codes
     - Hamming codes(https://www.youtube.com/watch?v=X8jsijhllIA) (https://www.youtube.com/watch?v=b3NxrZOu_CE)
+
+## Data Structures
+- [Abstract Data Structures](./Data_Structures/abstract_data_structures.md)
+- Linked List
+    - [Singly Linked List](./Data_Structures/singly_linked_list.md)
+    - Doubly Linked List
+- Binary Tree
+- Hash table
+- Heaps
+- Graphs
 
 ## Web Dev
 - [Deploying Websites](./Web_Dev/deploying_websites.md)
