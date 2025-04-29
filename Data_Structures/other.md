@@ -30,8 +30,6 @@ Concrete data structures are specific implementations of ADTs that define how da
 		- One linked list is sorted based on the author while a separate linked list is sorted based on the book title.
 			- Each linked list shares the same memory, they just have different ordering.
 
-organize into linear and 
-
 - Accessing
 	- Arrays: Fast(direct)
 	- Linked list: slow(walking)
@@ -147,18 +145,6 @@ ListRemove(list, itemToRemove) {
 }
 ```
 
-```C++
-class IntNode {
-public:
-   IntNode(int dataInit = 0, IntNode* nextLoc = nullptr);
-   void InsertAfter(IntNode* nodeLoc); // inserts the nodeLoc after this node.
-   IntNode* GetNext();
-   void PrintNodeData();
-private:
-   int dataVal;
-   IntNode* nextNodePtr;
-};
-```
 #### Pseudocode Implementation of stack
 - With arrays
 	- The top of the stack is typically at the end of the array to avoid shifting elements when adding or removing items.
@@ -171,14 +157,6 @@ private:
 		- Return the value at top index + 1
 	- getLength
 		- Return the top index + 1
-- With linked lists
-	- pop
-		- Assign local var with top's data
-		- Save the top node as old top
-		- Move the top node down
-		- Delete the old top node
-		- Decrement length
-		- Return local var
 
 #### Pseudocode Implementation of Queue
 - Arrays
@@ -195,13 +173,3 @@ private:
 		- Decrement `length`
 		- Increment `frontIndex`, if greater than `arr.length()`, then set to 0.
 		- Return local var
-- Linked list
-	- Dequeue - Assume queue has at least one node
-		- Create a temporary local variable equal to front's data.
-		- Create a new front equal to the front's next pointer.
-		- Delete front
-		- Set front to new front
-		- If new front is null, then set rear to null
-		- Decrement length
-		- Return the temporary local variable.
-		

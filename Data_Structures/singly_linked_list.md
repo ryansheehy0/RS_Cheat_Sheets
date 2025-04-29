@@ -12,6 +12,9 @@ This is meant to be a simple implementation of a singly linked list, not a full 
 	- [Push Front](#push-front)
 	- [Insert Sort](#insert-sort)
 - [Removing](#removing)
+	- [Pop Front](#pop-front)
+	- [Pop Back](#pop-back)
+	- [Remove](#remove)
 
 <!-- /TOC -->
 
@@ -35,18 +38,18 @@ class SinglyLinkedList {
 		// Getters
 		int length() const { return length; };
 		bool isEmpty() const { return length == 0; };
-		T peek() const { return head->next->data; };
-		T peekRear() const { return tail->data; };
+		T peek() const { return head->next->data; }; // Assumes the list isn't empty
+		T peekRear() const { return tail->data; }; // Assumes the list isn't empty
 
 		// Inserting
-		bool pushBack(T value); // Adds value to the end.
+		bool pushBack(T value);
 		bool pushFront(T value);
 
 		bool insertSort(T value); // Arranges from least to greatest.
 
 		// Removing
-		T popFront();
-		T popBack();
+		T popFront(); // Assumes the list isn't empty
+		T popBack(); // Assumes the list isn't empty
 
 		bool remove(T value);
 }
@@ -56,6 +59,7 @@ class SinglyLinkedList {
 	- `bool contains(T value) const;`
 	- `void print() const;`
 	- `void sort();`
+	- `bool removeAll(T value)`
 	- Iterators
 
 ## Constructor
@@ -143,3 +147,60 @@ bool SinglyLinkedList<T>::insertSort(T value) {
 ```
 
 ## Removing
+
+### Pop Front
+
+```C++
+template <typename T>
+T SinglyLinkedList<T>::popFront() {
+	T value = head->next->data; // Skip the sentinel
+	Node<T>* oldHead = head->next;
+	head->next = head->next->next;
+	delete oldHead;
+	length--;
+	return value;
+}
+```
+
+### Pop Back
+
+```C++
+template <typename T>
+T SinglyLinkedList<T>::popBack() {
+	// Find the previous node before the tail
+	Node<T>* prevNode = head;
+	Node<T>* curNode = head->next; // Skip the sentinel
+	while (curNode != tail) {
+		prevNode = curNode;
+		curNode = curNode->next;
+	}
+	T value = tail->data; // Skip the sentinel
+	Node<T>* oldTail = tail;
+	tail = prevNode;
+	delete oldTail;
+	length--;
+	return value;
+}
+```
+
+### Remove
+
+```C++
+template <typename T>
+bool SinglyLinkedList<T>::remove(T value) {
+	Node<T>* prevNode = head;
+	Node<T>* curNode = head->next;
+	while (curNode) {
+		if (curNode->data == value) {
+			prevNode->next = curNode->next;
+			if (curNode == tail) tail = prevNode;
+			delete curNode;
+			length--;
+			return true;
+		}
+		prevNode = curNode;
+		curNode = curNode->next;
+	}
+	return false;
+}
+```
