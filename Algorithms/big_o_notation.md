@@ -15,7 +15,7 @@ The order of big O complexity from most efficient to least.
 | O(1)       | Constant               | Doesn't depend on N.                                         | If statements    |
 | O(log N)   | Logarithmic            | For loop that increments my multiplying or decs by division. | Binary search    |
 | O(N)       | Linear                 | For loops based on N.                                        | Linear search    |
-| O(N log N) | Linear Logarithmic     | A linear function is called in a Log N for loop.             | Merge sort       |
+| O(N log N) | Linear Logarithmic     | Linear function is called in a Log N loop or vise versa.     | Merge sort       |
 | O(N^2)     | Quadratic              | 2 nested for loops based on N.                               | Selection sort   |
 | O(N^k)     | Polynomial when k > 2  | The power depends on how many nestings.                      |                  |
 | O(c^N)     | Exponential when c > 1 |                                                              | Fibonacci number |
@@ -23,3 +23,8 @@ The order of big O complexity from most efficient to least.
 
 **NP-Complete problems** - Problems where no known polynomial runtime algo is known, but no one has proven that it doesn't exist.
 	- Many NP-Complete problems are similar, to where if one is found to have an efficient algorithm, then many others will also have one.
+
+## Recursion
+- Binary search is T(N) = k + T(N/2) which is O(log N)
+- If it calls 2 recursive calls with T(N/2) then it's O(N log N)
+- T(N) = constant + T(N-1) has O(N)

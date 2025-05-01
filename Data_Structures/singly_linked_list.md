@@ -36,7 +36,7 @@ class SinglyLinkedList {
 		~SinglyLinkedList();
 
 		// Getters
-		int length() const { return length; };
+		int getLength() const { return length; };
 		bool isEmpty() const { return length == 0; };
 		T peek() const { return head->next->data; }; // Assumes the list isn't empty
 		T peekRear() const { return tail->data; }; // Assumes the list isn't empty
@@ -52,7 +52,7 @@ class SinglyLinkedList {
 		T popBack(); // Assumes the list isn't empty
 
 		bool remove(T value);
-}
+};
 ```
 
 - Other common methods
@@ -68,9 +68,9 @@ A sentinel node is a dummy node that is always set as the head. This removes the
 ```C++
 template <typename T>
 SinglyLinkedList<T>::SinglyLinkedList() {
-	Node<T>* sentinel = new Node<T>; // Create sentinel node
+	Node<T>* sentinel = new Node; // Create sentinel node
 	head = sentinel;
-	tail = nullptr;
+	tail = sentinel;
 	length = 0;
 }
 ```

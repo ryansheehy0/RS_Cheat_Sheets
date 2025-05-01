@@ -54,7 +54,7 @@
     - [Big O](./Algorithms/big_o_notation.md)
     - [Search Algorithms_Data_Structures](./Algorithms/search_algorithms.md)
     - [Sort Algorithms_Data_Structures](./Algorithms/sort_algorithms.md)
-    - [Unique Permutations](./Algorithms/unique_permutations.md)
+    - [Miscellaneous](./Algorithms/miscellaneous.md)
     - [Newtons Method](./Algorithms/Newtons_Method/newtons_method.md)
     - [Taylor Series](./Algorithms/Taylor_Series/taylor_series.md)
     - Depth first and breadth first search
