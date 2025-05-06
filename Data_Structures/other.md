@@ -1,3 +1,6 @@
+# Concrete data structures
+Concrete data structures are data structures that 
+
 Data structures store data in an organized way, define the types of values that can be stored, and specify the operations that can be performed on that data.
 
 The 4 most common operations are create/add/insert, read/get/access, update, and delete/remove. Commonly abbreviated as CRUD.
@@ -8,7 +11,6 @@ The 4 most common operations are create/add/insert, read/get/access, update, and
 - Ex: A bad is unordered because you pull things out in no particular order, while cubby boxes are ordered, you place items in specific spots.
 **Sorted** means that the ordering is arranged in a specific way.
 
-## Concrete data structures
 Concrete data structures are specific implementations of ADTs that define how data is stored and how operations are performed on memory.
 
 - **Array** - Ordered collection of elements with a max size.
@@ -63,87 +65,6 @@ Concrete data structures are specific implementations of ADTs that define how da
 	- If inserting in the middle of the list, the new node's next needs to be set to the searched node's next, then the searched node's next needs to be set to the new node.
 	- If the searched Value isn't found, then it returns false and doesn't change the list.
 	- If the list is empty, you can pass in null.
-
-```C++
-ListInsertNodeAfter(list, currentNode, newNode) {
-   // Special case for empty list
-   if (list⇢head == null) {
-      list⇢head = newNode
-      list⇢tail = newNode
-   }
-   else if (currentNode == list⇢tail) {
-      list⇢tail⇢next = newNode
-      list⇢tail = newNode
-   }
-   else {
-      newNode⇢next = currentNode⇢next
-      currentNode⇢next = newNode
-   }
-}
-```
-
-```C++
-ListInsertAfter(list, currentItem, newItem) {
-   currentNode = ListSearch(list, currentItem)
-   if (currentNode != null) {
-      newNode = Allocate new singly-linked list node
-      newNode⇢data = newItem
-      newNode⇢next = null
-      ListInsertNodeAfter(list, currentNode, newNode)
-      return true
-   }
-   return false
-}
-```
-
-- `void removeAfter(Type value)` - Removes the node after the value.
-	- If null, it removes the 1st node.
-	- If value is the tail, then it doesn't remove anything.
-	- Have to make sure the list isn't empty.
-
-```C++
-ListRemoveNodeAfter(list, curNode) {
-   // Special case, remove head
-   if (curNode is null) {
-      sucNode = list⇢head⇢next
-      list⇢head = sucNode
-
-      if (sucNode is null) { // Removed last item
-         list⇢tail = null
-      }
-   }
-   else if (curNode⇢next is not null) {
-      sucNode = curNode⇢next⇢next
-      curNode⇢next = sucNode
-
-      if (sucNode is null) { // Removed tail
-         list⇢tail = curNode
-      }
-   }
-}
-```
-
-```C++
-ListRemove(list, itemToRemove) {
-   // Traverse to the node with data equal to itemToRemove, 
-   // keeping track of the previous node in the process
-   previous = null
-   current = list⇢head
-   while (current != null) {
-      if (current⇢data == itemToRemove) {
-         ListRemoveNodeAfter(list, previous)
-         return true
-      }
-         
-      // Advance to next node
-      previous = current
-      current = current⇢next
-   }
-      
-   // Not found
-   return false
-}
-```
 
 #### Pseudocode Implementation of stack
 - With arrays

@@ -74,9 +74,7 @@
 
 ## Data Structures
 - [Abstract Data Structures](./Data_Structures/abstract_data_structures.md)
-- Linked List
-    - [Singly Linked List](./Data_Structures/singly_linked_list.md)
-    - Doubly Linked List
+- [Singly Linked List](./Data_Structures/singly_linked_list.md)
 - Binary Tree
 - Hash table
 - Heaps

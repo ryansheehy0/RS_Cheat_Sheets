@@ -8,6 +8,7 @@ Search algorithms find the index of a specific value in an array. If the value i
 - [Linear Search](#linear-search)
 - [Binary Search](#binary-search)
 - [Interpolation Search](#interpolation-search)
+- [Integral Search](#integral-search)
 
 <!-- /TOC -->
 
@@ -100,3 +101,46 @@ function interpolationSearch(arr, value){
 ```
 
 - If the pattern of the array follows something other than a line, you can use other equations besides linear interpolation.
+
+## [Integral Search](#search-algorithms)
+Imagine you're trying to guess a number someone is thinking of from 1 to 10. You could use binary search, where you guess in the middle(5), and keep repeating until you find the number. However, this doesn't take into account the probability distribution of how people think of numbers. It assumes that all numbers are equally likely to be thought of. Instead, if you have the distribution, you should guess which number balances each side's area under the curve(integral). This increases the odds of guessing the number someone has thought of.
+
+```
+            |                        ___
+Probability |        ___            |   |___
+            |    ___|   |___     ___|       |___
+            |___|           |___|               |___
+            |
+            +---------------------------------------
+              1   2   3   4   5   6   7   8   9   10
+```
+
+```
+Integral Search
+
+1st guess: 6
+  2nd guess low: 3
+    3rd guess low: 2
+      4th guess: 1 // The 4th guesses are the least likely to be chosen.
+    3rd guess high: 4
+      4th guess: 5
+  2nd guess high: 8
+    3rd guess low: 7 // The guaranteed 3rd guess is the most likely to be chosen.
+    3rd guess high: 9
+      4th guess: 10
+```
+
+```
+Binary Search
+
+1st guess: 5
+  2nd guess low: 2
+    3rd guess low: 1
+    3rd guess high: 3
+      4th guess: 4
+  2nd guess high: 8
+    3rd guess low: 6
+      4th guess: 7
+    3rd guess high: 9
+      4th guess: 10
+```
