@@ -19,6 +19,8 @@
 	- [Convert decimal to float](#convert-decimal-to-float)
 	- [Special cases](#special-cases)
 - [Bitwise](#bitwise)
+	- [Shifting ops](#shifting-ops)
+- [Masking ops](#masking-ops)
 
 <!-- /TOC -->
 
@@ -302,3 +304,20 @@ Fraction
 	- var ^= 0x4;
 - Check if a bit is set
 	- bool isSet = var & 0x4;
+
+### Shifting ops
+
+| Operation           | Example 1 | Example 2 |
+|---------------------|-----------|-----------|
+| x                   | 0011 0011 | 1011 0011 |
+| x << 4              | 0011 0000 | 0011 0000 |
+| x >> 4 (logical)    | 0000 0011 | 0000 1011 |
+| x >> 4 (arithmetic) | 0000 0011 | 1111 1011 |
+
+- Arithmetic right shift shifts in the value of the most significant bit. Used for signed ints.
+	- In java >> is arithmetic and >>> is logical
+
+### Masking ops
+- x & 0xFF gets the last byte
+- x & ~0x0 gets all they bytes which is size independent.
+- x & ~0xFF all but the least significant byte.

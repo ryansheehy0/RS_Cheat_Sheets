@@ -89,3 +89,4 @@ inOrder(Node* node, appliedFunction) {
 	- AppliedFunction, then left, then right
 - Post order
 	- left, then right, then appliedFunction
+

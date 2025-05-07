@@ -42,6 +42,8 @@
 
 ## Embedded Programming
 - [How A CPU Works](./Embedded_Programming/How_A_CPU_Works/how_a_cpu_works.md)
+- [x86 Assembly](./Embedded_Programming/x86_assembly.md)
+    - [MASM](./Embedded_Programming/masm.md)
 - CPU computer town analogy
 - ARM Assembly
 - Serial Communications
