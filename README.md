@@ -59,7 +59,6 @@
     - [Miscellaneous](./Algorithms/miscellaneous.md)
     - [Newtons Method](./Algorithms/Newtons_Method/newtons_method.md)
     - [Taylor Series](./Algorithms/Taylor_Series/taylor_series.md)
-    - Depth first and breadth first search
     - A Star
     - PIDs
     - Fast Fourier transform
@@ -77,7 +76,7 @@
 ## Data Structures
 - [Abstract Data Structures](./Data_Structures/abstract_data_structures.md)
 - [Singly Linked List](./Data_Structures/singly_linked_list.md)
-- Binary Tree
+- Binary Search Tree
 - Hash table
 - Heaps
 - Graphs

@@ -3,55 +3,6 @@
 # Singly Linked List
 This is meant to be a simple implementation of a singly linked list, not a full one.
 
-- Reasons to add a sentinel tail
-	- For search: Remove the need to check if the curNode is null in the while loop. Just have to check at the end if it's the tail sentinel node.
-	- 
-- List traversal method
-	- Takes in an argument 
-- Searching - `Node* unsortedSearch(T target, Node* prevNode = nullptr)`
-	- `Node* sortedSearch(T target, Node* prevNode = nullptr)`
-	- sortedSearch
-	- unsortedSearch
-	- In a sorted list, you don't need to go through the whole list. If curNode->data > target, then you can stop searching.
-	- Change remove to use the find method
-		- `bool remove(T target)`
-- Have two methods
-	- `bool sortedRemove(T target)`
-		- Can exit the loop early
-
-```C++
-bool StudentList::deleteItem(string target)
-{
-    ListNode *pCur;     // To traverse the list
-    // Doubly linked list so you don't need pPrev
-    bool success = false;
-
-    /* Write your code here */
-    // It is sorted, therfore you can exit early when pCur->stu.name > target
-    pCur = head->forw; // Skip the sentinel
-		// Skip all nodes whose's data is less than the target
-    while (pCur != head && pCur->stu.name < target) { // Move the pCur until you found the target or can no longer find the target
-       pCur = pCur->forw;
-    }
-    // Check if the pCur is the target
-    if (pCur != head && pCur->stu.name == target) { // Need to check that it isn't the head/sentinel, just incase the sentinel has the target
-      // Delete the pCur node.
-      ListNode* pPrev = pCur->back;
-      ListNode* pNext = pCur->forw;
-      pPrev->forw = pNext;
-      pNext->back = pPrev;
-
-      delete pCur;
-			length--;
-      success = true;
-    }
-    return success;
-}
-```
-
-
-	- `bool unsortedRemove(T target)`
-
 <!-- TOC -->
 
 - [Constructor](#constructor)
@@ -102,6 +53,7 @@ class SinglyLinkedList {
 		T popBack(); // Assumes the list isn't empty
 
 		bool remove(T value);
+		bool removeSorted(T value);
 };
 ```
 
@@ -111,6 +63,7 @@ class SinglyLinkedList {
 	- `void sort();`
 	- `bool removeAll(T value)`
 	- Iterators
+	- `Node<T>* search(T value);` and `Node<T>* searchSorted(T value);`
 	- Traversals
 		- Applies a function to all data in the linked list.
 
@@ -253,6 +206,28 @@ bool SinglyLinkedList<T>::remove(T value) {
 		}
 		prevNode = curNode;
 		curNode = curNode->next;
+	}
+	return false;
+}
+```
+
+- Remove sorted can exit early.
+
+```C++
+template <typename T>
+bool SinglyLinkedList<T>::removeSorted(T value) {
+	Node<T>* prevNode = head;
+	Node<T>* curNode = head->next; // Skip sentinel
+	while (curNode && curNode->data < value) { // Skip all nodes who's data is less than the target
+		prevNode = curNode;
+		curNode = curNode->next;
+	}
+	if (curNode && curNode->data == value) {
+		prevNode->next = curNode->next;
+		if (curNode == tail) tail = prevNode;
+		delete curNode;
+		length--;
+		return true;
 	}
 	return false;
 }

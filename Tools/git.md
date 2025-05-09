@@ -3,6 +3,14 @@
 # Git Cheat Sheet
 A version control system that manages changes to files.
 
+Using git with other people:
+- Each person creates a branch with a specific feature in mind.
+- Once they complete and tested their feature, they rebase.
+	- Rebasing rewrite the commit history of the feature branch, not main, so the commits in the feature branch apply after the latest in main, allowing conflicts to be resolved.
+- Once all the conflicts are resolved, a pull request is given to main.
+- The maintainers of main review the newly added code, and if approved, merge the new changes onto main.
+	- The feature branch may be kept or deleted after the merge.
+
 <!-- TOC -->
 
 - [Cloning and Initializing](#cloning-and-initializing)
