@@ -3,12 +3,12 @@
 <!-- TOC -->
 
 - [Tools](#tools)
-- [Math](#math)
 - [C/C++](#cc)
 - [Embedded Programming](#embedded-programming)
-- [Algorithms](#algorithms)
 - [Data Structures](#data-structures)
+- [Algorithms](#algorithms)
 - [Web Dev](#web-dev)
+- [Math](#math)
 
 <!-- /TOC -->
 
@@ -22,12 +22,6 @@
 - [Regex](./Tools/regex.md)
 - [Networking](./Tools/networking.md)
 - [Programming Tips](./Tools/programming_tips.md)
-
-## [Math](#ryan-sheehy-cheat-sheets)
-- [Matrices](./Math/matrices.md)
-- [Probability](./Math/Probability/probability.md)
-- [Basic Graphing](./Math/Basic_Graphing/basic_graphing.md)
-- [Trigonometric Functions](./Math/trigonometric_functions.md)
 
 ## [C/C++](#ryan-sheehy-cheat-sheets)
 - [Make Files](./C_C++/make_files.md)
@@ -50,6 +44,12 @@
 - Low level concepts
 - STM32s
 - FreeRTOS
+
+## [Data Structures](#ryan-sheehy-cheat-sheets)
+- [Abstract Data Structures](./Data_Structures/abstract_data_structures.md)
+- [Concrete Data Structures](./Data_Structures/concrete_data_structures.md)
+	- [Singly Linked List](./Data_Structures/singly_linked_list.md)
+	- [Binary Search Tree](./Data_Structures/binary_search_trees.md)
 
 ## [Algorithms](#ryan-sheehy-cheat-sheets)
 - Basics
@@ -74,12 +74,6 @@
 	- Read-Solomon Codes
 	- Hamming codes(https://www.youtube.com/watch?v=X8jsijhllIA) (https://www.youtube.com/watch?v=b3NxrZOu_CE)
 
-## [Data Structures](#ryan-sheehy-cheat-sheets)
-- [Abstract Data Structures](./Data_Structures/abstract_data_structures.md)
-- [Concrete Data Structures](./Data_Structures/concrete_data_structures.md)
-	- [Singly Linked List](./Data_Structures/singly_linked_list.md)
-	- [Binary Search Tree](./Data_Structures/binary_search_trees.md)
-
 ## [Web Dev](#ryan-sheehy-cheat-sheets)
 - [Deploying Websites](./Web_Dev/deploying_websites.md)
 - Elements and styling
@@ -100,3 +94,9 @@
 	- [Cross Site Scripting(XSS)](./Web_Dev/cross_site_scripting.md)
 	- [SQL Injection](./Web_Dev/sql_injection.md)
 	- [Cross Site Request Forgery(CSRF)](./Web_Dev/cross_site_request_forgery.md)
+
+## [Math](#ryan-sheehy-cheat-sheets)
+- [Matrices](./Math/matrices.md)
+- [Probability](./Math/Probability/probability.md)
+- [Basic Graphing](./Math/Basic_Graphing/basic_graphing.md)
+- [Trigonometric Functions](./Math/trigonometric_functions.md)

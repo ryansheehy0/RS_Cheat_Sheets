@@ -67,7 +67,7 @@ class SinglyLinkedList {
 	- Traversals
 		- Applies a function to all data in the linked list.
 
-## Constructor
+## [Constructor](#singly-linked-list)
 A sentinel node is a dummy node that is always set as the head. This removes the need for methods to check if the list is empty or not.
 
 ```C++
@@ -80,7 +80,7 @@ SinglyLinkedList<T>::SinglyLinkedList() {
 }
 ```
 
-## Destructor
+## [Destructor](#singly-linked-list)
 Loop through the linked list, freeing every node.
 
 ```C++
@@ -94,9 +94,9 @@ SinglyLinkedList<T>::~SinglyLinkedList() {
 }
 ```
 
-## Inserting
+## [Inserting](#singly-linked-list)
 
-### Push Back
+### [Push Back](#singly-linked-list)
 
 ```C++
 template <typename T>
@@ -111,7 +111,7 @@ bool SinglyLinkedList<T>::pushBack(T value) {
 }
 ```
 
-### Push Front
+### [Push Front](#singly-linked-list)
 
 ```C++
 template <typename T>
@@ -126,7 +126,7 @@ bool SinglyLinkedList<T>::pushFront(T value) {
 }
 ```
 
-### Insert Sort
+### [Insert Sort](#singly-linked-list)
 
 ```C++
 template <typename T>
@@ -151,9 +151,9 @@ bool SinglyLinkedList<T>::insertSort(T value) {
 }
 ```
 
-## Removing
+## [Removing](#singly-linked-list)
 
-### Pop Front
+### [Pop Front](#singly-linked-list)
 
 ```C++
 template <typename T>
@@ -168,7 +168,7 @@ T SinglyLinkedList<T>::popFront() {
 }
 ```
 
-### Pop Back
+### [Pop Back](#singly-linked-list)
 
 ```C++
 template <typename T>
@@ -189,7 +189,7 @@ T SinglyLinkedList<T>::popBack() {
 }
 ```
 
-### Remove
+### [Remove](#singly-linked-list)
 
 ```C++
 template <typename T>
@@ -233,7 +233,7 @@ bool SinglyLinkedList<T>::removeSorted(T value) {
 }
 ```
 
-## Applications
+## [Applications](#singly-linked-list)
 - Linked lists can be implemented with arrays instead of pointers
 	- Each array element has data and the index to the next node.
 	- When you insert, you look for an empty cell.

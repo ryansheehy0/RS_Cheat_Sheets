@@ -53,7 +53,7 @@ class BinarySearchTree {
 }
 ```
 
-## Destructor
+## [Destructor](#binary-search-trees)
 
 ```C++
 template <typename T>
@@ -61,7 +61,7 @@ BinarySearchTree<T>::~BinarySearchTree() {
 }
 ```
 
-## Search
+## [Search](#binary-search-trees)
 
 ```C++
 template <typename T>
@@ -83,7 +83,7 @@ Node<T>* BinarySearchTree<T>::search(T value, int* depth = nullptr) {
 }
 ```
 
-## Insert
+## [Insert](#binary-search-trees)
 
 ```C++
 template <typename T>
@@ -390,11 +390,11 @@ BSTRemove(tree, key) {
 }
 ```
 
-## Traversal
+## [Traversal](#binary-search-trees)
 Go through each node and run function
 - If it's just a binary tree, not a binary search tree, then these are the two methods for searching.
 
-### Breadth first
+### [Breadth first](#binary-search-trees)
 - Traverse by level
 
 ```C++
@@ -411,7 +411,7 @@ while (!q.isEmpty()) {
 }
 ```
 
-### Depth first
+### [Depth first](#binary-search-trees)
 - By branches
 
 - in order
