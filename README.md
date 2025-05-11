@@ -12,7 +12,7 @@
 
 <!-- /TOC -->
 
-## Tools
+## [Tools](#ryan-sheehy-cheat-sheets)
 - Linux
     - [Linux Commands](./Tools/Linux/linux_commands.md)
     - [Bash Scripting](./Tools/Linux/bash_scripting.md)
@@ -24,13 +24,13 @@
 - [Programming Tips](./Tools/programming_tips.md)
 - Awk
 
-## Math
+## [Math](#ryan-sheehy-cheat-sheets)
 - [Matrices](./Math/matrices.md)
 - [Probability](./Math/Probability/probability.md)
 - [Basic Graphing](./Math/Basic_Graphing/basic_graphing.md)
 - [Trigonometric Functions](./Math/trigonometric_functions.md)
 
-## C/C++
+## [C/C++](#ryan-sheehy-cheat-sheets)
 - C
 - [C++](./C_C++//cpp.md)
 - [C++ Data Structures, Iterators, and Algorithms](./C_C++/cpp_data_structures_iterators_and_algorithms.md)
@@ -40,7 +40,7 @@
 - [Make Files](./C_C++/make_files.md)
 - GNU Debugger
 
-## Embedded Programming
+## [Embedded Programming](#ryan-sheehy-cheat-sheets)
 - [How A CPU Works](./Embedded_Programming/How_A_CPU_Works/how_a_cpu_works.md)
 - [x86 Assembly](./Embedded_Programming/x86_assembly.md)
     - [MASM](./Embedded_Programming/masm.md)
@@ -51,7 +51,7 @@
 - STM32s
 - FreeRTOS
 
-## Algorithms
+## [Algorithms](#ryan-sheehy-cheat-sheets)
 - Algos
     - [Big O](./Algorithms/big_o_notation.md)
     - [Search Algorithms_Data_Structures](./Algorithms/search_algorithms.md)
@@ -73,7 +73,7 @@
     - Read-Solomon Codes
     - Hamming codes(https://www.youtube.com/watch?v=X8jsijhllIA) (https://www.youtube.com/watch?v=b3NxrZOu_CE)
 
-## Data Structures
+## [Data Structures](#ryan-sheehy-cheat-sheets)
 - [Abstract Data Structures](./Data_Structures/abstract_data_structures.md)
 - [Singly Linked List](./Data_Structures/singly_linked_list.md)
 - Binary Search Tree
@@ -81,7 +81,7 @@
 - Heaps
 - Graphs
 
-## Web Dev
+## [Web Dev](#ryan-sheehy-cheat-sheets)
 - [Deploying Websites](./Web_Dev/deploying_websites.md)
 - [HTML](./Web_Dev/html.md)
 - [CSS](./Web_Dev/css.md)
