@@ -119,8 +119,8 @@ bool SinglyLinkedList<T>::pushFront(T value) {
 	Node<T>* newNode = new Node; // Create new node
 	if (!newNode) return false; // Check if the creation worked
 	newNode->data = value;
-	newNode->next = head; // Point new node's next to the head
-	head = newNode; // Change the head
+	newNode->next = head->next; // Point new node's next to the head->next
+	head->next = newNode; // Change the head
 	length++;
 	return true;
 }
