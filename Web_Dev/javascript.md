@@ -1,4 +1,4 @@
-[Home](../README.md)
+[Home](../README.md#web-dev)
 
 # JavaScript
 JavaScript is the only language that can be run in the browser.

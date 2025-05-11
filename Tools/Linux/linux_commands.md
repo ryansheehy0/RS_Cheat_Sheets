@@ -1,4 +1,4 @@
-[Home](../../README.md)
+[Home](../../README.md#tools)
 
 # Linux Commands
 Linux terminal commands

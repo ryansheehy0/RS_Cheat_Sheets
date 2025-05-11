@@ -1,4 +1,4 @@
-[Home](../README.md)
+[Home](../README.md#data-structures)
 
 # Singly Linked List
 This is meant to be a simple implementation of a singly linked list, not a full one.

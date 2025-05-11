@@ -1,4 +1,4 @@
-[Home](../README.md)
+[Home](../README.md#algorithms)
 
 # Big O notation
 An algorithm can run faster on a faster process. Therefore, to compare algorithms, the number of constant time operations, an operation that always executes in the same amount of time, is used. These are expressed in terms of the length of the input N.

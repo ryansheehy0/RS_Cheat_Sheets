@@ -1,4 +1,4 @@
-[Home](../README.md)
+[Home](../README.md#data-structures)
 
 # Abstract Data Structures
 Abstract data types(ADTs) define which operation can be used, but not how the data is to be stored and organized.

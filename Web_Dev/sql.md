@@ -1,4 +1,4 @@
-[Home](../README.md)
+[Home](../README.md#web-dev)
 
 # SQL
 A programming language to manage relational databases.

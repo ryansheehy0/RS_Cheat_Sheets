@@ -1,4 +1,4 @@
-[Home](../README.md)
+[Home](../README.md#data-structures)
 
 # Concrete Data Structures
 Concrete data structures are data structures that have specific implementations that define exactly how data is stored and accessed. They are usually used to create abstract data structures.

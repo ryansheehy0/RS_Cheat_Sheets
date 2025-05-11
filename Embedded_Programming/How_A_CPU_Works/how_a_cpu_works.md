@@ -1,4 +1,4 @@
-[Home](../../README.md)
+[Home](../../README.md#embedded-programming)
 
 # How A CPU Works
 - Notes from [Ben Eater's youtube series on building an 8-bit computer](https://www.youtube.com/playlist?list=PLowKtXNTBypGqImE405J2565dvjafglHU).

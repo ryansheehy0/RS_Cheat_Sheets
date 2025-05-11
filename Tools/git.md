@@ -1,4 +1,4 @@
-[Home](../README.md)
+[Home](../README.md#tools)
 
 # Git Cheat Sheet
 A version control system that manages changes to files.

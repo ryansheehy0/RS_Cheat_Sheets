@@ -1,4 +1,4 @@
-[Home](../README.md)
+[Home](../README.md#embedded-programming)
 
 # Low level concepts
 
@@ -20,7 +20,7 @@
 	- [Special cases](#special-cases)
 - [Bitwise](#bitwise)
 	- [Shifting ops](#shifting-ops)
-- [Masking ops](#masking-ops)
+	- [Masking ops](#masking-ops)
 
 <!-- /TOC -->
 

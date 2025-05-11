@@ -1,4 +1,4 @@
-[Home](../README.md)
+[Home](../README.md#web-dev)
 
 # IndexedDB/idb
 IndexedDB is useful if you need to store large amounts of data on the client side that can quickly be retrieved.

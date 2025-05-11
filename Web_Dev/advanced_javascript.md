@@ -1,4 +1,4 @@
-[Home](../README.md)
+[Home](../README.md#web-dev)
 
 # Advanced JavaScript
 Javascript is single threaded language. The thread has a call stack and memory heap. This cheat sheet goes through how those things work and other things on how javascript works under the hood.

@@ -1,4 +1,4 @@
-[Home](../README.md)
+[Home](../README.md#data-structures)
 
 # Binary Search Trees
 Each node's data is greater than all the data in its left subtree and less than all the data in its right subtree.

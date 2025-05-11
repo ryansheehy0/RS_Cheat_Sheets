@@ -14,15 +14,14 @@
 
 ## [Tools](#ryan-sheehy-cheat-sheets)
 - Linux
-    - [Linux Commands](./Tools/Linux/linux_commands.md)
-    - [Bash Scripting](./Tools/Linux/bash_scripting.md)
+	- [Linux Commands](./Tools/Linux/linux_commands.md)
+	- [Bash Scripting](./Tools/Linux/bash_scripting.md)
 - [Vim](./Tools/vim.md)
 - [Markdown](./Tools/markdown.md)
 - [Git](./Tools/git.md)
 - [Regex](./Tools/regex.md)
 - [Networking](./Tools/networking.md)
 - [Programming Tips](./Tools/programming_tips.md)
-- Awk
 
 ## [Math](#ryan-sheehy-cheat-sheets)
 - [Matrices](./Math/matrices.md)
@@ -31,66 +30,73 @@
 - [Trigonometric Functions](./Math/trigonometric_functions.md)
 
 ## [C/C++](#ryan-sheehy-cheat-sheets)
-- C
-- [C++](./C_C++//cpp.md)
-- [C++ Data Structures, Iterators, and Algorithms](./C_C++/cpp_data_structures_iterators_and_algorithms.md)
-- [C++ Smart Pointers](./C_C++/cpp_smart_pointers.md)
-- [C++ Standard Libraries](./C_C++/cpp_standard_libraries.md)
-- [C++ Non Standard Libraries](./C_C++/cpp_non_standard_libraries.md)
 - [Make Files](./C_C++/make_files.md)
 - GNU Debugger
+- [C++](./C_C++//cpp.md)
+	- [C++ Data Structures, Iterators, and Algorithms](./C_C++/cpp_data_structures_iterators_and_algorithms.md)
+	- [C++ Smart Pointers](./C_C++/cpp_smart_pointers.md)
+	- [C++ Standard Libraries](./C_C++/cpp_standard_libraries.md)
+	- [C++ Non Standard Libraries](./C_C++/cpp_non_standard_libraries.md)
+- C
 
 ## [Embedded Programming](#ryan-sheehy-cheat-sheets)
 - [How A CPU Works](./Embedded_Programming/How_A_CPU_Works/how_a_cpu_works.md)
-- [x86 Assembly](./Embedded_Programming/x86_assembly.md)
-    - [MASM](./Embedded_Programming/masm.md)
-- CPU computer town analogy
-- ARM Assembly
+	- CPU computer town analogy
+- Assembly
+	- [x86 Assembly](./Embedded_Programming/x86_assembly.md)
+	- [MASM](./Embedded_Programming/masm.md)
+	- ARM Assembly
 - Serial Communications
 - Low level concepts
 - STM32s
 - FreeRTOS
 
 ## [Algorithms](#ryan-sheehy-cheat-sheets)
-- Algos
-    - [Big O](./Algorithms/big_o_notation.md)
-    - [Search Algorithms_Data_Structures](./Algorithms/search_algorithms.md)
-    - [Sort Algorithms_Data_Structures](./Algorithms/sort_algorithms.md)
-    - [Miscellaneous](./Algorithms/miscellaneous.md)
-    - [Newtons Method](./Algorithms/Newtons_Method/newtons_method.md)
-    - [Taylor Series](./Algorithms/Taylor_Series/taylor_series.md)
-    - A Star
-    - PIDs
-    - Fast Fourier transform
+- Basics
+	- [Big O](./Algorithms/big_o_notation.md)
+	- [Search Algorithms](./Algorithms/search_algorithms.md)
+	- [Sorting Algorithms](./Algorithms/sort_algorithms.md)
+- Common Algos
+	- [Miscellaneous](./Algorithms/miscellaneous.md)
+	- [Newtons Method](./Algorithms/Newtons_Method/newtons_method.md)
+	- [Taylor Series](./Algorithms/Taylor_Series/taylor_series.md)
+	- A Star
+	- PIDs
+	- Fast Fourier transform
 - Compression
-    - [Huffman codes](https://www.youtube.com/watch?v=B3y0RsVCyrw)
-    - [JPEG](https://www.youtube.com/watch?v=0me3guauqOU)
-    - [PNG](https://www.youtube.com/watch?v=EFUYNoFRHQI)
+	- [Huffman codes](https://www.youtube.com/watch?v=B3y0RsVCyrw)
+	- [JPEG](https://www.youtube.com/watch?v=0me3guauqOU)
+	- [PNG](https://www.youtube.com/watch?v=EFUYNoFRHQI)
 - Encryption
-    - RSA
-    - Delphi helmen key exchange(Include 2 lock key exchange)
+	- RSA
+	- Diffie-Hellman Key Exchange(Include 2 lock key exchange)
 - Error correction
-    - Read-Solomon Codes
-    - Hamming codes(https://www.youtube.com/watch?v=X8jsijhllIA) (https://www.youtube.com/watch?v=b3NxrZOu_CE)
+	- Read-Solomon Codes
+	- Hamming codes(https://www.youtube.com/watch?v=X8jsijhllIA) (https://www.youtube.com/watch?v=b3NxrZOu_CE)
 
 ## [Data Structures](#ryan-sheehy-cheat-sheets)
 - [Abstract Data Structures](./Data_Structures/abstract_data_structures.md)
-- [Singly Linked List](./Data_Structures/singly_linked_list.md)
-- Binary Search Tree
-- Hash table
-- Heaps
-- Graphs
+- [Concrete Data Structures](./Data_Structures/concrete_data_structures.md)
+	- [Singly Linked List](./Data_Structures/singly_linked_list.md)
+	- [Binary Search Tree](./Data_Structures/binary_search_trees.md)
 
 ## [Web Dev](#ryan-sheehy-cheat-sheets)
 - [Deploying Websites](./Web_Dev/deploying_websites.md)
-- [HTML](./Web_Dev/html.md)
-- [CSS](./Web_Dev/css.md)
-- [SVGs](./Web_Dev/svgs.md)
-- [JavaScript](./Web_Dev/javascript.md)
-- [Advanced Javascript](./Web_Dev/advanced_javascript.md)
-- [JQuery](./Web_Dev/jquery.md)
-- [NodeJS](./Web_Dev/nodejs.md)
-- [NodeJS Packages](./Web_Dev/nodejs_packages.md)
-- [SQL](./Web_Dev/sql.md)
-- [IndexedDB](./Web_Dev/indexedDB.md)
-- [React](./Web_Dev/react.md)
+- Elements and styling
+	- [HTML](./Web_Dev/html.md)
+	- [CSS](./Web_Dev/css.md)
+	- [SVGs](./Web_Dev/svgs.md)
+- JavaScript
+	- [JavaScript](./Web_Dev/javascript.md)
+	- [Advanced Javascript](./Web_Dev/advanced_javascript.md)
+	- [JQuery](./Web_Dev/jquery.md)
+	- [NodeJS](./Web_Dev/nodejs.md)
+	- [NodeJS Packages](./Web_Dev/nodejs_packages.md)
+	- [React](./Web_Dev/react.md)
+- Data Bases
+	- [SQL](./Web_Dev/sql.md)
+	- [IndexedDB](./Web_Dev/indexedDB.md)
+- Web Cybersecurity
+	- [Cross Site Scripting(XSS)](./Web_Dev/cross_site_scripting.md)
+	- [SQL Injection](./Web_Dev/sql_injection.md)
+	- [Cross Site Request Forgery(CSRF)](./Web_Dev/cross_site_request_forgery.md)

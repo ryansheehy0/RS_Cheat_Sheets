@@ -1,4 +1,4 @@
-[Home](../README.md)
+[Home](../README.md#algorithms)
 
 # Search Algorithms
 Search algorithms find the index of a specific value in an array. If the value is not found, they return -1.

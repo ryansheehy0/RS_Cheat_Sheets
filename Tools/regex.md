@@ -1,4 +1,4 @@
-[Home](../README.md)
+[Home](../README.md#tools)
 
 # Regular Expressions(Regex)
 The purpose of a regex is to find character patterns. It stands for regular expression. This can be used to replace them with something or to delete them.

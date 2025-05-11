@@ -1,4 +1,4 @@
-[Home](../README.md)
+[Home](../README.md#algorithms)
 
 # Sort Algorithms
 Sorting algorithms take in an array and sorts them from lowest to highest, highest to lowest, alphabetical, or any other such way.
