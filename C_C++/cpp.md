@@ -1,7 +1,7 @@
 [Home](../README.md/#cc)
 
 # C++
-My personal notes on C++.
+My personal C++ notes.
 
 <!-- TOC -->
 
