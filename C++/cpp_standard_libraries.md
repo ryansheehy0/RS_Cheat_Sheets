@@ -1,4 +1,4 @@
-[Home](../README.md#cc)
+[Home](../README.md#c)
 
 # C++ Standard Libraries
 You can find libraries at `https://cplusplus.com/reference/<library>`

@@ -1,4 +1,4 @@
-[Home](../README.md#embedded-programming)
+[Home](../README.md#low-level-programming)
 
 # Serial Communication
 The purpose of serial communication is to transfer information between devices while using fewer wires than parallel communication.

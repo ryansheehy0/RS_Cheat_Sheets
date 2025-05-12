@@ -412,7 +412,7 @@ while (!q.isEmpty()) {
 ```
 
 ### [Depth first](#binary-search-trees)
-- By branches
+- Traverse y branch
 
 - in order
 	- left right root

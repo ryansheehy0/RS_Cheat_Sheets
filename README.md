@@ -3,8 +3,8 @@
 <!-- TOC -->
 
 - [Tools](#tools)
-- [C/C++](#cc)
-- [Embedded Programming](#embedded-programming)
+- [C++](#c)
+- [Low Level Programming](#low-level-programming)
 - [Data Structures](#data-structures)
 - [Algorithms](#algorithms)
 - [Web Dev](#web-dev)
@@ -16,34 +16,28 @@
 - Linux
 	- [Linux Commands](./Tools/Linux/linux_commands.md)
 	- [Bash Scripting](./Tools/Linux/bash_scripting.md)
-- [Vim](./Tools/vim.md)
-- [Markdown](./Tools/markdown.md)
+- Text
+	- [Vim](./Tools/vim.md)
+	- [Markdown](./Tools/markdown.md)
+	- [Regex](./Tools/regex.md)
 - [Git](./Tools/git.md)
-- [Regex](./Tools/regex.md)
 - [Networking](./Tools/networking.md)
 - [Programming Tips](./Tools/programming_tips.md)
 
-## [C/C++](#ryan-sheehy-cheat-sheets)
-- [Make Files](./C_C++/make_files.md)
+## [C++](#ryan-sheehy-cheat-sheets)
+- [Make Files](./C++/make_files.md)
 - GNU Debugger
-- [C++](./C_C++//cpp.md)
-	- [C++ Data Structures, Iterators, and Algorithms](./C_C++/cpp_data_structures_iterators_and_algorithms.md)
-	- [C++ Smart Pointers](./C_C++/cpp_smart_pointers.md)
-	- [C++ Standard Libraries](./C_C++/cpp_standard_libraries.md)
-	- [C++ Non Standard Libraries](./C_C++/cpp_non_standard_libraries.md)
-- C
+- [C++](./C++//cpp.md)
+- [C++ Data Structures, Iterators, and Algorithms](./C++/cpp_data_structures_iterators_and_algorithms.md)
+- [C++ Smart Pointers](./C++/cpp_smart_pointers.md)
+- [C++ Standard Libraries](./C++/cpp_standard_libraries.md)
+- [C++ Non Standard Libraries](./C++/cpp_non_standard_libraries.md)
 
-## [Embedded Programming](#ryan-sheehy-cheat-sheets)
-- [How A CPU Works](./Embedded_Programming/How_A_CPU_Works/how_a_cpu_works.md)
-	- CPU computer town analogy
-- Assembly
-	- [x86 Assembly](./Embedded_Programming/x86_assembly.md)
-	- [MASM](./Embedded_Programming/masm.md)
-	- ARM Assembly
-- Serial Communications
-- Low level concepts
-- STM32s
-- FreeRTOS
+## [Low Level Programming](#ryan-sheehy-cheat-sheets)
+- [Low level concepts](./Low_Level_Programming/low_level_concepts.md)
+- [How A CPU Works](./Low_Level_Programming/How_A_CPU_Works/how_a_cpu_works.md)
+- [x86 Assembly](./Low_Level_Programming/x86_assembly.md)/[MASM](./Low_Level_Programming/masm.md)
+- [Serial Communications](./Low_Level_Programming/serial_communication.md)
 
 ## [Data Structures](#ryan-sheehy-cheat-sheets)
 - [Abstract Data Structures](./Data_Structures/abstract_data_structures.md)

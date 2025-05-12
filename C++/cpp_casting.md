@@ -1,4 +1,4 @@
-[Home](../README.md#cc)
+[Home](../README.md#c)
 
 # C++ Casting
 The purpose of casting is to convert one data type to another.

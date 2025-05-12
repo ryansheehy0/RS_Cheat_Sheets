@@ -1,4 +1,4 @@
-[Home](../README.md#cc)
+[Home](../README.md#c)
 
 # Make files
 Make files are used to automate the compiling of a project. It allows you to compile just the changed files instead of re-compiling everything.

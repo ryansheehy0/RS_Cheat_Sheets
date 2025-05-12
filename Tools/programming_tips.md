@@ -13,7 +13,6 @@ C++ is used for all the examples.
 - [Two D arrays](#two-d-arrays)
 	- [Convolutional 2d array](#convolutional-2d-array)
 - [Rounding with truncation](#rounding-with-truncation)
-- [Cache misses](#cache-misses)
 
 <!-- /TOC -->
 
@@ -123,11 +122,3 @@ void convolute(int array[rows][cols], int index) {
   - `int integer = float + 0.5;`
 - If you want to round to the nearest int for negative numbers you can copy the sign before adding 0.5.
   - `int integer = float + std::copysign(0.5, float);`
-
-## [Cache misses](#programming-tips)
-
-```C
-int arr[10'000'000][5'000'000];
-
-for (int row = 0; row < )
-```

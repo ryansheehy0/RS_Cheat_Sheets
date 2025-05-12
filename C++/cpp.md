@@ -1,4 +1,4 @@
-[Home](../README.md#cc)
+[Home](../README.md#c)
 
 # C++
 My personal C++ notes.

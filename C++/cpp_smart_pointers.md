@@ -1,4 +1,4 @@
-[Home](../README.md#cc)
+[Home](../README.md#c)
 
 # Smart pointers
 What problem do smart pointers solve?
