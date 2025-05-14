@@ -16,6 +16,7 @@ The 4 most common operations are create/add/insert, read/get/access, update, and
 - [Types of linked lists](#types-of-linked-lists)
 - [Binary Trees](#binary-trees)
 	- [Applications](#applications)
+- [Hash tables](#hash-tables)
 
 <!-- /TOC -->
 
@@ -92,3 +93,59 @@ The 4 most common operations are create/add/insert, read/get/access, update, and
 		- The left child contains all objects on the left half.
 		- The right child contains all objects on the right half.
 	- The screen position can be used to quickly narrow down which objects to check because they aren't anywhere close to the screen.
+
+## Hash tables
+- All keys are stores in the range Ex: [0-9].
+- Can use a fixed size array to store elements.
+- Searching takes O(1) time assuming there are no more than one element in the cell
+
+- Hash tables store unordered items by mapping/hashing each item to a location called a bucket.
+- A hash map is an implementation of a map ADT using a hash table.
+	- What is a map adt? Key value pairs.
+
+- hashCode = hash(value)
+- index = hashCode % arraySize
+
+- Collision - 2 different keys map to the same bucket index.
+	- Chaining - Each bucket has a list of items
+	- Open addressing - Looking for an empty bucket elsewhere.
+		- If there's a collision when inserting, then linear search down until you find an empty bucket.
+		- If not found at the correct index when searching, then linear searching down the buckets until you find the element or an empty bucket.
+		- When searching, loop back to the top.
+		- Need to label if empty buckets were empty since start or empty after removal.
+			- Need something more. Over time there will be no more empty since start.
+
+- A perfect hash function can be created if the number of items and all possible keys are known beforehand.
+
+- Common hash functions
+	- Modulo: value % arraySize
+	- Mid-square: extractMiddleDigits(value^2) % arraySize
+	- Multiplicative string: Multiplies each character of a string by a multiplier and mods at the end.
+		- Good for short english strings
+
+```C++
+int hashMiddleSquare(int value) {
+	const int numOfBits = 24;
+	int square = value * value;
+
+	int lowBitsToRemove = (sizeof(int) - numOfBits) / 2;
+
+	// This is usually done in binary instead of decimal due to the simplification
+	int middleBits = value >> lowBitsToRemove; // Shift off lower bits
+	middleBits = middleBits & (~0 >> (32 - numOfBits));
+
+	return middleBits;
+}
+```
+
+```C++
+int hashMultiplicative(string value) {
+	int hash = 5381;
+	const int multiplier = 33; // Usually prime
+	for (int i = 0; i < value.size(); i++) {
+		char c = value.at(i);
+		hash = (hash * multiplier) + c;
+	}
+	return hash;
+}
+```

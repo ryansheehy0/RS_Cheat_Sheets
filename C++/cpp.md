@@ -59,6 +59,7 @@ My personal C++ notes.
 			- [Abstract classes](#abstract-classes)
 		- [Composition vs Inheritance](#composition-vs-inheritance)
 		- [Friend](#friend)
+		- [Changing access of parent members](#changing-access-of-parent-members)
 	- [Inline functions](#inline-functions)
 
 <!-- /TOC -->
@@ -892,6 +893,18 @@ void concatenate(Queue& q1, Queue& q2) { // Has to be defined outside the class.
 	}
 	q2.head = nullptr;
 	q2.tail = nullptr;
+}
+```
+
+#### [Changing access of parent members](#c)
+Making parent class members public. This can also be done with private and protected.
+
+```C++
+template <typename T>
+class Stack : private SinglyLinkedList<T> {
+	public:
+		using SinglyLinkedList::popFront;
+		using SinglyLinkedLIst::pushFront;
 }
 ```
 

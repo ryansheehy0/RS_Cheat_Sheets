@@ -31,7 +31,7 @@ function linearSearch(arr, value){
 
 ## [Binary Search](#search-algorithms)
 Binary search splits the search space in half depending if the middle of the array is less than or grater than the value. This repeats until the middle equals the value.
-- O(log n) specifically log(n)/log(2) + 1
+- O(log n) specifically floor(log2(n)) + 1
   - Slow for small input sizes
   - Fast for large input sizes
 - Input needs to be sorted
@@ -44,7 +44,6 @@ function binarySearch(arr, value){
 
   while(left <= right){
     const mid = Math.floor((left + right) / 2)
-    const mid = (left + (right - left)) / 2
     const midValue = arr[mid]
 
     if(midValue === value) return mid

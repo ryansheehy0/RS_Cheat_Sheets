@@ -169,6 +169,7 @@ T SinglyLinkedList<T>::popFront() {
 ```
 
 ### [Pop Back](#singly-linked-list)
+- This is inefficient compared to popFront, so it's commonly not included in singly linked list libraries.
 
 ```C++
 template <typename T>
