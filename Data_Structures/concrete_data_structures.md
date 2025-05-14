@@ -109,11 +109,21 @@ The 4 most common operations are create/add/insert, read/get/access, update, and
 - Collision - 2 different keys map to the same bucket index.
 	- Chaining - Each bucket has a list of items
 	- Open addressing - Looking for an empty bucket elsewhere.
-		- If there's a collision when inserting, then linear search down until you find an empty bucket.
-		- If not found at the correct index when searching, then linear searching down the buckets until you find the element or an empty bucket.
-		- When searching, loop back to the top.
-		- Need to label if empty buckets were empty since start or empty after removal.
-			- Need something more. Over time there will be no more empty since start.
+		- Linear probing
+			- If there's a collision when inserting, then linear search down until you find an empty bucket.
+			- If not found at the correct index when searching, then linear searching down the buckets until you find the element or an empty from start bucket or reached the starting index again.
+				- When searching, loop back to the top.
+			- Empty buckets need to be labeled empty since start or empty after removal.
+				- Over time, all empty buckets will be empty after removal.
+		- Quadratic probing - Spreads out bullets more evenly compared to linear probing.
+			- nextIndex = (hash(value) + c1 * i + c2 * i^2) % arraySize
+				- c1 and c2 are constants. c1 = 1 and c2 = 1 often works well.
+
+- Resizing - New array is created, usually to the size of the next prime number.
+	- All elements are then inserted into this new array in O(N) time.
+	- Load factors = numOfFilledBuckets / numOfFilledBuckets; Used to decide when to resize.
+		- Load factor cannot exceed 1 for open addressing.
+	- When chaining, the size of a bucket's largest linked list.
 
 - A perfect hash function can be created if the number of items and all possible keys are known beforehand.
 
