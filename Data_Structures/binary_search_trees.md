@@ -19,6 +19,8 @@ For this example, no duplicate values are allowed. If you want duplicates you ca
 
 - [Destructor](#destructor)
 - [Getters](#getters)
+	- [Get Height](#get-height)
+		- [Get Height Recursive implementation](#get-height-recursive-implementation)
 	- [Search](#search)
 	- [Max and Min](#max-and-min)
 - [Insert](#insert)
@@ -26,6 +28,7 @@ For this example, no duplicate values are allowed. If you want duplicates you ca
 - [Traversals](#traversals)
 	- [Breadth First Search](#breadth-first-search)
 	- [Depth First Search](#depth-first-search)
+		- [Recursive Implementation](#recursive-implementation)
 - [Balance](#balance)
 
 <!-- /TOC -->
@@ -93,6 +96,43 @@ BinarySearchTree<T>::~BinarySearchTree() {
 
 ## [Getters](#binary-search-trees)
 
+### [Get Height](#binary-search-trees)
+
+```C++
+template <typename T>
+int BinarySearchTree<T>::getHeight() const {
+   if (root == nullptr) return -1;
+   Stack s;
+   s.push({root, 0});
+   int maxHeight = 0;
+   while (!s.isEmpty()) {
+      auto [node, depth] = s.pop();
+      if (node) {
+         maxHeight = max(maxHeight, depth);
+         s.push({node->left, depth + 1});
+         s.push({node->right, depth + 1});
+      }
+   }
+   return maxHeight;
+}
+```
+
+#### [Get Height Recursive implementation](#binary-search-trees)
+```C++
+template <typename T>
+int BinarySearchTree<T>::getHeight() const {
+   return _recursivelyGetHeight(root);
+}
+
+template <typename T>
+int _recursivelyGetHeight(Node<T> node) const {
+   if (node == nullptr) return -1;
+   int leftHeight = _recursivelyGetHeight(node->left);
+   int rightHeight = _recursivelyGetHeight(node->right);
+   return 1 + max(leftHeight, rightHeight);
+}
+```
+
 ### [Search](#binary-search-trees)
 
 ```C++
@@ -140,6 +180,7 @@ Node<T>* BinarySearchTree<T>::max(Node<T>* subTreeRoot = nullptr, Node<T>** pare
 ## [Insert](#binary-search-trees)
 - New nodes are always added as leafs.
 - Duplicates are inserted to the right.
+   - New element are inserted to the level closes possible to the root.
 
 ```C++
 template <typename T>
@@ -266,14 +307,6 @@ void BinarySearchTree<T>::breadthFirstTraversal(void (*process)(T&), TypeOfBread
 - Traverse by branch
 
 ```C++
-enum class TypeOfDepthFirstTraversal {
-   IN_ORDER, // left, root, right
-   PRE_ORDER, // root, left, right
-   POST_ORDER, // left, right, root
-   REVERSE_IN_ORDER, // right, root, left
-   REVERSE_PRE_ORDER, // root, right, left
-   REVERSE_POST_ORDER // right, left, root
-};
 template <typename T>
 void BinarySearchTree<T>::depthFirstTraversal(void (*process)(T&), TypeOfDepthFirstTraversal order = TypeOfDepthFirstTraversal::IN_ORDER) {
    if (root == nullptr) return;
@@ -346,6 +379,52 @@ void BinarySearchTree<T>::postOrder(void (*process)(T&), bool reversed) {
             lastVisited = stack.pop();
          }
       }
+   }
+}
+```
+
+#### [Recursive Implementation](#binary-search-trees)
+
+```C++
+template <typename T>
+void BinarySearchTree<T>::depthFirstTraversal(void (*process)(T&), TypeOfDepthFirstTraversal order = TypeOfDepthFirstTraversal::IN_ORDER) {
+   _recursiveDepthFirstTraversal(root, process, order);
+}
+
+template <typename T>
+void BinarySearchTree<T>::_recursiveDepthFirstTraversal(Node<T>* treeRoot, void (*process)(T&), TypeOfDepthFirstTraversal order = TypeOfDepthFirstTraversal::IN_ORDER) {
+   if (treeRoot == nullptr) return;
+   switch (order) {
+      case TypeOfDepthFirstTraversal::IN_ORDER:
+         _recursiveDepthFirstTraversal(treeRoot->left, process, order);
+         process(treeRoot->data);
+         _recursiveDepthFirstTraversal(treeRoot->right, process, order);
+         break;
+      case TypeOfDepthFirstTraversal::PRE_ORDER:
+         process(treeRoot->data);
+         _recursiveDepthFirstTraversal(treeRoot->left, process, order);
+         _recursiveDepthFirstTraversal(treeRoot->right, process, order);
+         break;
+      case TypeOfDepthFirstTraversal::POST_ORDER:
+         _recursiveDepthFirstTraversal(treeRoot->left, process, order);
+         _recursiveDepthFirstTraversal(treeRoot->right, process, order);
+         process(treeRoot->data);
+         break;
+      case TypeOfDepthFirstTraversal::REVERSE_IN_ORDER:
+         _recursiveDepthFirstTraversal(treeRoot->right, process, order);
+         process(treeRoot->data);
+         _recursiveDepthFirstTraversal(treeRoot->left, process, order);
+         break;
+      case TypeOfDepthFirstTraversal::REVERSE_PRE_ORDER:
+         process(treeRoot->data);
+         _recursiveDepthFirstTraversal(treeRoot->left, process, order);
+         _recursiveDepthFirstTraversal(treeRoot->right, process, order);
+         break;
+      case TypeOfDepthFirstTraversal::REVERSE_POST_ORDER:
+         _recursiveDepthFirstTraversal(treeRoot->right, process, order);
+         _recursiveDepthFirstTraversal(treeRoot->left, process, order);
+         process(treeRoot->data);
+         break;
    }
 }
 ```

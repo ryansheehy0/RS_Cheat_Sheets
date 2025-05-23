@@ -127,6 +127,7 @@ bool SinglyLinkedList<T>::pushFront(T value) {
 ```
 
 ### [Insert Sort](#singly-linked-list)
+- Unsuccessful searches on a sorted linked list are faster.
 
 ```C++
 template <typename T>

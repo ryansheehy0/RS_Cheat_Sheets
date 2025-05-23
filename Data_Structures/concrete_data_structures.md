@@ -95,6 +95,8 @@ The 4 most common operations are create/add/insert, read/get/access, update, and
 	- The screen position can be used to quickly narrow down which objects to check because they aren't anywhere close to the screen.
 
 ## Hash tables
+- Hash tables use a lot of memory for faster operations.
+
 - All keys are stores in the range Ex: [0-9].
 - Can use a fixed size array to store elements.
 - Searching takes O(1) time assuming there are no more than one element in the cell
@@ -149,6 +151,8 @@ int hashMiddleSquare(int value) {
 ```
 
 ```C++
+// index = (a * key + b) % size
+	// a, b, and size are all prime
 int hashMultiplicative(string value) {
 	int hash = 5381;
 	const int multiplier = 33; // Usually prime
@@ -159,3 +163,9 @@ int hashMultiplicative(string value) {
 	return hash;
 }
 ```
+
+- Add up all ascii characters % size
+	- Square or cube before adding for larger index.
+
+- Hash table of linked lists, with each linked list having a sentinel.
+	- Takes up more mem.

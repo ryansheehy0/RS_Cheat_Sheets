@@ -29,6 +29,16 @@ function linearSearch(arr, value){
 }
 ```
 
+- Placing the value at the end of the array guarantees that you'll find it.
+
+```javascript
+function sentinelSearch(arr, value) {
+  arr[arr.length] = value
+  for (let i = 0; arr[i] !== value; i++);
+  return i < (arr.length - 1)
+}
+```
+
 ## [Binary Search](#search-algorithms)
 Binary search splits the search space in half depending if the middle of the array is less than or grater than the value. This repeats until the middle equals the value.
 - O(log n) specifically floor(log2(n)) + 1
