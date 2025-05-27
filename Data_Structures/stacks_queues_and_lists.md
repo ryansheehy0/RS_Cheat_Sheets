@@ -1,7 +1,7 @@
 [Home](../README.md#data-structures)
 
-# Abstract Data Structures
-Abstract data types(ADTs) define which operation can be used, but not how the data is to be stored and organized.
+# Stacks, Queues, and Lists
+They define which operation can be used, but not how the data is to be stored and organized.
 
 <!-- TOC -->
 
@@ -17,11 +17,6 @@ Abstract data types(ADTs) define which operation can be used, but not how the da
 
 <!-- /TOC -->
 
-- **Priority Queue** - A queue where each item has a priority and items with higher priority dequeue first.
-- **Double-ended Queue(Deque)** - Items can be inserted and removed from both the front and back.
-- **Bag/Multiset** - Unordered collection that allows for duplicates.
-- **Set** - Unordered collection of unique items.
-- **Map/Dictionary** - Key value pairs with unique keys.
 
 ## [Stack](#abstract-data-structures)
 Items are only inserted on or removed from the top.
@@ -71,6 +66,9 @@ Items are only inserted on or removed from the top.
 
 ## [Queues](#abstract-data-structures)
 Items are only inserted at the end and removed from the front.
+
+- **Priority Queue** - A queue where each item has a priority and items with higher priority dequeue first.
+- **Double-ended Queue(Deque)** - Items can be inserted and removed from both the front and back.
 
 **First in first out(FIFO)** - The first item added to the collection si the first one to be taken out.
 

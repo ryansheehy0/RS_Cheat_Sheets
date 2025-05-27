@@ -40,10 +40,13 @@
 - [Serial Communications](./Low_Level_Programming/serial_communication.md)
 
 ## [Data Structures](#ryan-sheehy-cheat-sheets)
-- [Abstract Data Structures](./Data_Structures/abstract_data_structures.md)
-- [Concrete Data Structures](./Data_Structures/concrete_data_structures.md)
-	- [Singly Linked List](./Data_Structures/singly_linked_list.md)
-	- [Binary Search Tree](./Data_Structures/binary_search_trees.md)
+- [Stacks, Queues, and Lists](./Data_Structures/stacks_queues_and_lists.md)
+- [Singly Linked List](./Data_Structures/singly_linked_list.md)
+- [Binary Search Tree](./Data_Structures/binary_search_trees.md)
+- [Hash Tables](./Data_Structures/hash_tables.md)
+- [Graphs](./Data_Structures/graphs.md)
+- Heaps
+- B-trees
 
 ## [Algorithms](#ryan-sheehy-cheat-sheets)
 - Basics

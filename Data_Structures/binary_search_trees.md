@@ -302,7 +302,6 @@ void BinarySearchTree<T>::breadthFirstTraversal(void (*process)(T&), TypeOfBread
 }
 ```
 
-
 ### [Depth First Search](#binary-search-trees)
 - Traverse by branch
 

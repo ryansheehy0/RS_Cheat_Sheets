@@ -795,6 +795,7 @@ class Circle : public Shape {
 ```
 
 - `protected:` allows the child class to access it, but it's private to any instance of the class.
+	- In order to access protected members from the child class you need to do `this->var`
 - When inheriting you can use `: public Parent`, `: private Parent`, or `protected Parent`
 	- public - public members of the parent class are public, and protected members of the parent class are protected.
 	- protected - public members of the parent class are protected, and protected members of the parent class are protected.
