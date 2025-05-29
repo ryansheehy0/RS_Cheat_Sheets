@@ -82,6 +82,10 @@ function selectionSort(arr){
 }
 ```
 
+- If you first convert to a heap, O(N log N) time, then findMaxIndex can be done in O(Log N).
+  - Meaning you can sort in O(N log N) time.
+  - Maybe not
+
 ## [Insertion Sort](#sort-algorithms)
 Insertion sort splits the array into two parts, a sorted and unsorted part. It then repeatedly gets the first element of the unsorted array and keep swapping them with the previous elements in the sorted array, until that element is in the correct position.
 - O(n^2) specifically (n - 1) * n / 2

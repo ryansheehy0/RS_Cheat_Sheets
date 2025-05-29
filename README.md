@@ -45,7 +45,7 @@
 - [Binary Search Tree](./Data_Structures/binary_search_trees.md)
 - [Hash Tables](./Data_Structures/hash_tables.md)
 - [Graphs](./Data_Structures/graphs.md)
-- Heaps
+- [Heaps](./Data_Structures/heaps.md)
 - B-trees
 
 ## [Algorithms](#ryan-sheehy-cheat-sheets)

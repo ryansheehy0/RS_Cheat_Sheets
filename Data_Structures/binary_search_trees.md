@@ -65,11 +65,12 @@ class BinarySearchTree {
 		bool remove(T value);
 
 		// Traversals
+         // If process returns true, it breaks out of the loop
       enum class TypeOfBreadthFirstTraversal {
          LEFT_TO_RIGHT_LEVEL_ORDER,
          RIGHT_TO_LEFT_REVERSE_LEVEL_ORDER,
       };
-      void breadthFirstTraversal(void (*process)(T&), TypeOfBreadthFirstTraversal order = TypeOfBreadthFirstTraversal::LEFT_TO_RIGHT_LEVEL_ORDER);
+      void breadthFirstTraversal(bool (*process)(T&), TypeOfBreadthFirstTraversal order = TypeOfBreadthFirstTraversal::LEFT_TO_RIGHT_LEVEL_ORDER);
       enum class TypeOfDepthFirstTraversal {
          IN_ORDER, // left, root, right
          PRE_ORDER, // root, left, right
@@ -78,7 +79,7 @@ class BinarySearchTree {
          REVERSE_PRE_ORDER, // root, right, left
          REVERSE_POST_ORDER // right, left, root
       };
-      void depthFirstTraversal(void (*process)(T&), TypeOfDepthFirstTraversal order = TypeOfDepthFirstTraversal::IN_ORDER);
+      void depthFirstTraversal(bool (*process)(T&), TypeOfDepthFirstTraversal order = TypeOfDepthFirstTraversal::IN_ORDER);
 
       // Balancing
       void avlBalance();
@@ -280,14 +281,14 @@ Traverse through each node and applying a function to it.
 
 ```C++
 template <typename T>
-void BinarySearchTree<T>::breadthFirstTraversal(void (*process)(T&), TypeOfBreadthFirstTraversal order) {
+void BinarySearchTree<T>::breadthFirstTraversal(bool (*process)(T&), TypeOfBreadthFirstTraversal order) {
    if (root == nullptr) return;
    Queue que;
    que.push(root);
    Node<T>* curNode;
    while (!que.isEmpty()) {
       curNode = que.pop();
-      process(curNode->data);
+      if(process(curNode->data)) return true;
       switch (order) {
          case TypeOfBreadthFirstTraversal::LEFT_TO_RIGHT_LEVEL_ORDER:
             if (curNode->left) que.push(curNode->left);
@@ -307,7 +308,7 @@ void BinarySearchTree<T>::breadthFirstTraversal(void (*process)(T&), TypeOfBread
 
 ```C++
 template <typename T>
-void BinarySearchTree<T>::depthFirstTraversal(void (*process)(T&), TypeOfDepthFirstTraversal order = TypeOfDepthFirstTraversal::IN_ORDER) {
+void BinarySearchTree<T>::depthFirstTraversal(bool (*process)(T&), TypeOfDepthFirstTraversal order = TypeOfDepthFirstTraversal::IN_ORDER) {
    if (root == nullptr) return;
    switch (order) {
       case TypeOfDepthFirstTraversal::IN_ORDER:         inOrder(process, false); break;
@@ -322,7 +323,7 @@ void BinarySearchTree<T>::depthFirstTraversal(void (*process)(T&), TypeOfDepthFi
 
 ```C++
 template <typename T>
-void BinarySearchTree<T>::inOrder(void (*process)(T&), bool reversed) {
+void BinarySearchTree<T>::inOrder(bool (*process)(T&), bool reversed) {
    Stack stack;
    Node<T>* curNode = root;
    while (!stack.isEmpty()) {
@@ -331,7 +332,7 @@ void BinarySearchTree<T>::inOrder(void (*process)(T&), bool reversed) {
          curNode = reversed ? curNode->right : curNode->left;
       }
       curNode = stack.pop();
-      process(curNode->data);
+      if (process(curNode->data)) return;
       curNode = reversed ? curNode->left : curNode->right;
    }
 }
@@ -339,13 +340,13 @@ void BinarySearchTree<T>::inOrder(void (*process)(T&), bool reversed) {
 
 ```C++
 template <typename T>
-void BinarySearchTree<T>::preOrder(void (*process)(T&), bool reversed) {
+void BinarySearchTree<T>::preOrder(bool (*process)(T&), bool reversed) {
    Stack stack;
    Node<T>* curNode;
    stack.push(root);
    while (!stack.isEmpty()) {
       curNode = stack.pop();
-      process(curNode->data);
+      if(process(curNode->data)) return true;
       if (reversed) {
          if (curNode->right) stack.push(curNode->right);
          if (curNode->left) stack.push(curNode->left);
@@ -359,7 +360,7 @@ void BinarySearchTree<T>::preOrder(void (*process)(T&), bool reversed) {
 
 ```C++
 template <typename T>
-void BinarySearchTree<T>::postOrder(void (*process)(T&), bool reversed) {
+void BinarySearchTree<T>::postOrder(bool (*process)(T&), bool reversed) {
    Stack stack;
    Node<T>* curNode = root;
    Node<T>* lastVisited = nullptr;
@@ -374,7 +375,7 @@ void BinarySearchTree<T>::postOrder(void (*process)(T&), bool reversed) {
          if (next && lastVisited != next) {
             curNode = next;
          } else {
-            process(peekNode->data);
+            if(process(peekNode->data)) return;
             lastVisited = stack.pop();
          }
       }
