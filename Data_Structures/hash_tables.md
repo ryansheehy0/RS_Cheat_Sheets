@@ -96,3 +96,11 @@ int hashMultiplicative(string value) {
 	- subtraction
 
 - Trades memory space for faster loopups.
+
+- I prefer linked list chaining for two main reasons.
+- First, when a collision occurs, the new item is added to a list at the original index, rather than taking up a spot that could belong to a different key.
+- Linear probing can lead to a chain reaction where multiple items are moved out of their original index, decreasing efficiency.
+- Second, collisions are supposed to be rare in a good hash function, meaning chains tend to be short, and thus linear searching shouldn't take long.
+- Whereas, the worst case for linear probing is having to search through the whole table, O(n).
+
+- The linked lists should be sorted so you can exit early if your item is greater than the current one you're searching.
