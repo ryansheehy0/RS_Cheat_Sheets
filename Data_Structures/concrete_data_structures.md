@@ -10,6 +10,21 @@ The 4 most common operations are create/add/insert, read/get/access, update, and
 		- Ex: A bag is unordered. Cubby boxes are ordered.
 	- Sorted means that the ordering is arranged in a specific way.
 
+DataStructure: Iterators and overload ++ operator for traversals. bool allowDuplicates
+   BinaryTree: traversal methods
+      BinarySearchTree: insert/remove/search and rebalance
+         AVLTree: override insert/remove and remove rebalance
+         RedBlackTree: override insert/remove and remove rebalance
+   MinHeap and MaxHeap
+      PriorityQueue(KeyType key, DataType data) uses heaps
+   SinglyLinkedList and DoublyLinkedList
+      Stack and Queue uses SinglyLinkedList
+   DynamicArray
+   HashTable(KeyType key, DataType data, hashFunc): If the KeyType is string or int, then it can use default hash functions.
+   Graph
+   BTree and BPlusTree
+
+
 <!-- TOC -->
 
 - [Common CDSs](#common-cdss)

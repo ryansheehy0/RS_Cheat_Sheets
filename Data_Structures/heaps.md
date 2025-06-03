@@ -71,3 +71,43 @@ else
 - Priority queues
 	- key  = priority * 10 + 
 - Huffman encoding algo
+
+```
+Algorithm insert( item )
+    if (heap is full)
+        return false
+    end if
+    last = last + 1
+    heap[last] = item
+    reheapUp(last)
+    return true
+end guess
+// O(log N)
+```
+
+- Root is always index 0
+- Formula to find parent: `floor((i - 1) / 2)`
+- Formula for left child: `2i + 1`
+- Formula for right child: `2i + 2`
+- Always remove the root
+	- Swap root for right most leaf
+	- Remove right most leaf
+	- re-heap root down
+- Insert always as a leaf
+	- Insert as a leaf
+	- Re-heap up
+- Converting array to heap
+	- O(n)
+
+
+- The unsorted array can be viewed as an unsorted binary tree.
+- In order to sort one branch of the tree, it requires O(log N) for shift up.
+- You have to sort all branches of this tree which is O(N).
+- Therefore, it's O(N log N).
+- However, there's a more efficient algorithm.
+- Start from the last non-leaf node and move backward to the root.
+- For each of those nodes, perform a shift down operation.
+- Since it's a tree, nodes closer to the leaves require less work to shift down.
+- This results in an overall time complexity of O(N).
+
+https://www.youtube.com/shorts/4NYk5vW_5yc
