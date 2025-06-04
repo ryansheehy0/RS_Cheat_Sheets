@@ -23,6 +23,9 @@ DataStructure: Iterators and overload ++ operator for traversals. bool allowDupl
    HashTable(KeyType key, DataType data, hashFunc): If the KeyType is string or int, then it can use default hash functions.
    Graph
    BTree and BPlusTree
+- These should all take in a key and data.
+	- Everything is ordered by the key and the data can be accessed.
+	- Can you make the key and data the same?
 
 
 <!-- TOC -->

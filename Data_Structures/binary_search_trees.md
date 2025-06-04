@@ -30,7 +30,6 @@ For this example, no duplicate values are allowed. If you want duplicates you ca
 	- [Depth First Search](#depth-first-search)
 		- [Recursive Implementation](#recursive-implementation)
 - [Balance](#balance)
-	- [Red and Black Trees](#red-and-black-trees)
 
 <!-- /TOC -->
 
@@ -83,7 +82,7 @@ class BinarySearchTree {
       void depthFirstTraversal(bool (*process)(T&), TypeOfDepthFirstTraversal order = TypeOfDepthFirstTraversal::IN_ORDER);
 
       // Balancing
-      void fullRebalance();
+      void balance();
 }
 ```
 
@@ -437,5 +436,3 @@ void BinarySearchTree<T>::_recursiveDepthFirstTraversal(Node<T>* treeRoot, void 
    - Repeat finding the middle of each and moving to the front
    - Reconstruct binary tree
       - Insert each in order
-
-### Red and Black Trees

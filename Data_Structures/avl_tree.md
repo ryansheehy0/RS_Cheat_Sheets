@@ -3,11 +3,13 @@
 # AVL Tree
 - Height balance property
    - The height of the node's left and right subtrees differ by only 1 or 1.
-   - Balance factor - left subtree's height - right subtree's height
+   - Balance factor = left subtree's height - right subtree's height
    - Non-existent left or right subtree;s height is -1.
 - Their heights aren't exactly the minimum BST, but they are close(1.5x), still allowing for O(log N).
 - Nodes can store their height, allowing the heightBalance to be calculated in O(N) time.
    - When inserting or removing, these heights have to be updated.
+
+## Other
 
 - Rotations are local rearrangements used to maintain the BST ordering while rebalancing the tree.
 
@@ -17,6 +19,7 @@
   B     ---Rotation right on node A--->    / \
  /                                        C   A
 C
+
 ```
 
 Example 2:
@@ -83,5 +86,111 @@ void AVLTreeRebalance(Node* node) {
       return AVLTreeRotateRight(tree, node)
    }
    return node
+}
+```
+
+## Inserting
+- Insertions may cause the tree to become unbalance, needing 1 or 2 rotations to rebalance.
+
+```C++
+// After inserting search up
+// Rotate left/right the first parent that has a balance factor of -1
+// Rotate left/right the first parent that has a balance factor > 2 or < -2.
+```
+
+4 imbalancing cases that result form insertions:
+   - Numbers are balance factor
+```
+1 rotation right:
+    A(2)
+   /                            B
+  B(1) -- Right rotation A ->  / \
+ /                            C   A
+C
+```
+
+```
+2 rotations, left then right:
+  A(2)                          A
+ /                             /                           B
+B(-1) -- Left rotation B ->   B   -- Right rotation A ->  / \
+ \                           /                           C   A
+  C                         C
+```
+
+```
+1 rotation left:
+C(-2)
+ \                              B
+  B(-1) -- Left rotation C ->  / \
+   \                          C   A
+    A
+```
+
+```
+2 rotations, right then left:
+C(-2)                         C
+ \                             \                            B
+  B(1) -- Right rotation B ->   B   -- Left rotation C ->  / \
+ /                               \                        C   A
+A                                 A
+```
+
+Inserting - Only 1 rotation(single or double) is needed per insertion.
+- Searching for the insertion location
+- Inserting the new node
+- For each node from the inserted node up to the root
+   - Update its balance factor
+   - If balance factor is 2 or -2, do a single or double rotation based on child's balance factor.
+   - After rotation, stop
+
+Inserting is O(log N)
+
+```C++
+AVLTreeInsertKey(tree, key) {
+   if (BSTContains(tree, key)) {
+      return false
+   }
+
+   newNode = Allocate new AVL tree node with key
+   AVLTreeInsertNode(newNode)
+   return true
+}
+
+AVLTreeInsertNode(tree, node) {
+   if (tree⇢root == null) {
+      tree⇢root = node
+      node⇢parent = null
+      return
+   }
+
+   cur = tree⇢root
+   while (cur != null) {
+      if (node⇢key < cur⇢key) {
+         if (cur⇢left == null) {
+            cur⇢left = node
+            node⇢parent = cur
+            cur = null
+         }
+         else {
+            cur = cur⇢left
+         }
+      }
+      else {
+         if (cur⇢right == null) {
+            cur⇢right = node
+            node⇢parent = cur
+            cur = null
+         }
+         else
+            cur = cur⇢right
+      }
+   }
+
+   node = node⇢parent
+   while (node != null) {
+      AVLTreeRebalance(tree, node)
+      node = node⇢parent
+   }
 }
 ```
