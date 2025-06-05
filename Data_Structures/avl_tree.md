@@ -194,3 +194,68 @@ AVLTreeInsertNode(tree, node) {
    }
 }
 ```
+
+## Removing
+- Standard bst remove
+- For each node from the parent to the root are rebalanced.
+
+```C++
+AVLTreeRemoveNode(tree, node) {
+   if (node == null) {
+      return false
+   }
+
+   // Parent needed for rebalancing
+   parent = node⇢parent
+        
+   // Case 1: Internal node with 2 children
+   if (node⇢left != null && node⇢right != null) {
+      // Find successor
+      succNode = node⇢right
+      while (succNode⇢left != null) {
+         succNode = succNode⇢left
+      }
+
+      // Copy the key from the successor node
+      node⇢key = succNode⇢key
+            
+      // Recursively remove successor
+      AVLTreeRemoveNode(tree, succNode)
+            
+      // Nothing left to do since the recursive call will have rebalanced
+      return true
+   }
+
+   // Case 2: Root node (with 1 or 0 children)
+   else if (node == tree⇢root) {
+      if (node⇢left != null) {
+         tree⇢root = node⇢left
+      }
+      else {
+         tree⇢root = node⇢right
+      }
+      if (tree⇢root != null) {
+         tree⇢root⇢parent = null
+      }
+      return true
+   }
+
+   // Case 3: Internal with left child only
+   else if (node⇢left != null) {
+      AVLTreeReplaceChild(parent, node, node⇢left)
+   }
+   // Case 4: Internal with right child only OR leaf
+   else {
+      AVLTreeReplaceChild(parent, node, node⇢right)
+   }
+
+   // node is gone. Anything that was below node that has persisted is already correctly
+   // balanced, but ancestors of node may need rebalancing.
+   node = parent
+   while (node != null) {
+      AVLTreeRebalance(tree, node)            
+      node = node⇢parent
+   }
+   return true
+}
+```
