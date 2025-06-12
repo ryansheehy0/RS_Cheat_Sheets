@@ -47,17 +47,23 @@ C   D
 | C      | A B               |
 | D      | B                 |
 
+- You can do this with a linked list or an array.
+
 ### Adjacency matrix
 - Each vertex is in a row and column and edges correspond to 1/true for the row and column.
 - Time complexity: O(1) determine adjacency.
 - Space complexity: O(V^2). Bad for sparse graphs because most cells will be 0s.
 
-|   | A | B | C | D |
+|   | A | B | C | D | <- Column represents nodes coming in
 |---|---|---|---|---|
 | A |   | 1 | 1 |   |
 | B | 1 |   | 1 | 1 |
 | C | 1 | 1 |   |   |
 | D |   | 1 |   |   |
+  ^
+	Row represents nodes coming out
+
+- Can't easily add new nodes.
 
 ## Traversals
 ### Breadth first search
@@ -74,6 +80,9 @@ Process the starting vertex, then all vertices of distance 1, then of distance 2
 	- Add the popped node's adjacent nodes to the hash table to mark them as visited
 ```
 
+- Each node could have a visited flag that gets reset after the search instead of using a hash table.
+- Finding smallest path between two nodes.
+
 ### Depth first search
 Process the starting vertex, then as far down a path as possible, then backtracking until to find a new unvisited path.
 
@@ -88,6 +97,9 @@ Process the starting vertex, then as far down a path as possible, then backtrack
 		- Add vertex to hash table.
 		- Push adjacent vertices onto the stack.
 ```
+
+- Each node could have a visited flag that gets reset after the search instead of using a hash table.
+- Solving mazes.
 
 ## Directional graphs
 
@@ -108,6 +120,8 @@ Each edge has a weight/cost associated with it.
 	- There is no shortest path for a negative edge weight cycle because it continually decreases the cycle length depending on ho many loops.
 - Minimum spanning tree - Subset of edges that connect all vertices with the minimum sum of edge weights.
 	- Connected - Contains a path between every pair of vertices.
+	- Subset of edges in a weighted graph that connects all vertices with the smallest possible total edge weight and no cycles.
+	- Connect islands with bridges and you want to minimize the cost of building all bridges.
 
 ### Kruskal's minimum spanning tree algorithm
 . Space: O(E+V) and Time: O(E log E)
@@ -120,6 +134,14 @@ Each edge has a weight/cost associated with it.
 	- If the removed edge connects 2 different vertex sets
 		- edge is added to the result
 		- two vertex sets are merged
+
+- Prim's algo
+	- For each non-selected node, pick the edge with the smallest weight that attaches to another selected node, but not for the start.
+	- Chose a node and pick the smallest weighted edge.
+	- Chose the smallest edge from the unselected nodes to the selected nodes.
+	- Repeat until all nodes are selected.
+
+- Minimum Spanning tree has n nodes and n-1 edges
 
 ### Dijkstra's shortest path
 Can be used for for unweighted graphs with an edge weight of 1, but shouldn't be used if edge weights are negative.
@@ -142,6 +164,10 @@ Can be used for for unweighted graphs with an edge weight of 1, but shouldn't be
 	- The shortest path is gotten by following destination.predecessorPtr until you reach start node.
 ```
 
+- Prim's algo, but add the cost of getting from the start to the selected node.
+
+
+
 ## Use cases
 - Friendship groups - People represent nodes.
 	- Recommend new connections starting at distance 2 using BFS.
@@ -152,3 +178,11 @@ Can be used for for unweighted graphs with an edge weight of 1, but shouldn't be
 - Products to recommend - Products are nodes and edges are which products are associated with one another.
 - Peer to peer networks
 	- Download the most from the closest computers who have the file you want using BFS.
+- Euler circuit
+	- Path that goes through all edges. Can't go through an edge twice. Can go through nodes twice.
+	- Degree of nodes needs to be even.
+- Hamilton Cycle
+	- Path that visits every place once.
+	- No efficient algo.
+- Traveling sales person problem
+- Floyd's algo

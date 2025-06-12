@@ -13,6 +13,7 @@ C++ is used for all the examples.
 - [Two D arrays](#two-d-arrays)
 	- [Convolutional 2d array](#convolutional-2d-array)
 - [Rounding with truncation](#rounding-with-truncation)
+- [Testing prime](#testing-prime)
 
 <!-- /TOC -->
 
@@ -122,3 +123,51 @@ void convolute(int array[rows][cols], int index) {
   - `int integer = float + 0.5;`
 - If you want to round to the nearest int for negative numbers you can copy the sign before adding 0.5.
   - `int integer = float + std::copysign(0.5, float);`
+
+## [Testing prime](#programming-tips)
+
+```C++
+bool isLikelyPrime(unsigned int x) {
+	switch (x) {
+		case 0:
+		case 1:
+    case 4:
+    case 6:
+    case 8:
+    case 9:
+    case 10:
+			return false;
+		case 2:
+		case 3:
+    case 5:
+    case 7:
+    case 11:
+			return true;
+	}
+	// Fermat's little theorem: a - random number between 2 and x
+		// If a^(x-1) mod x is not 1, then it's not prime
+		// else it is most likely prime, but do more tests to increase probability
+	const int tests = 1;
+	for (int i = 0; i < tests; i++) {
+		int a = rand() % (x - 3) + 2; // between 2 and x
+		if (powerMod(a, x - 1, x) != 1) return false;
+	}
+	return true;
+}
+
+int powerMod(int base, int exponent, int mod) const { // O(log exponent)
+	// https://www.geeksforgeeks.org/modular-exponentiation-power-in-modular-arithmetic/
+	// Ex:
+		// 3^5 % 6 =
+		// (3^4 * 3^1) % 6 =
+		// ((3 * 3 % 6) * (3 * 3 % 6)) * (3^1 % 6) =
+	int64_t result = 1;
+	base %= mod;
+	while (exponent) {
+		if (exponent & 1) result = (result * base) % mod;
+		base = (base * base) % mod;
+		exponent >>= 1;
+	}
+	return result;
+}
+```

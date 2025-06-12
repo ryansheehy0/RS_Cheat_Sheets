@@ -518,6 +518,7 @@ print<char>('a') // Defined explicitly
 ```
 
 - Using `class` is the same as using `typename`
+- `= void` makes a template parameter optional.
 - When creating a template class, each of the defined member methods needs to also be templates.
 
 ```C++
