@@ -33,46 +33,47 @@ Heaps are complete binary trees that are stored in arrays. They can either be ma
 ```C++
 template <typename T>
 class Heap {
-protected:
-	virtual bool compare(const int& index1, const int& index2) const = 0; // If index1 should be prioritized over index2
-private:
-	int *heapAry;
-	int heapSize;
-	int count;
+    protected:
+        virtual bool compare(const T& value1, const T& value2) const = 0; // If value1 should be prioritized over value2
+    private:
+        T* _heapArr;
+        int _arrSize;
+        int _count;
 
-	void _reHeapUp(int lastndx);
-	void _reHeapDown(int rootndx);
-	int _findParent(int index) { return (index <= 0) ? (-1) : (index - 1) / 2; }
-	int _findLeftChild(int index) { return (2 * index + 1 >= count) ? (-1) : (2 * index + 1); }
-	int _findRightChild(int index) { return (2 * index + 2 >= count) ? (-1) : (2 * index + 2); }
-	int _getLevel(unsigned int index) { return }
+        void _reHeapUp(int index);
+        void _reHeapDown(int index);
+        int _findParent(int index) { return (index <= 0) ? (-1) : (index - 1) / 2; }
+        int _findLeftChild(int index) { return (2 * index + 1 >= count) ? (-1) : (2 * index + 1); }
+        int _findRightChild(int index) { return (2 * index + 2 >= count) ? (-1) : (2 * index + 2); }
+        int _getLevel(unsigned int index) { return }
 
-public:
-	Heap() { count = 0; heapSize = 128; heapAry = new int[heapSize]; }
-	Heap(int n) { count = 0; heapSize = n;	heapAry = new int[heapSize]; }
-	~Heap() { delete[] heapAry; }
+    public:
+        Heap() { count = 0; heapSize = 128; heapAry = new int[heapSize]; }
+        Heap(int n) { count = 0; heapSize = n;	heapAry = new int[heapSize]; }
+        ~Heap() { delete[] heapAry; }
 
-	int getCount() const { return count; }
-	int getSize() const { return heapSize; }
-	bool isEmpty() const { return count == 0; }
-	bool isFull()  const { return count == heapSize; }
-	bool insertHeap(int itemIn);
-	bool deleteHeap(int &itemOut);
+        int getCount() const { return count; }
+        int getSize() const { return heapSize; }
+        bool isEmpty() const { return count == 0; }
+        bool isFull()  const { return count == heapSize; }
+        bool insertHeap(int itemIn);
+        bool deleteHeap(int &itemOut);
 };
 
 template <typename T>
 class MaxHeap : public Heap<T> {
 	private:
-		bool compare(int index1, int index2) const override {
-			return this->heapAry[index1] > this->heapAry[index2];
+		bool compare(const T& value1, const T& value2) const override {
+            return value1 > value2;
 		}
 };
+
 
 template <typename T>
 class MinHeap : public Heap<T> {
 	private:
-		bool compare(int index1, int index2) const override {
-			return this->heapAry[index1] < this->heapAry[index2];
+		bool compare(const T& value1, const T& value2) const override {
+            return value1 < value2;
 		}
 };
 ```
@@ -80,14 +81,15 @@ class MinHeap : public Heap<T> {
 ## reHeap Up
 
 ```C++
-void Heap::_reHeapUp(int lastndx) {
-    int childI = lastndx;
+template <typename T>
+void Heap<T>::_reHeapUp(int index) {
+    int childI = index;
     int parentI = _findParent(childI);
-    while (childI && heapAry[childI] > heapAry[parentI]) {
+    while (childI && compare(_heapArr[childI], _heapArr[parentI])) {
         // Swap the values
-        int temp = heapAry[childI];
-        heapAry[childI] = heapAry[parentI];
-        heapAry[parentI] = temp;
+        T temp = _heapArr[childI];
+        _heapArr[childI] = _heapArr[parentI];
+        _heapArr[parentI] = temp;
         // Next row
         childI = parentI;
         parentI = _findParent(parentI);
@@ -225,5 +227,6 @@ end guess
 - For each of those nodes, perform a shift down operation.
 - Since it's a tree, nodes closer to the leaves require less work to shift down.
 - This results in an overall time complexity of O(N).
+    - Don't include linear time.
 
 https://www.youtube.com/shorts/4NYk5vW_5yc

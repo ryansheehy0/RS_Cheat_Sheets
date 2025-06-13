@@ -7,9 +7,10 @@ Sorting algorithms take in an array and sorts them from lowest to highest, highe
 
 - [Common sorting algorithm](#common-sorting-algorithm)
 - [Bubble Sort](#bubble-sort)
-- [Selection Sort](#selection-sort)
+- [Selection Sort/Heap Sort](#selection-sortheap-sort)
 - [Insertion Sort](#insertion-sort)
 - [Quick Sort](#quick-sort)
+- [Other](#other)
 
 <!-- /TOC -->
 
@@ -55,7 +56,7 @@ function bubbleSort(arr){
 }
 ```
 
-## [Selection Sort](#sort-algorithms)
+## [Selection Sort/Heap Sort](#sort-algorithms)
 Finds the largest(or smallest) element in the unsorted section of the array, swaps it with the first unsorted element, and continues this gradually building a sorted portion at the beginning of the array.
 
 ```javascript
@@ -125,3 +126,38 @@ function quickSort(arr) {
   return [...quickSort(left), pivot, ...quickSort(right)]
 }
 ```
+
+## Other
+- Internal sorting algos
+- External sorting algos - Need to sort an array that cannot fit in the RAM.
+  - Split, sort, then merger.
+  - Quick sort
+  - Merge sort
+- Stable sort - When they keys are the same, they maintain their relative input order.
+
+- How to merge 2 sorted arrays.
+  - Compare each element and write the least out.
+  - Increment the index of the one that was outputted.
+  - Repeat until you reach the end of 1 array.
+  - Once you reach the end of 1 file, you can output the rest of the other array.
+
+- Insertion sort
+  - Array divided in 2. The first part sorted, the 2nd not.
+  - Copy current ele, top of unsorted par, to temp.
+  - Shift the element right.
+  - Once you find the location insert the temp.
+  - Can be combined with reading data from a file so it's external, unlike selection sort.
+  - Shell sort - Advanced insertion sort. Somewhere between N log N and N^2 depending on how you change k.
+    - What if you check by 2 or + k?
+    - How do you choose k? k = n/2 then k /= 2
+
+- Quick sort - O(N log N)
+  - Index 0 is pivot.
+    - Loop to move forward
+    - Loop to move backwards
+    - Swap
+  - Put pivot in the middle.
+  - Recursively apply to left and right arrays.
+  - Improvements
+    - Insertion sort for 16 elements less, including recursive calls.
+    - Change pivot to random, middle, or median of 1st, last, and last.

@@ -1,17 +1,60 @@
 [Home](../README.md#data-structures)
 
 # AVL Tree
-- Height balance property
-   - The height of the node's left and right subtrees differ by only 1 or 1.
-   - Balance factor = left subtree's height - right subtree's height
-   - Non-existent left or right subtree;s height is -1.
-- Their heights aren't exactly the minimum BST, but they are close(1.5x), still allowing for O(log N).
+AVL trees are binary search trees, but keep the tree balanced as you insert and remove. The heights of the subtrees differ no more than 1. The height of the AVL tree isn't the minimum BST, but they are close, only being 1.5x more, which still allows for O(log N) operations.
+
+- Balance factor = left subtree's height - right subtree's height
+- Non-existent left or right subtree's height is -1.
 - Nodes can store their height, allowing the heightBalance to be calculated in O(N) time.
    - When inserting or removing, these heights have to be updated.
+- In an avl tree, keys must be unique. You cannot put duplicate keys to the right.
+   - You could have a count or store a list of the duplicates with keys.
+
+<!-- TOC -->
+
+- [Rebalance](#rebalance)
+	- [Left/Right rotate](#leftright-rotate)
+- [Other](#other)
+- [Inserting](#inserting)
+- [Removing](#removing)
+
+<!-- /TOC -->
+
+```C++
+template <typename T>
+class AVLTree : public BinarySearchTree {
+   // Node needs an extra member, the balance factor. -1 is right heavy, 1 is left heavy, 0 is equal heavy.
+   public:
+      bool insert(T value) override;
+      bool remove(T value) override;
+   private:
+      void rebalance(Node* node);
+         void leftRotate(Node* node);
+         void rightRotate(Node* node);
+};
+```
+
+## Rebalance
+Rotations are local rearrangements used to rebalance the BST.
+
+Complex - The left of the rotation node is always free when you do a right rotation.
+
+Can be both simple and complex
+Left of left - 1 rotation
+Right of left - 2 rotations
+etc.
+
+- The node that is out of balance will be rotated.
+   - Which direction?
+- 
+
+### Left/Right rotate
+
+
+--------------------------------------------------------------------------------
 
 ## Other
 
-- Rotations are local rearrangements used to maintain the BST ordering while rebalancing the tree.
 
 ```
     A
@@ -196,8 +239,11 @@ AVLTreeInsertNode(tree, node) {
 ```
 
 ## Removing
-- Standard bst remove
-- For each node from the parent to the root are rebalanced.
+- Standard bst remove.
+   - What about the root. Find the largest left child or smallest right child.
+- Recalculate balance factor from the node deleted to the root.
+- Rebalance when you find 2/-2 balance factor.
+
 
 ```C++
 AVLTreeRemoveNode(tree, node) {

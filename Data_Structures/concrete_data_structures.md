@@ -10,6 +10,12 @@ The 4 most common operations are create/add/insert, read/get/access, update, and
 		- Ex: A bag is unordered. Cubby boxes are ordered.
 	- Sorted means that the ordering is arranged in a specific way.
 
+
+- Each data structure class should have 2 version.
+	- One with one template type `template <typename T>` and one with two template types `template <typename KeyType, typename DataType>`
+		- One used for structs/classes, the other for regular types.
+		- Maybe there's one way to do this.
+
 DataStructure: Iterators and overload ++ operator for traversals. bool allowDuplicates
    BinaryTree: traversal methods
       BinarySearchTree: insert/remove/search and rebalance
