@@ -6,7 +6,6 @@
 - [C++](#c)
 - [Low Level Programming](#low-level-programming)
 - [Data Structures](#data-structures)
-- [Binary Search Tree](#binary-search-tree)
 - [Algorithms](#algorithms)
 - [Web Dev](#web-dev)
 - [Math](#math)
@@ -43,14 +42,13 @@
 ## [Data Structures](#ryan-sheehy-cheat-sheets)
 - [Stacks, Queues, and Lists](./Data_Structures/stacks_queues_and_lists.md)
 - [Singly Linked List](./Data_Structures/singly_linked_list.md)
-- Binary Tree
+- [Binary Tree](./Data_Structures/binary_tree.md)
 	- [Binary Search Tree](./Data_Structures/binary_search_trees.md)
-		- AVL Tree
+		- [AVL Tree](./Data_Structures/avl_tree.md)
 		- Red Black Tree
 - [Hash Tables](./Data_Structures/hash_tables.md)
-- [Graphs](./Data_Structures/graphs.md)
 - [Heaps](./Data_Structures/heaps.md)
-- B-trees
+- [Graphs](./Data_Structures/graphs.md)
 
 ## [Algorithms](#ryan-sheehy-cheat-sheets)
 - Basics

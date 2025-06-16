@@ -33,7 +33,6 @@ DataStructure: Iterators and overload ++ operator for traversals. bool allowDupl
 	- Everything is ordered by the key and the data can be accessed.
 	- Can you make the key and data the same?
 
-
 <!-- TOC -->
 
 - [Common CDSs](#common-cdss)
