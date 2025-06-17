@@ -10,6 +10,53 @@ AVL trees are binary search trees, but keep the tree balanced as you insert and 
 - In an avl tree, keys must be unique. You cannot put duplicate keys to the right.
    - You could have a count or store a list of the duplicates with keys.
 
+- Simple - Rotation involves a node and its immediate child, without affecting other subtrees.
+- Complex - Rotation involves a node and its child's subtree.
+- The direction is determined by which child of the unbalanced node has the greater balance factor.
+
+- First child-Second child in relation to the unbalanced node
+- Left-Left
+   - Single rotation right
+
+```
+      Simple                         Complex
+    30                         30                 20
+   /          20              /  \               /  \
+  20   -->   /  \            20   40   -->     10    30
+ /         10    30         /  \               /    /  \
+10                        10    25            5   25    40
+                          /
+                        5
+30 - Unbalanced
+20 - Left first child
+10 - Left second child
+```
+
+- Right of Right
+   - Single rotation left
+- Left-Right
+   - Left rotation on the left child, then do right rotation on unbalanced node
+
+```
+                Simple                                         Complex
+     30           30                            30                30                20
+    /            /          20                 /  \              /  \              /  \
+   10    ---->  20   --->  /  \               10   40  -->     20    40  -->     10    30
+    \          /         10    30            /  \              /                /  \    \
+     20       10                            5    20          10                5    10   40
+                                                /           /  \
+                                               15          5    15
+30 - Unbalanced node
+10 - Left first child
+20 - Right second child
+```
+
+- Right of Left
+   - Right rotation on the right child, then do a left rotation
+
+
+
+
 <!-- TOC -->
 
 - [Rebalance](#rebalance)

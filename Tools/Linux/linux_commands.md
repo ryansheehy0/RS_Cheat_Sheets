@@ -220,7 +220,7 @@ Examples:
 
 | Command              | Description                                     |
 |----------------------|-------------------------------------------------|
-| sudo restart         | Restart computer                                |
+| sudo reboot          | Restart computer                                |
 | sudo shutdown -h now | Shutdown's computer                             |
 | lspci -k             | List drivers                                    |
 
