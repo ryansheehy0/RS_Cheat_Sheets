@@ -53,8 +53,8 @@
 ## [Algorithms](#ryan-sheehy-cheat-sheets)
 - Basics
 	- [Big O](./Algorithms/big_o_notation.md)
-	- [Search Algorithms](./Algorithms/search_algorithms.md)
-	- [Sorting Algorithms](./Algorithms/sort_algorithms.md)
+	- [Search Algorithms](./Algorithms/search.md)
+	- [Sorting Algorithms](./Algorithms/sorting.md)
 - Common Algos
 	- [Miscellaneous](./Algorithms/miscellaneous.md)
 	- [Newtons Method](./Algorithms/Newtons_Method/newtons_method.md)
