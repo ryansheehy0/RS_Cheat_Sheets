@@ -23,6 +23,7 @@
 - [Git](./Tools/git.md)
 - [Networking](./Tools/networking.md)
 - [Programming Tips](./Tools/programming_tips.md)
+- PGP Encryption
 
 ## [C++](#ryan-sheehy-cheat-sheets)
 - [Make Files](./C++/make_files.md)

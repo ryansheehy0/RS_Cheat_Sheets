@@ -1,66 +1,28 @@
 [Home](../README.md#data-structures)
 
 # AVL Tree
-AVL trees are binary search trees, but keep the tree balanced as you insert and remove. The heights of the subtrees differ no more than 1. The height of the AVL tree isn't the minimum BST, but they are close, only being 1.5x more, which still allows for O(log N) operations.
+AVL trees are binary search trees, but they keep their tree balanced as you insert and remove. The heights of the subtrees differ no more than 1 which results in operations still being O(log N).
 
-- Balance factor = left subtree's height - right subtree's height
-- Non-existent left or right subtree's height is -1.
+- **Balance factor** = left subtree's height - right subtree's height
+   - Non-existent left or right subtree's height is -1.
+
 - Nodes can store their height, allowing the heightBalance to be calculated in O(N) time.
    - When inserting or removing, these heights have to be updated.
 - In an avl tree, keys must be unique. You cannot put duplicate keys to the right.
    - You could have a count or store a list of the duplicates with keys.
 
-- Simple - Rotation involves a node and its immediate child, without affecting other subtrees.
-- Complex - Rotation involves a node and its child's subtree.
-- The direction is determined by which child of the unbalanced node has the greater balance factor.
-
-- First child-Second child in relation to the unbalanced node
-- Left-Left
-   - Single rotation right
-
-```
-      Simple                         Complex
-    30                         30                 20
-   /          20              /  \               /  \
-  20   -->   /  \            20   40   -->     10    30
- /         10    30         /  \               /    /  \
-10                        10    25            5   25    40
-                          /
-                        5
-30 - Unbalanced
-20 - Left first child
-10 - Left second child
-```
-
-- Right of Right
-   - Single rotation left
-- Left-Right
-   - Left rotation on the left child, then do right rotation on unbalanced node
-
-```
-                Simple                                         Complex
-     30           30                            30                30                20
-    /            /          20                 /  \              /  \              /  \
-   10    ---->  20   --->  /  \               10   40  -->     20    40  -->     10    30
-    \          /         10    30            /  \              /                /  \    \
-     20       10                            5    20          10                5    10   40
-                                                /           /  \
-                                               15          5    15
-30 - Unbalanced node
-10 - Left first child
-20 - Right second child
-```
-
-- Right of Left
-   - Right rotation on the right child, then do a left rotation
-
-
-
-
 <!-- TOC -->
 
-- [Rebalance](#rebalance)
-	- [Left/Right rotate](#leftright-rotate)
+- [Rebalancing](#rebalancing)
+	- [Left-Left](#left-left)
+	- [Right-Right](#right-right)
+	- [Left-Right](#left-right)
+	- [Right of Left](#right-of-left)
+- [Rotations](#rotations)
+	- [Left rotation](#left-rotation)
+	- [Right rotation](#right-rotation)
+- [Insert](#insert)
+- [Remove](#remove)
 - [Other](#other)
 - [Inserting](#inserting)
 - [Removing](#removing)
@@ -70,7 +32,6 @@ AVL trees are binary search trees, but keep the tree balanced as you insert and 
 ```C++
 template <typename T>
 class AVLTree : public BinarySearchTree {
-   // Node needs an extra member, the balance factor. -1 is right heavy, 1 is left heavy, 0 is equal heavy.
    public:
       bool insert(T value) override;
       bool remove(T value) override;
@@ -81,56 +42,92 @@ class AVLTree : public BinarySearchTree {
 };
 ```
 
-## Rebalance
-Rotations are local rearrangements used to rebalance the BST.
+## Rebalancing
+There are 4 rebalancing scenarios based on first child–second child directions. The direction, left or right, is determined by which child of the unbalanced node has the larger height.
 
-Complex - The left of the rotation node is always free when you do a right rotation.
+- Simple - Rotation involves a node and its immediate child, without affecting other subtrees.
+- Complex - Rotation involves a node and its child's subtree.
 
-Can be both simple and complex
-Left of left - 1 rotation
-Right of left - 2 rotations
-etc.
+### Left-Left
+Single rotation right
 
-- The node that is out of balance will be rotated.
-   - Which direction?
-- 
+```
+      Simple                        Complex
+    30                        30                20
+   /          20             /  \              /  \
+  20   -->   /  \           20   40   -->    10    30
+ /         10    30        /  \              /    /  \
+10                       10    25           5   25    40
+                         /
+                        5
+30 - Unbalanced
+20 - Left first child
+10 - Left second child
+```
 
-### Left/Right rotate
+### Right-Right
+Single rotation left
+
+```
+      Simple                     Complex
+10                        10                20
+ \           20          /  \              /  \
+  20  -->   /  \        5    20   -->    10    30
+   \      10    30          / \          / \    \
+    30                    15   30       5   15   40
+                                \
+                                 40
+10 - Unbalanced
+20 - Right first child
+30 - Right second child
+```
+
+### Left-Right
+Left rotation on the left child, then do right rotation on unbalanced node.
+
+```
+             Simple                                    Complex
+  30           30                       30                30                20
+ /            /          20            /  \              /  \              /  \
+10    ---->  20   --->  /  \          10   40  -->     20    40  -->     10    30
+ \          /         10    30       /  \              /                /  \    \
+  20       10                       5    20          10                5    15   40
+                                        /           /  \
+                                       15          5    15
+30 - Unbalanced node
+10 - Left first child
+20 - Right second child
+```
+
+### Right of Left
+Right rotation on the right child, then do left rotation on unbalanced node.
+
+```
+        Simple                                    Complex
+10        10                        10               10                  20
+  \        \           20          /  \             /  \                /  \
+   30  -->  20  -->   /  \        5    30   -->    5    20   -->       10   30
+  /          \      10    30          /  \             /  \           / \    \
+20            30                     20   40         15    30        5   15   40
+                                    /                       \
+                                   15                        40
+
+10 - Unbalanced node
+30 - Right first child
+20 - Left second child
+```
+
+## Rotations
+### Left rotation
+### Right rotation
+
+## Insert
+## Remove
 
 
 --------------------------------------------------------------------------------
 
 ## Other
-
-
-```
-    A
-   /                                        B
-  B     ---Rotation right on node A--->    / \
- /                                        C   A
-C
-
-```
-
-Example 2:
-```
-    A                                       B
-   /                                       / \
-  B     ---Rotation right on node A--->   C   A
- / \                                         /
-C   D                                       D
-```
-
-Example 3:
-```
-     C                                             A
-   /   \                                        /     \
-  A     E     <---Rotation left on node A---   B       C
- / \     \                                           /   \
-B   D     F                                         D     E
-                                                           \
-                                                            F
-```
 
 - AVLTreeUpdateHeight - Updates node's height to the max of child subtree heights + 1.
 - AVLTreeSetChild - Sets parent's left/right child and updates its height
