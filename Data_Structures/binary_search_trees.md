@@ -58,11 +58,8 @@ class BinarySearchTree {
       Node<T>* max(Node<T>* subTreeRoot = nullptr, Node<T>** parentPtr = nullptr) const; // Right most leaf
       Node<T>* min(Node<T>* subTreeRoot = nullptr, Node<T>** parentPtr = nullptr) const; // Left most leaf
 
-		// Inserting
 		bool insert(T value);
-
-		// Removing
-		bool remove(T value);
+		bool remove(T& value);
 
 		// Traversals
          // If process returns true, it breaks out of the loop
@@ -222,7 +219,7 @@ bool BinarySearchTree<T>::insert(T value) {
 
 ```C++
 template <typename T>
-bool BinarySearchTree<T>::remove(T value) {
+bool BinarySearchTree<T>::remove(T& value) {
    Node<T>* parent = nullptr;
    Node<T>* curNode = search(value, &parent);
    if (!curNode) return false;
@@ -249,6 +246,7 @@ bool BinarySearchTree<T>::remove(T value) {
    // Remove node with two children
    else {
       Node<T>* parentOfReplacementNode;
+      // Get the largest node from the left child's subtree
       Node<T>* replacementNode = max(curNode->left, &parentOfReplacementNode); // Always going to be a leaf
       if (parent) {
          if (parent->left == curNode) parent->left = replacementNode;

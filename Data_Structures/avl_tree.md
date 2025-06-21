@@ -2,14 +2,7 @@
 
 # AVL Tree
 AVL trees are binary search trees, but they keep their tree balanced as you insert and remove. The heights of the subtrees differ no more than 1 which results in operations still being O(log N).
-
-- **Balance factor** = left subtree's height - right subtree's height
-   - Non-existent left or right subtree's height is -1.
-
-- Nodes can store their height, allowing the heightBalance to be calculated in O(N) time.
-   - When inserting or removing, these heights have to be updated.
-- In an avl tree, keys must be unique. You cannot put duplicate keys to the right.
-   - You could have a count or store a list of the duplicates with keys.
+- AVL trees cannot have duplicate keys put to the right.
 
 <!-- TOC -->
 
@@ -18,6 +11,8 @@ AVL trees are binary search trees, but they keep their tree balanced as you inse
 	- [Right-Right](#right-right)
 	- [Left-Right](#left-right)
 	- [Right of Left](#right-of-left)
+	- [Code](#code)
+- [Update height](#update-height)
 - [Rotations](#rotations)
 	- [Left rotation](#left-rotation)
 	- [Right rotation](#right-rotation)
@@ -31,14 +26,29 @@ AVL trees are binary search trees, but they keep their tree balanced as you inse
 
 ```C++
 template <typename T>
-class AVLTree : public BinarySearchTree {
+class AVLTree : public BinarySearchTree<T> {
+   private:
+		class Node {
+			T data;
+			Node* left = nullptr;
+			Node* right = nullptr;
+         int height = 0;
+         int balanceFactor() const {
+            int leftSubtreeHeight = left ? left->height : -1;
+            int rightSubtreeHeight = right ? right->height : -1;
+            return leftSubtreeHeight - rightSubtreeHeight;
+         }
+      };
+
    public:
       bool insert(T value) override;
-      bool remove(T value) override;
+      bool remove(T& value) override;
+
    private:
       void rebalance(Node* node);
-         void leftRotate(Node* node);
-         void rightRotate(Node* node);
+      void leftRotate(Node* node);
+      void rightRotate(Node* node);
+      void updateHeight(Node* node);
 };
 ```
 
@@ -117,12 +127,95 @@ Right rotation on the right child, then do left rotation on unbalanced node.
 20 - Left second child
 ```
 
+### Code
+- Negative balance factor means right child has larger height
+- Positive balance factor means left child has larger height
+
+```C++
+template <typename T>
+void AVLTree<T>::rebalance(Node* node) {
+   updateHeight(node);
+   if (node->balanceFactor() == -2) { // First child is right
+      if (node->right->balanceFactor() > 0) { // Second child is left
+         rotateRight(node->right); // Double rotations
+      }
+      rotateLeft(node);
+   } else if (node->balanceFactor() == 2) { // First child is left
+      if (node->left->balanceFactor() < 0) { // Second child is right
+         rotateLeft(node->left); // Double rotations
+      }
+      rotateRight(node);
+   }
+}
+```
+
+## Update height
+
+```C++
+template <typename T>
+int AVLTree<T>::updateHeight(Node* node) {
+   if (node == nullptr) return 0;
+   node->height = 1 + max(updateHeight(node->left), updateHeight(node->right));
+   return node->height;
+}
+```
+
 ## Rotations
 ### Left rotation
 ### Right rotation
 
+```C++
+template <typename T>
+void AVLTree<T>::rotateRight(Node* node) {
+   T leftsRightChild = node->left->right;
+   if (node->parent != nullptr) { // There's a parent
+      if (node->parent->left == node) node->parent->left = node->left;
+      else node->parent->right = node->left;
+   } else { // Node is root
+      if (root->left == node) root->left = node->left;
+      else root->right = node->left;
+   }
+   node->left->right = node;
+   node->left = leftsRightChild;
+}
+
+// node needs to have a left child
+void AVLTreeRotateRight(Node* node) {
+   leftsRightChild = node->left->right;
+   if (node->parent != null) // If there's a parent
+      AVLTreeReplaceChild(node->parent, node, node->left) // Replace child of parent
+   else { // node is root
+      rootPtr = node->left
+      root->parent = nullptr;
+   }
+   AVLTreeSetChild(node->left, "right", node) // Set right node
+   AVLTreeSetChild(node, "left", leftRightChild) // Set left node
+}
+```
+
 ## Insert
+
+```C++
+template <typename T>
+bool AVLTree<T>::insert(T value) {
+   // Check for duplicates
+   // Find the leaf
+   // Insert left or right child
+   // Update heights to the root
+}
+```
+
 ## Remove
+
+```C++
+template <typename T>
+bool AVLTree<T>::remove(T& value) {
+   if (!BinarySearchTree<T>::remove(value)) return false;
+   // Update heights
+   // Rebalance
+   return true;
+}
+```
 
 
 --------------------------------------------------------------------------------
@@ -138,43 +231,9 @@ Right rotation on the right child, then do left rotation on unbalanced node.
 - Need to know the last insertion/deletion location to rebalance properly.
    - My implementation of having an AVLRebanlaiicing method doesn't work.
 
-```C++
-// node needs to have a left child
-void AVLTreeRotateRight(Node* node) {
-   leftsRightChild = node->left->right;
-   if (node->parent != null) // If there's a parent
-      AVLTreeReplaceChild(node->parent, node, node->left) // Replace child of parent
-   else { // node is root
-      rootPtr = node->left
-      root->parent = nullptr;
-   }
-   AVLTreeSetChild(node->left, "right", node) // Set right node
-   AVLTreeSetChild(node, "left", leftRightChild) // Set left node
-}
-```
 
 - Nodes need to have a parent pointer and a height value
 
-```C++
-void AVLTreeRebalance(Node* node) {
-   AVLTreeUpdateHeight(node) // Shouldn't this happen at insertion? Maybe this method is called at insertion.
-   if (AVLTreeGetBalance(node) == -2) {
-      if (AVLTreeGetBalance(node⇢right) == 1) {
-         // Double rotation case.
-         AVLTreeRotateRight(tree, node⇢right)
-      }
-      return AVLTreeRotateLeft(tree, node)
-   }
-   else if (AVLTreeGetBalance(node) == 2) {
-      if (AVLTreeGetBalance(node⇢left) == -1) {
-         // Double rotation case.
-         AVLTreeRotateLeft(tree, node⇢left)
-      }
-      return AVLTreeRotateRight(tree, node)
-   }
-   return node
-}
-```
 
 ## Inserting
 - Insertions may cause the tree to become unbalance, needing 1 or 2 rotations to rebalance.
@@ -187,41 +246,6 @@ void AVLTreeRebalance(Node* node) {
 
 4 imbalancing cases that result form insertions:
    - Numbers are balance factor
-```
-1 rotation right:
-    A(2)
-   /                            B
-  B(1) -- Right rotation A ->  / \
- /                            C   A
-C
-```
-
-```
-2 rotations, left then right:
-  A(2)                          A
- /                             /                           B
-B(-1) -- Left rotation B ->   B   -- Right rotation A ->  / \
- \                           /                           C   A
-  C                         C
-```
-
-```
-1 rotation left:
-C(-2)
- \                              B
-  B(-1) -- Left rotation C ->  / \
-   \                          C   A
-    A
-```
-
-```
-2 rotations, right then left:
-C(-2)                         C
- \                             \                            B
-  B(1) -- Right rotation B ->   B   -- Left rotation C ->  / \
- /                               \                        C   A
-A                                 A
-```
 
 Inserting - Only 1 rotation(single or double) is needed per insertion.
 - Searching for the insertion location
@@ -287,7 +311,6 @@ AVLTreeInsertNode(tree, node) {
    - What about the root. Find the largest left child or smallest right child.
 - Recalculate balance factor from the node deleted to the root.
 - Rebalance when you find 2/-2 balance factor.
-
 
 ```C++
 AVLTreeRemoveNode(tree, node) {
