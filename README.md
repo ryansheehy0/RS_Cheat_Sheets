@@ -29,10 +29,12 @@
 - [Make Files](./C++/make_files.md)
 - GNU Debugger
 - [C++](./C++//cpp.md)
+- [C++ Standard Libraries](./C++/cpp_standard_libraries.md)
+
+
+- [C++ Non Standard Libraries](./C++/cpp_non_standard_libraries.md)
 - [C++ Data Structures, Iterators, and Algorithms](./C++/cpp_data_structures_iterators_and_algorithms.md)
 - [C++ Smart Pointers](./C++/cpp_smart_pointers.md)
-- [C++ Standard Libraries](./C++/cpp_standard_libraries.md)
-- [C++ Non Standard Libraries](./C++/cpp_non_standard_libraries.md)
 
 ## [Low Level Programming](#ryan-sheehy-cheat-sheets)
 - [Low level concepts](./Low_Level_Programming/low_level_concepts.md)

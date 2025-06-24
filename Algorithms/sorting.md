@@ -16,114 +16,162 @@
 | Radix sort                        | O(N)       | O(N)       | O(N)       | Yes  | Both              |
 
 ## Selection sort
-- Sorted part and unsorted part
-- Repeatedly selects the min value from unsorted to the end of the sorted.
-- O(N^2)
-- Internal sorting
-
-### Heap sort
-- More advanced for of selection sort
-
-## Insertion sort
-- Sorted part and unsorted part
-- Repeatedly inserts the next unsorted into the sorted section.
-- O(N^2) and O(N) for nearly sorted lists.
-- 2 types: swapping vs shifting. Shifting is preferred.
-	- Swapping - Store right into temp. Assign right with left. Assign left with temp.
-	- Shifting - Store unsorted into temp. Assign right with left.
-		- Save an operation by not needing to assign left with temp.
-- External sorting
-
-- i - current position of next unsorted element(starts at 1)
-- j - current position of element being inserted(j=i then counts down to 0)
-
-### Shell sort
-- More advanced for of insertion sort
-- Input as a collection of interleaved arrays, and sorts each array individually.
-- gap value/K - positive int representing the distance between elements in an interleaved array.
-	- Next element of interleaved array is at i + gap value.
-- Finishes with a standard insertion sort on the entire array, merging the interleaved arrays.
-
-InsertionSortInterleaved(array, arrSize, startingIndex, gapValue)
-	- Sorts one interleaved array.
-	- Have to call the # of times for each gapValue and increment startingIndex each time
-- Ex: gapValue = 2
-InsertionSortInterleaved(array, arrSize, 0, 2)
-InsertionSortInterleaved(array, arrSize, 1, 2)
-Then insertionSort for the whole array to get the final sorted array.
-
-- K is initially large, insertionSortInterleaved is run on K-separated elements, then K is decreased and the process repeats.
-- Insertion sort when k == 1
-- What is the optimal decreasing rate of k?
-	- Powers of 2 minus 1. Ex: n = 100. K = 63, 31, 15, 7, 3, 1. O(N^3/2) worst case.
-	- There is no optimal decreasing rate of k, but Knuth(k = 2^n - 1/2) is good.
+Has a sorted and unsorted part. Repeatedly selects the min value from the unsorted part and places it at the beginning of the sorted part.
 
 ```C++
-InsertionSortInterleaved(numbers, numbersSize, startIndex, gap) {
-   i = 0
-   j = 0
-   temp = 0  // Temporary variable for swap
+int findMinI(int arr[], int size, int startI) {
+   int minI = startI;
+   for (int i = startI + 1; i < size; i++) {
+      if (arr[i] < arr[minI]) minI = i;
+   }
+   return minI;
+}
 
-   for (i = startIndex + gap; i < numbersSize; i = i + gap) {
-      j = i
-      while (j - gap >= startIndex && numbers[j] < numbers[j - gap]) {
-         temp = numbers[j]
-         numbers[j] = numbers[j - gap]
-         numbers[j - gap] = temp
-         j = j - gap
+void selectionSort(int arr[], int size) {
+   for (int unsortedI = 0; unsortedI < size; unsortedI++) {
+      int minI = findMinI(arr, size, unsortedI);
+      // Swap
+      int temp = arr[unsortedI];
+      arr[unsortedI] = arr[minI];
+      arr[minI] = temp;
+   }
+}
+```
+
+### Heap sort
+Uses a heap to find the min instead of linear search.
+
+```C++
+void heapSort(int arr[], int size) {
+   MinHeap h(arr, size); // Creates heap of {key: arr[i], value: i}
+   for (int unsortedI = 0; unsortedI < size; unsortedI++) {
+      int minI = h.pop().value;
+      // Swap
+      int temp = arr[unsortedI];
+      arr[unsortedI] = arr[minI];
+      arr[minI] = temp;
+   }
+}
+```
+
+## Insertion sort
+Has a sorted and unsorted part. Repeatedly selects the first element of the unsorted part and places it in the correct location in the unsorted part.
+
+```C++
+void insertionSort(int arr[], int size) {
+   for (int unsortedI = 1; unsortedI < size; unsortedI++) {
+      int key = arr[unsortedI];
+      int j;
+      for (j = unsortedI - 1; j >= 0; j--) {
+         if (arr[j] < key) break;
+         // Shift right
+         arr[j + 1] = arr[j];
       }
+      // Set key's location
+      arr[j + 1] = key;
+   }
+}
+```
+
+### Shell sort
+Imagine the array as K interleaved subarrays. Perform insertion sort on each subarray individually. Reduce K and repeat until K = 1, then do a final insertion sort on the full array.
+
+- Gap sequences are often built in increasing order and then reversed. There's no single optimal sequence, but here are some common ones:
+   - Sedgewick's `4^k + 3 * 2^(k-1) + 1` - 1, 5, 19, 41, 109
+   - Knuth's `3k + 1` - 1, 4, 13, 40, 121
+
+```C++
+void insertionSortInterleaved(int arr[], int size, int startingIndex, int gap) {
+   for (int unsortedI = startingIndex + gap; unsortedI < size; unsortedI += gap) {
+      int key = arr[unsortedI];
+      int j;
+      for (j = unsortedI - gap; j >= 0; j -= gap) {
+         if (arr[j] < key) break;
+         // Shift right
+         arr[j + gap] = arr[j];
+      }
+      arr[j + gap] = key;
    }
 }
 
-ShellSort(numbers, numbersSize, gapValues) {
-   for each (gapValue in gapValues) {
-      for (i = 0; i < gapValue; i++) {
-         InsertionSortInterleaved(numbers, numbersSize, i, gapValue)
+void shellSort(int arr[], int size) {
+   // Construct gap sequence and reverse it
+   vector<int> Ks;
+   for (int k = 1; k < size; k = 3*k + 1) {
+      Ks.push_back(k);
+   }
+   reverse(Ks.begin(), Ks.end());
+   // For each K
+   for (int k : Ks) {
+      for (int i = 0; i < k; i++) { // Insertion sort on each interleaved array
+         insertionSortInterleaved(arr, size, i, k); // When k = 1, it acts like regular insertion sort
       }
    }
 }
 ```
 
 ## Quick sort
-- Repeatedly partitions the input into low and high parts, and then recursively sorts each part.
-- Pivot - Element that divides the data into low and high parts.
-	- Can be any index, but is usually the middle.
-- All values in the low partition are less than or equal to the pivot value.
-- All values in the high partition are greater than or equal to the pivot value.
-- 2 index variables. Low and high
-	- Low starts at 0 and increments to the center
-	- High starts at length-1 and decrements to the center
-- Worst case is O(N^2), but average and best case is O(N log N).
-- The pivot is not included in the recursive calls.
+Select a pivot value in the array. Move all elements less than to the left and all elements greater than to the right. Recursively repeat for the left and right sub-arrays, not including the pivot.
 
 ```C++
-Partition(numbers, lowIndex, highIndex) {
-   // Pick middle element as pivot
-   midpoint = lowIndex + (highIndex - lowIndex) / 2
-   pivot = numbers[midpoint]
-
-   while (true) {
-      while (numbers[lowIndex] < pivot) lowIndex++;
-      while (pivot < numbers[highIndex]) highIndex--;
-      if (lowIndex >= highIndex) break;
-			// Swap numbers[lowIndex] and numbers[highIndex]
-			temp = numbers[lowIndex]
-			numbers[lowIndex] = numbers[highIndex]
-			numbers[highIndex] = temp
-
-			// Update lowIndex and highIndex
-			lowIndex++;
-			highIndex--;
-   }
-   return highIndex
+void quickSort(int arr[], int size, int startIndex = 0, int endIndex = -1) {
+   if (endIndex == -1) endIndex = size;
+   if (endIndex <= startIndex) return; // Base case when sub-array size is 0 or 1
+   int pivotI = partition(arr, size, startIndex, endIndex);
+   quickSort(arr, size, startIndex, pivotI); // Quick sort left half
+   quickSort(arr, size, pivotI + 1, endIndex); // Quick sort right half
 }
 
-Quicksort(numbers, lowIndex, highIndex) {
-   if (highIndex <= lowIndex) return;
-   lowEndIndex = Partition(numbers, lowIndex, highIndex)
-   Quicksort(numbers, lowIndex, lowEndIndex)
-   Quicksort(numbers, lowEndIndex + 1, highIndex)
+int partition(int arr[], int size, int startIndex, int endIndex) {
+   int pivotI = startIndex + (endIndex - startIndex) / 2;
+      // (startIndex + endIndex) / 2 also works, but will overflow if size > INT_MAX / 2
+   int pivot = arr[pivotI];
+   while (true) {
+      while (arr[startIndex] < pivot) startIndex++; // Move the start index right until you find an element out of place.
+      while (arr[endIndex] > pivot) endIndex--; // Move the end index left until you find an element out of place.
+      if (startIndex >= endIndex) break; // They have passed each other or are equal
+      // Swap
+      int temp = arr[startIndex];
+      arr[startIndex] = arr[endIndex];
+      arr[endIndex] = temp;
+      // Next elements
+      startIndex++;
+      endIndex--;
+   }
+   return endIndex;
 }
 ```
 
 ## Merging
+Algorithm when you need to merge two sorted array.
+
+```C++
+int* merge(int arr1[], int size1, int arr2[], int size2) {
+   int* returnArr = new int[size1 + size2];
+   int i = 0, i1 = 0, i2 = 0;
+   // Compare and copy the lesser one
+   while (i1 < size1 && i2 < size2) {
+      if (arr1[i1] < arr2[i2]) {
+         returnArr[i] = arr1[i1];
+         i1++;
+      } else {
+         returnArr[i] = arr2[i2];
+         i2++;
+      }
+      i++;
+   }
+   // Copy if remaining elements
+   while (i1 < size1) {
+      returnArr[i] = arr1[i1];
+      i++;
+      i1++;
+   }
+   while (i2 < size2) {
+      returnArr[i] = arr2[i2];
+      i++;
+      i2++;
+   }
+
+   return returnArr;
+}
+```
