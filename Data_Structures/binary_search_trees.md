@@ -27,7 +27,7 @@ For this example, no duplicate values are allowed. If you want duplicates you ca
 - [Remove](#remove)
 - [Traversals](#traversals)
 	- [Breadth First Search](#breadth-first-search)
-	- [Depth First Search](#depth-first-search)
+	- [Depth First Traversal](#depth-first-traversal)
 		- [Recursive Implementation](#recursive-implementation)
 - [Balance](#balance)
 
@@ -41,6 +41,7 @@ class BinarySearchTree {
 			T data;
 			Node* left = nullptr;
 			Node* right = nullptr;
+         Node* parent = nullptr;
 		};
 
 		Node* root = nullptr;
@@ -58,8 +59,8 @@ class BinarySearchTree {
       Node<T>* max(Node<T>* subTreeRoot = nullptr, Node<T>** parentPtr = nullptr) const; // Right most leaf
       Node<T>* min(Node<T>* subTreeRoot = nullptr, Node<T>** parentPtr = nullptr) const; // Left most leaf
 
-		bool insert(T value);
-		bool remove(T& value);
+      bool insert(T value);
+      bool remove(T& returnValue);
 
 		// Traversals
          // If process returns true, it breaks out of the loop
@@ -300,8 +301,16 @@ void BinarySearchTree<T>::breadthFirstTraversal(bool (*process)(T&), TypeOfBread
 }
 ```
 
-### [Depth First Search](#binary-search-trees)
+### [Depth First Traversal](#binary-search-trees)
 - Traverse by branch
+
+- In order depth first traversal(left, root, right)
+   - Push root to stack
+   - While stack isn't empty
+      - If left and hasn't visited push to stack and continue
+      - Pop and Process
+      - If right and hasn't visited push to stack and continue
+
 
 ```C++
 template <typename T>

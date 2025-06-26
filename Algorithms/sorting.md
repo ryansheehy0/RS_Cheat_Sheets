@@ -16,7 +16,7 @@
 | Radix sort                        | O(N)       | O(N)       | O(N)       | Yes  | Both              |
 
 ## Selection sort
-Has a sorted and unsorted part. Repeatedly selects the min value from the unsorted part and places it at the beginning of the sorted part.
+Has a sorted and unsorted part. Repeatedly selects the min value from the unsorted part and places it at the end of the sorted part.
 
 ```C++
 int findMinI(int arr[], int size, int startI) {
@@ -55,7 +55,7 @@ void heapSort(int arr[], int size) {
 ```
 
 ## Insertion sort
-Has a sorted and unsorted part. Repeatedly selects the first element of the unsorted part and places it in the correct location in the unsorted part.
+Has a sorted and unsorted part. Repeatedly selects the first element of the unsorted part and places it in the correct location in the sorted part.
 
 ```C++
 void insertionSort(int arr[], int size) {

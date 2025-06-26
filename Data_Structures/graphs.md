@@ -16,8 +16,8 @@ Graphs are a data structure consisting of **nodes/vertices** connected by **edge
 	- [Adjacency list](#adjacency-list)
 	- [Adjacency matrix](#adjacency-matrix)
 - [Traversals](#traversals)
-	- [Breadth first search](#breadth-first-search)
 	- [Depth first search](#depth-first-search)
+	- [Breadth first search](#breadth-first-search)
 - [Directional graphs](#directional-graphs)
 - [Graphs with weights](#graphs-with-weights)
 	- [Minimum spanning trees](#minimum-spanning-trees)
@@ -65,17 +65,6 @@ Each node is in a row and column and edges correspond to 1/true for the row and 
 - Rows represent nods coming out.
 
 ## Traversals
-### Breadth first search
-Process the starting vertex, then all vertices of distance 1, then of distance 2, etc. without visiting a vertex twice.
-- Create a hash table of visited nodes or set each node to not visited.
-- Push starting vertex in a **queue** and mark starting vertex as visited.
-- While the queue isn't empty
-	- Process the pop from the queue
-	- Push all adjacent nodes that haven't been visited
-	- Mark adjacent nodes as visited
-
-Useful to find the shortest path between two nodes.
-
 ### Depth first search
 Process the starting vertex, then as far down a path as possible, then backtracking until to find a new unvisited path.
 - Create a hash table of visited nodes or set each node to not visited.
@@ -86,6 +75,17 @@ Process the starting vertex, then as far down a path as possible, then backtrack
 	- Mark adjacent nodes as visited
 
 Useful for solving mazes.
+
+### Breadth first search
+Process the starting vertex, then all vertices of distance 1, then of distance 2, etc. without visiting a vertex twice.
+- Create a hash table of visited nodes or set each node to not visited.
+- Push starting vertex in a **queue** and mark starting vertex as visited.
+- While the queue isn't empty
+	- Process the pop from the queue
+	- Push all adjacent nodes that haven't been visited
+	- Mark adjacent nodes as visited
+
+Useful to find the shortest path between two nodes.
 
 ## Directional graphs
 Edges can only go in one direction.
