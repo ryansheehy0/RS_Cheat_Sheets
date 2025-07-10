@@ -87,6 +87,8 @@ for (int row = 0; row < arr.size(); row++) {
 }
 ```
 
+- The outer loop needs to eb the rows so the inner arrays stay in the cache.
+
 ### [Convolutional 2d array](#programming-tips)
 - Loop through each element of the 2d array and get it's nearest neighbors.
 
