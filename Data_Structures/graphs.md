@@ -24,6 +24,7 @@ Graphs are a data structure consisting of **nodes/vertices** connected by **edge
 		- [Kruskal's algo](#kruskals-algo)
 		- [Prim's algo](#prims-algo)
 	- [Dijkstra's shortest path](#dijkstras-shortest-path)
+	- [A Star](#a-star)
 - [Use cases](#use-cases)
 
 <!-- /TOC -->
@@ -300,6 +301,8 @@ B-D-C-A with total weight of 70
 ```
 
 Can also be used for for unweighted graphs with an edge weight of 1, but shouldn't be used if edge weights are negative.
+
+### A Star
 
 ## Use cases
 - Friendship groups - People represent nodes. You can recommend new friends starting at a distance of 2.

@@ -30,8 +30,6 @@
 - GNU Debugger
 - [C++](./C++//cpp.md)
 - [C++ Standard Libraries](./C++/cpp_standard_libraries.md)
-
-
 - [C++ Non Standard Libraries](./C++/cpp_non_standard_libraries.md)
 - [C++ Data Structures, Iterators, and Algorithms](./C++/cpp_data_structures_iterators_and_algorithms.md)
 - [C++ Smart Pointers](./C++/cpp_smart_pointers.md)
@@ -58,23 +56,14 @@
 	- [Big O](./Algorithms/big_o_notation.md)
 	- [Search Algorithms](./Algorithms/search.md)
 	- [Sorting Algorithms](./Algorithms/sorting.md)
-- Common Algos
-	- [Miscellaneous](./Algorithms/miscellaneous.md)
-	- [Newtons Method](./Algorithms/Newtons_Method/newtons_method.md)
-	- [Taylor Series](./Algorithms/Taylor_Series/taylor_series.md)
-	- A Star
-	- PIDs
-	- Fast Fourier transform
-- Compression
-	- [Huffman codes](https://www.youtube.com/watch?v=B3y0RsVCyrw)
-	- [JPEG](https://www.youtube.com/watch?v=0me3guauqOU)
-	- [PNG](https://www.youtube.com/watch?v=EFUYNoFRHQI)
+- [Miscellaneous](./Algorithms/miscellaneous.md)
+- Compression: [Huffman codes](https://www.youtube.com/watch?v=B3y0RsVCyrw)
 - Encryption
 	- RSA
+	- AES
 	- Diffie-Hellman Key Exchange(Include 2 lock key exchange)
-- Error correction
-	- Read-Solomon Codes
-	- Hamming codes(https://www.youtube.com/watch?v=X8jsijhllIA) (https://www.youtube.com/watch?v=b3NxrZOu_CE)
+- Error correction: Read-Solomon Codes
+- PIDs
 
 ## [Web Dev](#ryan-sheehy-cheat-sheets)
 - [Deploying Websites](./Web_Dev/deploying_websites.md)
@@ -102,3 +91,6 @@
 - [Probability](./Math/Probability/probability.md)
 - [Basic Graphing](./Math/Basic_Graphing/basic_graphing.md)
 - [Trigonometric Functions](./Math/trigonometric_functions.md)
+- [Newtons Method](./Algorithms/Newtons_Method/newtons_method.md)
+- [Taylor Series](./Algorithms/Taylor_Series/taylor_series.md)
+- Propositional logic
