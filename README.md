@@ -57,10 +57,9 @@
 	- [Search Algorithms](./Algorithms/search.md)
 	- [Sorting Algorithms](./Algorithms/sorting.md)
 - [Miscellaneous](./Algorithms/miscellaneous.md)
-- Compression: [Huffman codes](https://www.youtube.com/watch?v=B3y0RsVCyrw)
+- Compression: [Huffman codes](./Algorithms/huffman_codes.md)
 - Encryption
 	- RSA
-	- AES
 	- Diffie-Hellman Key Exchange(Include 2 lock key exchange)
 - Error correction: Read-Solomon Codes
 - PIDs

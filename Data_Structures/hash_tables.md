@@ -4,11 +4,11 @@
 Hash tables use a lot of memory for faster operations, best case O(1).
 
 
-## Resizing
+## [Resizing](#hash-tables)
 
-## Collision handling
+## [Collision handling](#hash-tables)
 
-## Common hash functions
+## [Common hash functions](#hash-tables)
 
 
 - All keys are stores in the range Ex: [0-9].

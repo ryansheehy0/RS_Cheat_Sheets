@@ -1,4 +1,4 @@
-[Home](../../README.md#algorithms)
+[Home](../../README.md#math)
 
 # Newton's Method
 

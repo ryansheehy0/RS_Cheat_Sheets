@@ -18,12 +18,12 @@ They define which operation can be used, but not how the data is to be stored an
 <!-- /TOC -->
 
 
-## [Stack](#abstract-data-structures)
+## [Stack](#stacks-queues-and-lists)
 Items are only inserted on or removed from the top.
 
 **Last in first out(LIFO)** - The last item added to the collection is the first one to be taken out.
 
-### [Common operations](#abstract-data-structures)
+### [Common operations](#stacks-queues-and-lists)
 - `bool push(Type x)` - Inserts x on the top of the stack.
 - `Type pop()` - Removes and returns the stack's top item.
 	- Need to check that the stack isn't empty before calling.
@@ -33,7 +33,7 @@ Items are only inserted on or removed from the top.
 - `int getLength()`
 	- The stack usually increments or decrements the length when you push/pop.
 
-### [Common use cases](#abstract-data-structures)
+### [Common use cases](#stacks-queues-and-lists)
 - Reversing a stack
 	- Push and pop into another stack(stackA)
 	- Push and pop into another stack(stackB)
@@ -64,7 +64,7 @@ Items are only inserted on or removed from the top.
 	- If not, try extending it by pushing a new move.
 	- If no valid moves are left, backtrack by popping the last move and trying alternatives.
 
-## [Queues](#abstract-data-structures)
+## [Queues](#stacks-queues-and-lists)
 Items are only inserted at the end and removed from the front.
 
 - **Priority Queue** - A queue where each item has a priority and items with higher priority dequeue first.
@@ -72,14 +72,14 @@ Items are only inserted at the end and removed from the front.
 
 **First in first out(FIFO)** - The first item added to the collection si the first one to be taken out.
 
-### [Common operations](#abstract-data-structures)
+### [Common operations](#stacks-queues-and-lists)
 - `bool enqueue(Type x)` or `push` - Insert an item at the end.
 - `Type dequeue()` or `pop` - Removes and returns the item at the front.
 - `Type peek()` - Returns the item at the front.
 - `bool isEmpty()`
 - `int getLength()`
 
-### [Common use cases](#abstract-data-structures)
+### [Common use cases](#stacks-queues-and-lists)
 - Categorizing data
 	- Ex: Put positive numbers in one category and negative numbers in another while preserve the original order.
 - OS maintain a queue of processes waiting to be executed.
@@ -88,13 +88,13 @@ Items are only inserted at the end and removed from the front.
 - Simulating real world lines.
 	- Ex: Customers waiting in line or cars at a traffic light.
 
-## [Lists](#abstract-data-structures)
+## [Lists](#stacks-queues-and-lists)
 
 - **List** - Ordered collection that allows for access via index.
 - All have to have unique values?
 	- Should the operations use indexes instead of values?
 
-### [Common operations](#abstract-data-structures)
+### [Common operations](#stacks-queues-and-lists)
 - `bool append(Type x)` - Adds x to the end.
 - `bool prepend(Type x)` - Adds x to the beginning.
 - `bool insertAfter(Type w, Type x)` - Inserts x after w.
@@ -110,4 +110,4 @@ Items are only inserted at the end and removed from the front.
 - search
 - traverse
 
-### [Common use cases](#abstract-data-structures)
+### [Common use cases](#stacks-queues-and-lists)

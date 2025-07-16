@@ -40,7 +40,7 @@ class BinaryTree {
 };
 ```
 
-## Breadth First Traversal
+## [Breadth First Traversal](#binary-trees)
 Traversal by level.
 
 ```C++
@@ -65,7 +65,7 @@ void BinaryTree<T>::breadthFirstTraversal(bool process(T& value), BreadthFirstTy
 }
 ```
 
-## Depth First Traversal
+## [Depth First Traversal](#binary-trees)
 - Needs a visited check before pushing.
 
 ```C++

@@ -435,7 +435,7 @@ void BinarySearchTree<T>::_recursiveDepthFirstTraversal(Node<T>* treeRoot, void 
 }
 ```
 
-## Balance
+## [Balance](#binary-search-trees)
 - O(N) balancing algo
    - In order traversal into an array
    - Find the middle element and move to the front

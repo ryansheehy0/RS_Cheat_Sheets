@@ -81,7 +81,7 @@ class MinHeap : public Heap<T> {
 };
 ```
 
-## Heapify constructor
+## [Heapify constructor](#heaps)
 Convert an ordinary array to a heap. O(N).
 
 ```C++
@@ -100,7 +100,7 @@ Heap<T>::Heap(T[] array, int arraySize) {
 }
 ```
 
-## reHeap Up
+## [reHeap Up](#heaps)
 
 ```C++
 template <typename T>
@@ -119,7 +119,7 @@ void Heap<T>::_reHeapUp(int index) {
 }
 ```
 
-## reHeap Down
+## [reHeap Down](#heaps)
 
 ```C++
 template <typename T>
@@ -160,7 +160,7 @@ void Heap<T>::_reHeapDown(int index) {
 }
 ```
 
-## Inserting/Push
+## [Inserting/Push](#heaps)
 New nodes are always added as leafs/at the end of the array. Then that leaf is reHeapedUp. The worst case is O(log N).
 - Need to add resizing
 
@@ -174,7 +174,7 @@ void Heap<T>::push(T data) {
 }
 ```
 
-## Removing/Pop
+## [Removing/Pop](#heaps)
 Popping always removes the root. It swaps the last element for the root and reHeapsDown the root. The worst case is O(log N).
 
 ```C++
@@ -193,7 +193,7 @@ bool Heap::deleteHeap(int &returnItem) {
 }
 ```
 
-## Use cases
+## [Use cases](#heaps)
 - Heap sort - A sorting algorithm like selection sort, but uses a heap to quickly find the max element. It sorts in O(N log N).
 - Priority queues
 - Huffman encoding algorithm

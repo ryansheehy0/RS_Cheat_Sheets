@@ -29,7 +29,7 @@ Graphs are a data structure consisting of **nodes/vertices** connected by **edge
 
 <!-- /TOC -->
 
-## Storing graphs in memory
+## [Storing graphs in memory](#graphs)
 Each of these use this example graph:
 
 ```
@@ -38,7 +38,7 @@ A---B
 C   D
 ```
 
-### Adjacency list
+### [Adjacency list](#graphs)
 A table of nodes with a list of the adjacent nodes.
 - Time complexity: Good for sparse graphs, but O(V) to determine adjacency if not sparse.
 - Space complexity: O(V + E)
@@ -50,7 +50,7 @@ A table of nodes with a list of the adjacent nodes.
 | C      | A B               |
 | D      | B                 |
 
-### Adjacency matrix
+### [Adjacency matrix](#graphs)
 Each node is in a row and column and edges correspond to 1/true for the row and column.
 - Time complexity: O(1) determine adjacency.
 - Space complexity: O(V^2). Bad for sparse graphs because most cells will be 0s. Also not good if the graph changes a lot.
@@ -65,8 +65,8 @@ Each node is in a row and column and edges correspond to 1/true for the row and 
 - Columns represent nodes coming in.
 - Rows represent nods coming out.
 
-## Traversals
-### Depth first search
+## [Traversals](#graphs)
+### [Depth first search](#graphs)
 Process the starting vertex, then as far down a path as possible, then backtracking until to find a new unvisited path.
 - Create a hash table of visited nodes or set each node to not visited.
 - Push starting vertex in a **stack** and mark starting vertex as visited.
@@ -77,7 +77,7 @@ Process the starting vertex, then as far down a path as possible, then backtrack
 
 Useful for solving mazes.
 
-### Breadth first search
+### [Breadth first search](#graphs)
 Process the starting vertex, then all vertices of distance 1, then of distance 2, etc. without visiting a vertex twice.
 - Create a hash table of visited nodes or set each node to not visited.
 - Push starting vertex in a **queue** and mark starting vertex as visited.
@@ -88,7 +88,7 @@ Process the starting vertex, then all vertices of distance 1, then of distance 2
 
 Useful to find the shortest path between two nodes.
 
-## Directional graphs
+## [Directional graphs](#graphs)
 Edges can only go in one direction.
 
 - Arc/Directed Edge - An edge with a direction from one vertex to another.
@@ -101,21 +101,21 @@ Edges can only go in one direction.
 
 Useful for links between web pages, airline connections between cities, college course prerequisites.
 
-## Graphs with weights
+## [Graphs with weights](#graphs)
 Each edge has a weight/cost associated with it.
 
 - Path length - The sum of edge weights along a path.
 - Cycle length - The total weight of edges in a cycle.
 	- No shortest path exists for a negative-weight cycle because repeatedly looping reduces the total length indefinitely.
 
-### Minimum spanning trees
+### [Minimum spanning trees](#graphs)
 A minimum spanning tree (MST) is a subset of edges that connects all nodes with the minimum total edge weight and no cycles.
 
 - Has V nodes and V-1 edges.
 - The graph must be connected, meaning there’s a path between every pair of nodes.
 - Ex: Connecting islands with bridges while minimizing total construction cost.
 
-#### Kruskal's algo
+#### [Kruskal's algo](#graphs)
 Time complexity is O(E log E) and space complexity is O(E + V).
 
 - Put all edges in a priority queue prioritized by the minimum weight.
@@ -192,7 +192,7 @@ E -2- D ---2-- H
 ```
 
 
-#### Prim's algo
+#### [Prim's algo](#graphs)
 Time Complexity is O((V + E) log V) and space complexity is O(V + E).
 
 - Add smallest edge to the result
@@ -239,7 +239,7 @@ Iteration 4:
 	Result: E-A, E-F, E-D, D-H, G-H, D-B
 ```
 
-### Dijkstra's shortest path
+### [Dijkstra's shortest path](#graphs)
 The shortest path is found by tracing backward from the destination to the start through its prevNodes.
 
 - For each node
@@ -302,9 +302,9 @@ B-D-C-A with total weight of 70
 
 Can also be used for for unweighted graphs with an edge weight of 1, but shouldn't be used if edge weights are negative.
 
-### A Star
+### [A Star](#graphs)
 
-## Use cases
+## [Use cases](#graphs)
 - Friendship groups - People represent nodes. You can recommend new friends starting at a distance of 2.
 - Maps
 	- Flights - Airports represent nodes and the weight is flight duration.

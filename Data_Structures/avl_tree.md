@@ -52,13 +52,13 @@ class AVLTree : public BinarySearchTree<T> {
 };
 ```
 
-## Rebalancing
+## [Rebalancing](#avl-tree)
 There are 4 rebalancing scenarios based on first child–second child directions. The direction, left or right, is determined by which child of the unbalanced node has the larger height.
 
 - Simple - Rotation involves a node and its immediate child, without affecting other subtrees.
 - Complex - Rotation involves a node and its child's subtree.
 
-### Left-Left
+### [Left-Left](#avl-tree)
 Single rotation right
 
 ```
@@ -75,7 +75,7 @@ Single rotation right
 10 - Left second child
 ```
 
-### Right-Right
+### [Right-Right](#avl-tree)
 Single rotation left
 
 ```
@@ -92,7 +92,7 @@ Single rotation left
 30 - Right second child
 ```
 
-### Left-Right
+### [Left-Right](#avl-tree)
 Left rotation on the left child, then do right rotation on unbalanced node.
 
 ```
@@ -109,7 +109,7 @@ Left rotation on the left child, then do right rotation on unbalanced node.
 20 - Right second child
 ```
 
-### Right of Left
+### [Right of Left](#avl-tree)
 Right rotation on the right child, then do left rotation on unbalanced node.
 
 ```
@@ -127,7 +127,7 @@ Right rotation on the right child, then do left rotation on unbalanced node.
 20 - Left second child
 ```
 
-### Code
+### [Code](#avl-tree)
 - Negative balance factor means right child has larger height
 - Positive balance factor means left child has larger height
 
@@ -149,7 +149,7 @@ void AVLTree<T>::rebalance(Node* node) {
 }
 ```
 
-## Update height
+## [Update height](#avl-tree)
 
 ```C++
 template <typename T>
@@ -160,9 +160,9 @@ int AVLTree<T>::updateHeight(Node* node) {
 }
 ```
 
-## Rotations
-### Left rotation
-### Right rotation
+## [Rotations](#avl-tree)
+### [Left rotation](#avl-tree)
+### [Right rotation](#avl-tree)
 
 ```C++
 template <typename T>
@@ -193,7 +193,7 @@ void AVLTreeRotateRight(Node* node) {
 }
 ```
 
-## Insert
+## [Insert](#avl-tree)
 
 ```C++
 template <typename T>
@@ -205,7 +205,7 @@ bool AVLTree<T>::insert(T value) {
 }
 ```
 
-## Remove
+## [Remove](#avl-tree)
 
 ```C++
 template <typename T>
@@ -220,7 +220,7 @@ bool AVLTree<T>::remove(T& value) {
 
 --------------------------------------------------------------------------------
 
-## Other
+## [Other](#avl-tree)
 
 - AVLTreeUpdateHeight - Updates node's height to the max of child subtree heights + 1.
 - AVLTreeSetChild - Sets parent's left/right child and updates its height
@@ -235,7 +235,7 @@ bool AVLTree<T>::remove(T& value) {
 - Nodes need to have a parent pointer and a height value
 
 
-## Inserting
+## [Inserting](#avl-tree)
 - Insertions may cause the tree to become unbalance, needing 1 or 2 rotations to rebalance.
 
 ```C++
@@ -306,7 +306,7 @@ AVLTreeInsertNode(tree, node) {
 }
 ```
 
-## Removing
+## [Removing](#avl-tree)
 - Standard bst remove.
    - What about the root. Find the largest left child or smallest right child.
 - Recalculate balance factor from the node deleted to the root.

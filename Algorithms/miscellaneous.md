@@ -6,10 +6,11 @@
 
 - [Unique Permutations](#unique-permutations)
 - [Greatest Common Denominator](#greatest-common-denominator)
+- [Testing prime](#testing-prime)
 
 <!-- /TOC -->
 
-## Unique Permutations
+## [Unique Permutations](#miscellaneous-algorithms)
 Algorithm to get all the unique permutations of an array.
 
 ```
@@ -65,7 +66,7 @@ remainingChars: 012   pickedChars:
 		picked: 1
 		etc
 
-## Greatest Common Denominator
+## [Greatest Common Denominator](#miscellaneous-algorithms)
 The greatest common denominator is that largest number that can evenly divide into two other numbers.
 
 1. Subtract the smaller number from the larger.
@@ -83,3 +84,51 @@ The greatest common denominator is that largest number that can evenly divide in
 	- 42 - 14 = 28
 	- 28 - 14 = 14
 	- 14 - 14 = 0, they are the same so the GCD is 14
+
+## [Testing prime](#miscellaneous-algorithms)
+
+```C++
+bool isLikelyPrime(unsigned int x) {
+	switch (x) {
+		case 0:
+		case 1:
+		case 4:
+		case 6:
+		case 8:
+		case 9:
+		case 10:
+			return false;
+		case 2:
+		case 3:
+		case 5:
+		case 7:
+		case 11:
+			return true;
+	}
+	// Fermat's little theorem: a - random number between 2 and x
+		// If a^(x-1) mod x is not 1, then it's not prime
+		// else it is most likely prime, but do more tests to increase probability
+	const int tests = 1;
+	for (int i = 0; i < tests; i++) {
+		int a = rand() % (x - 3) + 2; // between 2 and x
+		if (powerMod(a, x - 1, x) != 1) return false;
+	}
+	return true;
+}
+
+int powerMod(int base, int exponent, int mod) const { // O(log exponent)
+	// https://www.geeksforgeeks.org/modular-exponentiation-power-in-modular-arithmetic/
+	// Ex:
+		// 3^5 % 6 =
+		// (3^4 * 3^1) % 6 =
+		// ((3 * 3 % 6) * (3 * 3 % 6)) * (3^1 % 6) =
+	int64_t result = 1;
+	base %= mod;
+	while (exponent) {
+		if (exponent & 1) result = (result * base) % mod;
+		base = (base * base) % mod;
+		exponent >>= 1;
+	}
+	return result;
+}
+```
