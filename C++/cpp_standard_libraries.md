@@ -30,6 +30,7 @@ The standard libraries are any library that uses namespace std.
 - [fstream](#fstream)
 - [optional](#optional)
 - [characters functions](#characters-functions)
+- [string_view](#string_view)
 
 <!-- /TOC -->
 
@@ -217,3 +218,22 @@ int main() {
 | `std::isblank`  | Is a space or tab                                      |
 | `std::isalpha`  | Is lower or upper case letter                          |
 | `std::isalnum`  | Is lower, upper, or number                             |
+
+## [string_view](#c-standard-libraries)
+```C++
+#include <string_view>
+using std::string_view;
+```
+
+string_view is simply a pointer and a size.
+
+It provides read-only access to a string or character data.
+
+It avoids heap allocation, making it more efficient.
+
+```C++
+string_view name = "Ryan Sheehy";
+string_view firstName(name.data(), 4);
+int lastNameLen = name.size() - firstName.size() - 1;
+string_view lastName(name.data() + 5, lastNameLen);
+```
