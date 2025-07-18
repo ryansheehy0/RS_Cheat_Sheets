@@ -5,7 +5,8 @@
 <!-- TOC -->
 
 - [Unique Permutations](#unique-permutations)
-- [Greatest Common Denominator](#greatest-common-denominator)
+- [Greatest Common Divisor](#greatest-common-divisor)
+	- [Least common multiple](#least-common-multiple)
 - [Testing prime](#testing-prime)
 
 <!-- /TOC -->
@@ -66,24 +67,37 @@ remainingChars: 012   pickedChars:
 		picked: 1
 		etc
 
-## [Greatest Common Denominator](#miscellaneous-algorithms)
-The greatest common denominator is that largest number that can evenly divide into two other numbers.
+## [Greatest Common Divisor](#miscellaneous-algorithms)
+The largest integer that divides two integers. Useful for simplifying fractions.
 
-1. Subtract the smaller number from the larger.
-2. Keep repeating with the smaller of the 2 inputs.
+```c++
+int gcd(int a, int b) { // Euclidean algorithm
+	while (b != 0) {
+		int temp = b;
+		b = a % b;
+		a = temp;
+	}
+	if (a == 0) return -1; // Both a and b are 0
+	return a;
+}
+```
 
-- Ex: GCD(12, 8)
-	- 12 - 8 = 4
-	- 8 - 4 = 4
-	- 4 - 4 = 0, they are the same so the GCD is 4.
+Example: gcd(330, 156)
+- 330 % 156 = 18
+- 156 % 18 = 12
+- 18 % 12 = 6
+- 12 % 6 = 0
+- gcd(330, 156) = 6
 
-- Ex2: GCD(84, 14)
-	- 84 - 14 = 70
-	- 70 - 14 = 56
-	- 56 - 14 = 42
-	- 42 - 14 = 28
-	- 28 - 14 = 14
-	- 14 - 14 = 0, they are the same so the GCD is 14
+### [Least common multiple](#miscellaneous-algorithms)
+The smallest integer that is a multiple of two integers.
+
+lcm(a, b) = (a / gcd(a, b)) * b
+
+Example: lcm(3, 4)
+- 3, 6, 9, 12, 15, 18
+- 4, 8, 12, 16, 20, 24
+- lcm(3, 4) = 12
 
 ## [Testing prime](#miscellaneous-algorithms)
 

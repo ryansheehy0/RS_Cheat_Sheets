@@ -12,16 +12,20 @@
 ```C++
 template <typename T>
 class BinaryTree {
-	private:
+	public:
 		struct Node {
 			T data;
 			Node* left = nullptr;
 			Node* right = nullptr;
 		}
+	private:
 
 		Node* _root;
 
 	public:
+		BinaryTree(){}
+		BinaryTree(Node* root){}
+
 		enum class BreadthFirstType {
 			LEFT_RIGHT,
 			RIGHT_LEFT
