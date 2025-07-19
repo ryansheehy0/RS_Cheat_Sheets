@@ -99,6 +99,11 @@ Example: lcm(3, 4)
 - 4, 8, 12, 16, 20, 24
 - lcm(3, 4) = 12
 
+ Useful for giving fractions that same base.
+ - Example: lcm(48, 36) = 144
+- $144 / 48 = 3$ and $144 / 36 = 4$
+- $\frac{1}{48} + \frac{1}{36} = \frac{1}{48} * \frac{3}{3} + \frac{1}{36} * \frac{4}{4} = \frac{3}{144} + \frac{4}{144} = \frac{7}{144}$
+
 ## [Testing prime](#miscellaneous-algorithms)
 
 ```C++

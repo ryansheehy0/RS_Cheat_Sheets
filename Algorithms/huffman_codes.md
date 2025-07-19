@@ -52,52 +52,41 @@ t a l r n h p i c e s o m
 
 3. Merge two smallest nodes, add their occurrences, and re-insert. Do this until there's only one node left.
 
-- Double check these possible mistakes
-   - In Iteration 6, you merged two 3s, but introduced nhs with 5 instead of 6.
-   - In Iteration 8, merging two 4s should give 8, but it looks like you merged 4 and 4 and kept both 4 and 8.
-
 ```
 Iteration 1:
    l r n h p i c e ta s o m
    1 1 1 1 2 2 2 2  2 3 3 3
-
 Iteration 2:
    n h p i c e ta lr s o m
    1 1 2 2 2 2  2  2 3 3 3
-
 Iteration 3:
    p i c e ta lr nh s o m
    2 2 2 2  2  2  2 3 3 3
-
 Iteration 4:
    c e ta lr nh s o m pi
    2 2  2  2  2 3 3 3  4
-
 Iteration 5:
    ta lr nh s o m pi ce
     2  2  2 3 3 3  4  4
-
 Iteration 6:
+   nh s o m pi ce talr
+    2 3 3 3  4  4    4
+Iteration 7:
    o m pi ce talr nhs
    3 3  4  4    4   5
-
-Iteration 7:
+Iteration 8:
    pi ce talr nhs om
     4  4    4   5  6
-
-Iteration 8:
+Iteration 9:
    talr nhs om pice
       4   5  6    8
-
-Iteration 9:
+Iteration 10:
    om pice talrnhs
     6    8       9
-
-Iteration 10:
+Iteration 11:
    talrnhs ompice
          9     14
-
-Iteration 11:
+Iteration 12:
    talrnhsompice
               23
 ```
@@ -144,42 +133,85 @@ t   a   l   r   n   h   s   p   i   c   e   o   m
                                                 111
 ```
 
-5. Encode
+5. Encode/Decode
 
 ```
 o   p    t    i    m   a    l    c    o   m   p    r    e    s   s   i    o   n
 110 1000 0000 1001 111 0001 0010 1010 110 111 1000 0011 1011 011 011 1001 110 0100
 ```
 
-6. Decode
-   - Start at the root and go left with a $0$ and right with a $1$.
-
 ## [Code](#huffman-codes)
 
 ### [Generating huffman codes](#huffman-codes)
+
 ```C++
 unordered_map<char, string> huffmanCodes(string_view message) {
+   unordered_map<char, string> codes;
+
    // Count the occurrences of each letter
    unordered_map<char, int> occurrences;
    for (char c : occurrences) {
       occurrences[c]++;
    }
 
-   // Create priority queue
-   priority_queue<node<string, int>> ;
+   /*
+		struct Node {
+			T data;
+			Node* left = nullptr;
+			Node* right = nullptr;
+		}
+   */
 
-   for (char c : value) {
-      if () // c is in occurences
-         // +1 to occurences
-      else {
-         pair<string, int> newOccurrence(c, 1);
-         occurrences.push_back(newOccurrence);
-      }
+   // Create and fill priority queue
+   priority_queue<BinaryTree::Node<pair<string, int>>*> nodeQueue;
+
+   for (pair<char, int> character : occurrences) {
+      BinaryTree::Node* node = new BinaryTree::Node<pair<string, int>>;
+      node->data.first = character.first; // Set string name
+      node->data.second = character.second; // Set occurrences count
+      nodeQueue.push_back(node);
    }
 
    // Create binary tree
+   while (nodeQueue.size() > 1) {
+      BinaryTree::Node<pair<string, int>>* firstNode = nodeQueue.pop();
+      BinaryTree::Node<pair<string, int>>* secondNode = nodeQueue.pop();
+      // Combine nodes
+      BinaryTree::Node* newNode = new BinaryTree::Node<pair<string, int>>;
+      newNode->data.first = firstNode->data.first + secondNode->data.first;
+      newNode->data.second = firstNode->data.second + secondNode->data.second;
+      newNode->left = firstNode;
+      newNode->right = secondNode;
+      // Push combined node back into priority queue
+      nodeQueue.push(newNode);
+   }
 
    // Create codes from binary tree
+   BinaryTree::Node<pair<string, int>>* parent = nullptr;
+   BinaryTree::Node<pair<string, int>>* root = nodeQueue.pop();
+   BinaryTree::Node<pair<string, int>>* curRoot = root;
+   string curCode = "";
+   while (true) { // Something to do with curRoot == root?
+      if (curRoot->left) {
+         parent = curRoot;
+         curRoot = curRoot->left;
+         curCode += "0";
+         continue;
+      }
+      if (curRoot->right) {
+         
+      }
+      char character = curRoot->data.first[0];
+      codes[character] = curCode;
+   }
+   // if left child
+   // if right child
+      // set parent
+      // set new root
+   // Get string of 1/0s
+   // Add to output
+
+   // Free memory? or does this happen when they go out of scope?
 }
 ```
 
