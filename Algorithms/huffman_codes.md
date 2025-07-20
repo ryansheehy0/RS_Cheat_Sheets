@@ -3,17 +3,13 @@
 # Huffman Codes
 Optimal(min bits) loss-less variable length compression algorithm.
 
-- Questions
-   - How do you send the codes along with the encoding?
-   - How do you decode efficiently from just the array of codes, without creating a binary tree?
-
 ```
   +-------+                                         +-----+
   | Alice | --------------------------------------> | Bob |
   +-------+                                         +-----+
-  1. Generate Huffman codes from message            1. Extract Huffman codes
-  2. Encode message using codes                     2. Decode message using codes
-  3. Send encoded message + codes
+  1. Generate Huffman codes from message            1. Decode message using codes
+  2. Encode message using codes
+  3. Send codes, then encoded message
 ```
 
 | Operation                | Big O      |
@@ -30,6 +26,7 @@ Optimal(min bits) loss-less variable length compression algorithm.
 	- [Encoding](#encoding)
 	- [Decoding](#decoding)
 - [Huffman codes for english](#huffman-codes-for-english)
+- [Math/Proof](#mathproof)
 - [Variations](#variations)
 
 <!-- /TOC -->
@@ -261,4 +258,16 @@ string huffmanDecode(unordered_map<char, int>, string message);
 
 Using english Huffman Codes is more efficient for short messages because you don't need to send the codes along with the message. It's only worth encoding a message with its own Huffman codes if `custom encoding length + custom codes length < english encoding length`
 
-## Variations
+## [Math/Proof](#huffman-codes)
+- Constraints
+   - Each character gets a unique binary code.
+   - Loss-less
+   - 
+- What does optimal mean?
+   - Sending too many bits is inefficient.
+   - Sending too few loses information.
+   - The optimal number of bits encodes the message fully with no waste.
+- Prove that it's optimal.
+
+## [Variations](#huffman-codes)
+- **Canonical Huffman** - Adjust Huffman codes so only the bit lengths for each character must be sent to the decoder.

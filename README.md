@@ -47,6 +47,7 @@
 	- [Binary Search Tree](./Data_Structures/binary_search_trees.md)
 		- [AVL Tree](./Data_Structures/avl_tree.md)
 		- Red Black Tree
+		- Splay Tree - When access, move to root. Over time, frequently accessed items stay near the top.
 - [Hash Tables](./Data_Structures/hash_tables.md)
 - [Heaps](./Data_Structures/heaps.md)
 - [Graphs](./Data_Structures/graphs.md)
