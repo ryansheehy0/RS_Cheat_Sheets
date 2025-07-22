@@ -4,7 +4,7 @@
 
 - [Tools](#tools)
 - [C++](#c)
-- [Low Level Programming](#low-level-programming)
+- [Embedded Programming](#embedded-programming)
 - [Data Structures](#data-structures)
 - [Algorithms](#algorithms)
 - [Web Dev](#web-dev)
@@ -34,11 +34,11 @@
 - [C++ Data Structures, Iterators, and Algorithms](./C++/cpp_data_structures_iterators_and_algorithms.md)
 - [C++ Smart Pointers](./C++/cpp_smart_pointers.md)
 
-## [Low Level Programming](#ryan-sheehy-cheat-sheets)
-- [Low level concepts](./Low_Level_Programming/low_level_concepts.md)
-- [How A CPU Works](./Low_Level_Programming/How_A_CPU_Works/how_a_cpu_works.md)
-- [x86 Assembly](./Low_Level_Programming/x86_assembly.md)/[MASM](./Low_Level_Programming/masm.md)
-- [Serial Communications](./Low_Level_Programming/serial_communication.md)
+## [Embedded Programming](#ryan-sheehy-cheat-sheets)
+- [Low level concepts](./Embedded_Programming/low_level_concepts.md)
+- [How A CPU Works](./Embedded_Programming/How_A_CPU_Works/how_a_cpu_works.md)
+- [x86 Assembly](./Embedded_Programming/x86_assembly.md)/[MASM](./Embedded_Programming/masm.md)
+- [Serial Communications](./Embedded_Programming/serial_communication.md)
 
 ## [Data Structures](#ryan-sheehy-cheat-sheets)
 - [Stacks, Queues, and Lists](./Data_Structures/stacks_queues_and_lists.md)

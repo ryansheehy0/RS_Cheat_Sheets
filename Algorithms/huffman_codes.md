@@ -31,6 +31,9 @@ Optimal(min bits) loss-less variable length compression algorithm.
 
 <!-- /TOC -->
 
+DIY 5in quad-copter
+
+
 ## [Algorithm](#huffman-codes)
 Example message: optimal compression scheme
 1. Count the occurrences of each character.

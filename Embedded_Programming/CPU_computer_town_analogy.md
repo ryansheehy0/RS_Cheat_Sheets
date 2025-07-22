@@ -1,4 +1,4 @@
-[Home](../README.md#low-level-programming)
+[Home](../README.md#embedded-programming)
 
 # CPU computer town analogy
 - Image you have a main street with buildings on the left and right.
