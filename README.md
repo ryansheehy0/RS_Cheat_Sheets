@@ -28,11 +28,13 @@
 ## [C++](#ryan-sheehy-cheat-sheets)
 - [Make Files](./C++/make_files.md)
 - GNU Debugger
-- [C++](./C++//cpp.md)
-- [C++ Standard Libraries](./C++/cpp_standard_libraries.md)
-- [C++ Non Standard Libraries](./C++/cpp_non_standard_libraries.md)
-- [C++ Data Structures, Iterators, and Algorithms](./C++/cpp_data_structures_iterators_and_algorithms.md)
-- [C++ Smart Pointers](./C++/cpp_smart_pointers.md)
+- [C++ Notes](./C++/cpp.md)
+- [Standard Libraries](./C++/cpp_standard_libraries.md)
+	- Iterators
+	- [Data Structures](./C++/cpp_data_structures.md)
+- Non Standard Libraries
+- Memory Management
+- Concurrency
 
 ## [Embedded Programming](#ryan-sheehy-cheat-sheets)
 - [Low level concepts](./Embedded_Programming/low_level_concepts.md)
@@ -93,4 +95,3 @@
 - [Trigonometric Functions](./Math/trigonometric_functions.md)
 - [Newtons Method](./Algorithms/Newtons_Method/newtons_method.md)
 - [Taylor Series](./Algorithms/Taylor_Series/taylor_series.md)
-- Propositional logic

@@ -1,1 +1,8 @@
 - crypto++
+- Boost - Large collection of utilities for smart pointers, regex, math, and more.
+- fmt - Fast, safe formatting (used in std::format).
+- spdlog - Lightweight, fast logging library.
+- Eigen - Linear algebra for matrices, vectors, and math.
+- GLM - Math library for graphics (OpenGL-style).
+- SFML - Simple multimedia/game development framework.
+- Poco - Networking, file system, and application-level utilities.

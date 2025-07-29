@@ -1,6 +1,6 @@
 [Home](../README.md#c)
 
-# C++ Data Structures, Iterators, and Algorithms
+# C++ Data Structures
 
 <!-- TOC -->
 
