@@ -1,4 +1,5 @@
 # Ryan Sheehy Cheat Sheets
+My personal notes(some are unfinished).
 
 <!-- TOC -->
 

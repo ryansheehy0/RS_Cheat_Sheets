@@ -21,7 +21,7 @@ Optimal(min bits) loss-less variable length compression algorithm.
 <!-- TOC -->
 
 - [Algorithm](#algorithm)
-- [Code](#code)
+- [Code - Not Done](#code---not-done)
 	- [Generating huffman codes](#generating-huffman-codes)
 	- [Encoding](#encoding)
 	- [Decoding](#decoding)
@@ -137,7 +137,7 @@ o   p    t    i    m   a    l    c    o   m   p    r    e    s   s   i    o   n
 
 - **Canonical Huffman** is a common variant where it adjusts Huffman codes so only the bit lengths for each character must be sent to the decoder.
 
-## [Code](#huffman-codes)
+## [Code - Not Done](#huffman-codes)
 
 ### [Generating huffman codes](#huffman-codes)
 - Is there a way to get a node from a binary search tree and re-construct a binary search tree?

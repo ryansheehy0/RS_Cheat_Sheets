@@ -1,27 +1,20 @@
 [Home](../README.md#c)
 
 # C++ Standard Libraries
-You can find libraries at `https://cplusplus.com/reference/<library>`
+- `using std namespace;` is assumed for these libraries.
 
-The standard libraries are any library that uses namespace std.
-- It's assumed that `using std namespace;` is being used.
 
-- std::stack
-- Queues
-	- std::queue
-	- std::priority_queue
-- std::bitset
-- std::pair
-- std::tuple
+- std::pair - key value pair
+- std::tuple - Fixed size collection of values of potentially different types.
+	- Useful for returning multiple values form a function. You don't have to define a struct.
 - std::optional
-	- Is this a data type?
 - std::Variant
+- std::initializer_list
 
 <!-- TOC -->
 
 - [iostream](#iostream)
-- [string](#string)
-	- [String Stream](#string-stream)
+- [String Stream](#string-stream)
 - [cmath](#cmath)
 	- [ctime](#ctime)
 - [cstdlib](#cstdlib)
@@ -30,55 +23,38 @@ The standard libraries are any library that uses namespace std.
 - [fstream](#fstream)
 - [optional](#optional)
 - [characters functions](#characters-functions)
-- [string_view](#string_view)
 
 <!-- /TOC -->
 
 ## [iostream](#c-standard-libraries)
+Used for reading user input data from the terminal and outputting to the terminal.
 
-|                       |                                                     |
-|-----------------------|-----------------------------------------------------|
-| `cout << "string";`   | Output to console                                   |
-|                       | Floats don't output `.0`. `99` not `99.0`           |
-| `cout << endl;`       | Outputs new line. Same as `\n`                      |
-| `cin >> var`          | User input from console                             |
-|                       | Inputs are separated by white spaces                |
-|                       | If user enters an invalid input it returns false    |
-|                       | Keeps new lines in the buffer                       |
-| `cin >> var1 >> var2` | Multiple inputs on one line                         |
-| `.ignore()`           | Ignores the next character                          |
-| `.get(ch)`            | Gets the next character in the buffer including new |
-| `.clear()`            | Clears the flags include end of file(eof) flag      |
+- `#include <iostream>`
 
-- `.seekg(offset, std::ios_base::beg)`
-	- Sets the position of the input pointer for the stream
-	- Ex: `file.seekg(0, ios_base::beg);`
-- `cin >> ws` discards white spaces
+| Method                                   | Description                                                                         |
+|------------------------------------------|-------------------------------------------------------------------------------------|
+| `istream& cin`                           | Input stream                                                                        |
+| `ostream& cout`                          | Output stream. Buffered by default.                                                 |
+| `ostream& cerr`                          | Unbuffered(write to console immediately) error stream                               |
+| `ostream& clog`                          | Buffered error stream                                                               |
+| `ostream& operator<<(ostream&, constT&)` | Outputs value to stream.                                                            |
+| `istream& operator>>(istream&, T&)`      | Inputs value split by whitespace, returns false if invalid, newline stays in buffer |
+| `endl`                                   | `\n` and flushes the stream                                                         |
+| `int istream.get()`                      | Gets the next char from the buffer or -1 for EOF                                    |
+| `ostream& ostream.put(char)`             | Writes one character                                                                |
+| `istream& istream.ignore()`              | Ignores the next character                                                          |
+| `int istream.peek()`                     | Returns the next character without indexing.                                        |
+| `bool eof()`                             | Checks end of file                                                                  |
+| `bool fail()`                            | Stream operation fail not from EOF like imputing the wrong type of character        |
+| `void istream.clear()`                   | Clears flags including EOF flag                                                     |
+| `ostream& ostream.flush()`               | Forces any buffered output to be writhen to the console.                            |
+| `istream& istream.seekg(offset, pos)`    | Moves input pointer to new pos. `ios::beg, cur, end` are common pos                 |
 
-## [string](#c-standard-libraries)
+- Floats output `99` not `99.0`
+- Can do multiple in one line: `cin >> var1 >> var2`
+- Discards white spaces: `cin >> ws`
 
-|                                    |                                               |
-|------------------------------------|-----------------------------------------------|
-| `string str = "str";`              | If not initialized it will be an empty string |
-| `getline(cin, str);`               | Gets all remaining text in the current buffer |
-|                                    | Gets up to the next new line                  |
-|                                    | Doesn't include the new line in str           |
-|                                    | Removes the ending new line in the buffer     |
-| `str.size()`                       |                                               |
-| `str.at(index)`                    | returns char                                  |
-| `str.replace(index, length, str2)` | Replaces starting at index                    |
-| `str.find(str2)`                   | Gets the starting index of the string         |
-|                                    | Returns `string::npos` if nothing was found   |
-| `std::string(1, char)`             | Convert char to a string one 1                |
-
-| Converting to other types |                                    |
-|---------------------------|------------------------------------|
-| `stoi`                    | String to int                      |
-| `stoul`                   | String to unsigned int             |
-| `stod`                    | String to double                   |
-| `to_string`               | Converts an int or float to string |
-
-### [String Stream](#c-standard-libraries)
+## [String Stream](#c-standard-libraries)
 `#include <sstream>`
 
 Used to treat a string as a stream. The underlying string doesn't change.
@@ -218,22 +194,3 @@ int main() {
 | `std::isblank`  | Is a space or tab                                      |
 | `std::isalpha`  | Is lower or upper case letter                          |
 | `std::isalnum`  | Is lower, upper, or number                             |
-
-## [string_view](#c-standard-libraries)
-```C++
-#include <string_view>
-using std::string_view;
-```
-
-string_view is simply a pointer and a size.
-
-It provides read-only access to a string or character data.
-
-It avoids heap allocation, making it more efficient.
-
-```C++
-string_view name = "Ryan Sheehy";
-string_view firstName(name.data(), 4);
-int lastNameLen = name.size() - firstName.size() - 1;
-string_view lastName(name.data() + 5, lastNameLen);
-```
