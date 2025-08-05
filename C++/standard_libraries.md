@@ -17,6 +17,7 @@
 - [cctype](#cctype)
 - [pair](#pair)
 - [tuple](#tuple)
+- [algorithm](#algorithm)
 
 <!-- /TOC -->
 
@@ -217,3 +218,17 @@ Fixed size collection of values. Useful for returning multiple values from a fun
 | `T& get<I>(tuple)`                          | Get and set element at index `I`        |
 | `std::tie(v1, v2, ...) = tuple;`            | Creates references of each tuple value. |
 | `tuple<...> make_tuple(T1, T2, ...)`        | Creates a tuple by inferring the types. |
+
+## [algorithm](#c-standard-libraries)
+Algorithms that use iterators.
+
+- `#include <algorithm>`
+
+| Function                                                        | Description                               |
+|-----------------------------------------------------------------|-------------------------------------------|
+| `void fill(iterator first, iterator last, value)`               | Fills range with values.                  |
+| `void sort(iterator first, iterator last)`                      | Sorts range in ascending order.           |
+| `OutputIt copy(InputIt first, InputIt last, OutputIt outFirst)` | Copies range to another. Returns outLast. |
+| `iterator find(iterator first, iterator last, value)`           | Finds the first occurrence of value.      |
+| `size_t count(iterator first, iterator last, value)`            | Counts occurrences of value.              |
+| `void reverse(iterator first, iterator last)`                   | Reverses elements in range.               |
