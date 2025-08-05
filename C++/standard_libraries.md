@@ -1,28 +1,22 @@
 [Home](../README.md#c)
 
 # C++ Standard Libraries
-- `using std namespace;` is assumed for these libraries.
-
-
-- std::pair - key value pair
-- std::tuple - Fixed size collection of values of potentially different types.
-	- Useful for returning multiple values form a function. You don't have to define a struct.
-- std::optional
-- std::Variant
-- std::initializer_list
+`using std namespace;` is assumed for these libraries.
 
 <!-- TOC -->
 
 - [iostream](#iostream)
 - [String Stream](#string-stream)
 - [cmath](#cmath)
-	- [ctime](#ctime)
+- [ctime](#ctime)
 - [cstdlib](#cstdlib)
 - [iomanip](#iomanip)
 - [typeinfo](#typeinfo)
 - [fstream](#fstream)
 - [optional](#optional)
-- [characters functions](#characters-functions)
+- [cctype](#cctype)
+- [pair](#pair)
+- [tuple](#tuple)
 
 <!-- /TOC -->
 
@@ -31,7 +25,7 @@ Used for reading user input data from the terminal and outputting to the termina
 
 - `#include <iostream>`
 
-| Method                                   | Description                                                                         |
+| Functions                                | Description                                                                         |
 |------------------------------------------|-------------------------------------------------------------------------------------|
 | `istream& cin`                           | Input stream                                                                        |
 | `ostream& cout`                          | Output stream. Buffered by default.                                                 |
@@ -55,73 +49,90 @@ Used for reading user input data from the terminal and outputting to the termina
 - Discards white spaces: `cin >> ws`
 
 ## [String Stream](#c-standard-libraries)
-`#include <sstream>`
+Used to treat a string as a stream.
 
-Used to treat a string as a stream. The underlying string doesn't change.
+- `#include <sstream>`
 
-- using namespace std
-
-|                           |                                                                    |
+| Functions                 | Description                                                        |
 |---------------------------|--------------------------------------------------------------------|
 | `ostringstream`           | Output string stream. Used for `<<`s                               |
 | `istringstream`           | Input string stream. Used for `>>`s.                               |
 | `stringstream`            | Input and Output string stream                                     |
-| `stringstream ss(string)` | Opens string stream                                                |
+| `stringstream ss(string)` | Creates a string stream                                            |
 | `ss << "string";`         | Concatenates to the string stream, but not the constructor string. |
 | `ss >> str;`              | Puts the next word into str. Words are separated by spaces.        |
 
 ## [cmath](#c-standard-libraries)
-- Floating point math operations
+Floating point math operations.
 
-|                       |                                    |
-|-----------------------|------------------------------------|
-| `pow(base, exponent)` |                                    |
-| `sqrt(x)`             |                                    |
-| `fabs(x)`             | absolute value                     |
-| `ceil(x)`             | Round up                           |
-| `floor(x)`            | Round down                         |
-| `rand()`              | Random int from `0` and `RAND_MAX` |
-| `M_PI`                |                                    |
+- `#include <cmath>`
 
-### [ctime](#c-standard-libraries)
+| Functions                       | Description                   |
+|---------------------------------|-------------------------------|
+| `pow(base, exponent)`           |                               |
+| `sqrt(x)`                       |                               |
+| `fabs(x)`                       | absolute value                |
+| `ceil(x)`                       | Round up                      |
+| `floor(x)`                      | Round down                    |
+| `sin(x)`, `cos(x)`, `tan(x)`    |                               |
+| `asin(x)`, `acos(x)`, `atan(x)` | Inverse trig function.        |
+| `log(x)`, `log10(x)`            | Natural and base 10 log       |
+| `exp(x)`                        | e to the power of x           |
+| `fmod(x, y)`                    | x % y with the same sign as x |
+| `hypot(x, y)`                   | $\sqrt(x^2 + y^2)$            |
+
+## [ctime](#c-standard-libraries)
+Time function.
+
 - `#include <ctime>`
-- `srand(time(0));`
-	- Sets the seed for random number
+
+| Function                  | Description                          |
+|---------------------------|--------------------------------------|
+| `time_t time(t)`          | Current time in seconds since epoch  |
+| `double difftime(t1, t2)` | Difference in seconds                |
+| `char* ctime(&t)`         | Converts time_t to readable string   |
+| `tm* localtime(&t)`       | Converts time_t to local time struct |
+| `tm* gmtime(&t)`          | Converts time_t to UTC time struct   |
+| `time_t mktime(&tm)`      | Converts tm struct to time_t         |
 
 ## [cstdlib](#c-standard-libraries)
-- Integer math operations
+Integer math operations.
 
-|          |                        |
-|----------|------------------------|
-| `abs()`  |                        |
-| `atoi()` | Converts string to int |
+- `#include <cstdlib>`
+
+| Functions           | Description                                        |
+|---------------------|----------------------------------------------------|
+| `int abs(x)`        |                                                    |
+| `void srand(seed)`  | Seeds random number generator                      |
+| `int rand()`        | Random int from `0` to `RAND_MAX`                  |
+| `void exit(status)` | Terminates the program with status code. 1 - error |
 
 ## [iomanip](#c-standard-libraries)
+Stream input and output formatting.
 
-|                             |                                              |
-|-----------------------------|----------------------------------------------|
-| `cout << fixed`             | `setprecision` counts after decimal point    |
-| `cout << setprecision(num)` | Limits float digits                          |
-|                             | Continually active                           |
-|                             | Rounds the output                            |
-| `cout << setw(10)`          | Sets width of output                         |
-|                             | Only valid for the value directly after `<<` |
-|                             | Aligns output to the right side              |
-|                             | Value larger than `setw` then it ignored     |
-| `cout << right;`            | Justify right                                |
-| `cout << left;`             | Justify left                                 |
+- `#include <iomanip>`
 
-- `cout << setprecision(2) << 9.99999;`
-	- Ex: `10`
-- `cout << fixed << setprecision(2) << 9.99999;`
-	- Ex: `10.00`
-- If no fixed and exceeds bounds of `setprecision`, then it's outputted in scientific notation
-	- Ex: `cout << setprecision(2) << 146.789;` outputs `1.5e+02`
+| Function          | Description                                                     |
+|-------------------|-----------------------------------------------------------------|
+| `setw(n)`         | Sets width of next input/output. ANy values larger are ignored. |
+| `setprecision(n)` | Number of digits for floats.                                    |
+| `fixed`           | `setprecision` counts after decimal point                       |
+| `setfill(char)`   | Sets extra characters for overflow with `setw(n)`               |
+| `right`          | Justify right                                                   |
+| `left`           | Justify left                                                    |
+
+- Examples:
+	- `cout << setprecision(2) << 9.99999;` Outputs: `10`
+	- `cout << fixed << setprecision(2) << 9.99999;` Outputs: `10.00`
+	- `cout << setprecision(2) << 146.789;` Outputs: `1.5e+02`
 
 ## [typeinfo](#c-standard-libraries)
+Gets type of variable.
+
+- `#include <typeinfo>`
 - `typeid(var).name()` gives a string of the type of variable.
 
-| returned | Type     |
+| Returned | Type     |
 |----------|----------|
 | `d`      | double   |
 | `c`      | char     |
@@ -130,17 +141,19 @@ Used to treat a string as a stream. The underlying string doesn't change.
 | `K`      | constant |
 
 ## [fstream](#c-standard-libraries)
-- Reading and writing to files
+Reading and writing to files.
 
-|                             |                                             |
-|-----------------------------|---------------------------------------------|
-| `ifstream`                  | Reading file                                |
-| `ofstream`                  | Writing file. Opens a new one if not found. |
-| `fstream`                   | Reading and writing                         |
-| `fstream file("name.txt");` | Open file                                   |
-| `file.open("name.txt");`    | Also opens the file                         |
-| `file.close();`             | Closes a file                               |
-| `file.is_open()` and `file` | Checks if it opened                         |
+- `#include <fstream>`
+
+| Function                    | Description                                      |
+|-----------------------------|--------------------------------------------------|
+| `ifstream`                  | Reading from a file                              |
+| `ofstream`                  | Writing to a file. Opens a new one if not found. |
+| `fstream`                   | Reading and writing.                             |
+| `fstream file("name.txt");` | Opens file                                       |
+| `file.open("name.txt");`    | Also opens the file                              |
+| `file.close();`             | Closes a file                                    |
+| `file.is_open()`            | Checks if it opened                              |
 
 - A file acts like a regular buffer
 	- `file << "concatenate";`
@@ -148,49 +161,59 @@ Used to treat a string as a stream. The underlying string doesn't change.
 	- `getline(file, line);`
 
 ## [optional](#c-standard-libraries)
-Optional is used when there is the possiility that you cannot get any code back?
+Value that may or may not be present. Helps avoid using null pointers or sentinel values(Ex: End of file).
 
-```C++
-optional<string> openFile(string fileName) {
-	fstream file(fileName);
-	if (!file) return {} // No data
+- `#include <optional>`
 
-	string contents;
-	stringstream contents_stream;
-	contents_stream << file.rdbuf();
-	contents = contents_stream.str();
-	file.close();
+| Function                         | Description                             |
+|----------------------------------|-----------------------------------------|
+| `bool has_value()`               | Checks if value exists.                 |
+| `const T& value()`               | Gets value. Throws if empty.            |
+| `T value_or(default)`            | Returns the value or a default if empty |
+| `void reset()`                   | Makes value empty                       |
+| `std::nullopt`                   | Empty value                             |
+| `optional<int> x = 10;`          | Assigns value                           |
+| `T& emplace(ConstructorArgs...)` | Constructs a new value in place.        |
 
-	return contents;
-}
+## [cctype](#c-standard-libraries)
+Character functions.
 
-int main() {
-	optional<fstream> file = openFile("test.cpp");
-	if (!file){
-		cout << "Error opening test.cpp" << endl;
-		return 1;
-	}
-}
-```
+- `#include <cctype>`
 
-- `.emplace(constructor args)` - used to construct a new object of the optional type.
+| Function              | Description                                            |
+|-----------------------|--------------------------------------------------------|
+| `char toupper(char)`  | Upper case                                             |
+| `char tolower(char)`  | Lower case                                             |
+| `bool isxdigit(char)` | Is hexadecimal numeric character                       |
+| `bool isupper(char)`  | Is upper case character                                |
+| `bool isspace(char)`  | Is a whitespace character. Spaces, tabs, and new lines |
+| `bool ispunct(char)`  | Is a punctuation/special character                     |
+| `bool islower(char)`  | Is lower case character                                |
+| `bool isdigit(char)`  | Is a digit                                             |
+| `bool isblank(char)`  | Is a space or tab                                      |
+| `bool isalpha(char)`  | Is lower or upper case letter                          |
+| `bool isalnum(char)`  | Is lower, upper, or number                             |
 
-- There's the `optionalVar.value_or(value)` which returns the value in optionalVar if it's there or the value inside the `()`s if it's not.
+## [pair](#c-standard-libraries)
+Key value pair.
 
-## [characters functions](#c-standard-libraries)
-`#include <cctype>`
-- All of these functions take in char arguments.
+- `#include <utility>`
 
-| Function        | Description                                            |
-|-----------------|--------------------------------------------------------|
-| `std::toupper`  | Convert to upper case                                  |
-| `std::tolower`  | Convert to lower case                                  |
-| `std::isxdigit` | Is hexadecimal numeric character                       |
-| `std::isupper`  | Is upper case character                                |
-| `std::isspace`  | Is a whitespace character. Spaces, tabs, and new lines |
-| `std::ispunct`  | Is a punctuation/special character                     |
-| `std::islower`  | Is lower case character                                |
-| `std::isdigit`  | Is a digit                                             |
-| `std::isblank`  | Is a space or tab                                      |
-| `std::isalpha`  | Is lower or upper case letter                          |
-| `std::isalnum`  | Is lower, upper, or number                             |
+| Function                         | Description                           |
+|----------------------------------|---------------------------------------|
+| `.first`                         | Get or update first value             |
+| `.second`                        | Get or update second value            |
+| `pair<T1, T2> make_pair(T1, T2)` | Creates a pair by inferring the type. |
+
+## [tuple](#c-standard-libraries)
+Fixed size collection of values. Useful for returning multiple values from a function instead of using a struct.
+
+- `#include <tuple>`
+
+| Function                                    | Description                             |
+|---------------------------------------------|-----------------------------------------|
+| `size_t tuple_size<decltype(tuple)>::value` | Number of elements in a tuple           |
+| `tuple<...> tuple_cat(t1, t2, ...)`         | Concatenates tuple2 onto tuple          |
+| `T& get<I>(tuple)`                          | Get and set element at index `I`        |
+| `std::tie(v1, v2, ...) = tuple;`            | Creates references of each tuple value. |
+| `tuple<...> make_tuple(T1, T2, ...)`        | Creates a tuple by inferring the types. |
