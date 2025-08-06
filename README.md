@@ -30,9 +30,9 @@ My personal notes(some are unfinished).
 - [Make Files](./C++/make_files.md)
 - GNU Debugger
 - [C++ Notes](./C++/cpp.md)
-- [Standard Libraries](./C++/cpp_standard_libraries.md)
+- [Standard Libraries](./C++/standard_libraries.md)
 	- Iterators
-	- [Data Structures](./C++/cpp_data_structures.md)
+	- [Data Structures](./C++/data_structures.md)
 - Non Standard Libraries
 - Memory Management
 - Concurrency
