@@ -8,16 +8,6 @@
 - [iostream](#iostream)
 - [String Stream](#string-stream)
 - [cmath](#cmath)
-- [ctime](#ctime)
-- [cstdlib](#cstdlib)
-- [iomanip](#iomanip)
-- [typeinfo](#typeinfo)
-- [fstream](#fstream)
-- [optional](#optional)
-- [cctype](#cctype)
-- [pair](#pair)
-- [tuple](#tuple)
-- [algorithm](#algorithm)
 
 <!-- /TOC -->
 
@@ -81,6 +71,14 @@ Floating point math operations.
 | `exp(x)`                        | e to the power of x           |
 | `fmod(x, y)`                    | x % y with the same sign as x |
 | `hypot(x, y)`                   | $\sqrt(x^2 + y^2)$            |
+
+- Trig functions use radians
+
+```C++
+const double PI = 3.141592653589793;
+double _toRadians(double degrees) { return degrees * (PI / 180.0); }
+double _toDegrees(double radians) { return radians * (180.0 / PI); }
+```
 
 ## [ctime](#c-standard-libraries)
 Time function.

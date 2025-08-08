@@ -31,8 +31,7 @@ My personal notes(some are unfinished).
 - GNU Debugger
 - [C++ Notes](./C++/cpp.md)
 - [Standard Libraries](./C++/standard_libraries.md)
-	- Iterators
-	- [Data Structures](./C++/data_structures.md)
+- [Data Structures](./C++/data_structures.md)
 - Non Standard Libraries
 - Memory Management
 - Concurrency
@@ -42,6 +41,7 @@ My personal notes(some are unfinished).
 - [How A CPU Works](./Embedded_Programming/How_A_CPU_Works/how_a_cpu_works.md)
 - [x86 Assembly](./Embedded_Programming/x86_assembly.md)/[MASM](./Embedded_Programming/masm.md)
 - [Serial Communications](./Embedded_Programming/serial_communication.md)
+- [Quadcopter](./Embedded_Programming/Quadcopter/quadcopter.md)
 
 ## [Data Structures](#ryan-sheehy-cheat-sheets)
 - [Stacks, Queues, and Lists](./Data_Structures/stacks_queues_and_lists.md)
@@ -66,7 +66,6 @@ My personal notes(some are unfinished).
 	- RSA
 	- Diffie-Hellman Key Exchange(Include 2 lock key exchange)
 - Error correction: Read-Solomon Codes
-- PIDs
 
 ## [Web Dev](#ryan-sheehy-cheat-sheets)
 - [Deploying Websites](./Web_Dev/deploying_websites.md)

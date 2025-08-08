@@ -8,6 +8,7 @@
 - [Greatest Common Divisor](#greatest-common-divisor)
 	- [Least common multiple](#least-common-multiple)
 - [Testing prime](#testing-prime)
+- [PIDs](#pids)
 
 <!-- /TOC -->
 
@@ -149,5 +150,32 @@ int powerMod(int base, int exponent, int mod) const { // O(log exponent)
 		exponent >>= 1;
 	}
 	return result;
+}
+```
+
+## [PIDs](#miscellaneous-algorithms)
+PIDs are a control algorithm to get a value to a set point.
+
+- Proportional - Provides the majority of the corrective force to get it to the set point.
+- Integral - Gradually increases power if it cannot reach the set point.
+- Derivative - Prevent oscillations and overshoots by limiting the rate of change of the error.
+
+```C++
+const double P = 1.0;
+const double I = 0.01;
+const double D = 0.1;
+
+double integral = 0;
+double prevError = 0;
+
+double pid(double deltaTime, double measuredValue, double setPoint) {
+	double error = setPoint - measuredValue;
+
+	double proportional = P * error;
+	integral += I * error * deltaTime;
+	double derivative = D * ((error - prevError) / deltaTime);
+	prevError = error;
+
+	return proportional + integral + derivative;
 }
 ```
