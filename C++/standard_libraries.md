@@ -8,6 +8,16 @@
 - [iostream](#iostream)
 - [String Stream](#string-stream)
 - [cmath](#cmath)
+- [ctime](#ctime)
+- [cstdlib](#cstdlib)
+- [iomanip](#iomanip)
+- [typeinfo](#typeinfo)
+- [fstream](#fstream)
+- [optional](#optional)
+- [cctype](#cctype)
+- [pair](#pair)
+- [tuple](#tuple)
+- [algorithm](#algorithm)
 
 <!-- /TOC -->
 

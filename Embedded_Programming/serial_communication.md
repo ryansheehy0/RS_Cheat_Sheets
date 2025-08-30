@@ -72,8 +72,8 @@ Protocol-Specific Features – Some protocols (e.g., SPI, I²C, CAN) include uni
 - Ports
 	- CS - Chip select
 	- SCK - Serial clock signal
-	- MOSI - Master out slave in
-	- MISO - Master in slave out
+	- MOSI - Master out slave in. Master pin is TX.
+	- MISO - Master in slave out. Master pin is RX.
 - QSPI - Quad SPI. 2 MOSI and MISO.
 
 ## I2C - Inter Integrated Circuit

@@ -6,3 +6,4 @@
 - GLM - Math library for graphics (OpenGL-style).
 - SFML - Simple multimedia/game development framework.
 - Poco - Networking, file system, and application-level utilities.
+- OpenCV - Image processing

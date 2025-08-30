@@ -279,7 +279,7 @@ namespaceName::x = 10;
 | `ptr->`                 | Is the same as `(*ptr).`                                            |
 | `const int* xPtr = &x;` | Pointer to a const int. Can't change the dereference.               |
 | `int* const xPtr = &x;` | Pointer to an int, but the pointer cannot change.                   |
-%MCEPASTEBIN%
+
 - `++` has higher precedence than dereferencing a pointer.
 	- Ex: `(*ptr)++` instead of `*ptr++`
 

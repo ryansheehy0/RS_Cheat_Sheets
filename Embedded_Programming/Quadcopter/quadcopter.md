@@ -5,6 +5,11 @@
 	- https://youtu.be/CHSYgLfhwUo?si=s1MkVbNufxyR_suc
 	- https://youtu.be/0rlvvYgmTvI?si=0sxe8YaUOBg4irM4
 
+- Simple -> Complex
+	- Acro mode -> Stabilized mode
+		- Complimentary filter -> Madgwick filter
+		- Average filter -> Butterworth filter
+
 <!-- TOC -->
 
 - [Mechanical](#mechanical)
