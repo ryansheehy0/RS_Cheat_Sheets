@@ -40,7 +40,7 @@ My personal notes(some are unfinished).
 - [Low level concepts](./Embedded_Programming/low_level_concepts.md)
 - [How A CPU Works](./Embedded_Programming/How_A_CPU_Works/how_a_cpu_works.md)
 - [x86 Assembly](./Embedded_Programming/x86_assembly.md)/[MASM](./Embedded_Programming/masm.md)
-- [Serial Communications](./Embedded_Programming/serial_communication.md)
+- [Serial Protocols](./Embedded_Programming/serial_protocols.md)
 - [Quadcopter](./Embedded_Programming/Quadcopter/quadcopter.md)
 
 ## [Data Structures](#ryan-sheehy-cheat-sheets)
