@@ -64,7 +64,7 @@ The problem with this is that error accumulates, causing the angle estimation to
 
 #### [Angles from accelerometer](./quadcopter.md)
 The acceleration from each axis must be converted into an angle.
-- $\theta_{pitch} = $ atan( $-Acc_x$ / sqrt( $Acc^{2}_{y}$ + $Acc^{2}_{z}$ ))
+- $\theta_{pitch} = $ atan( $-Acc_x$ / sqrt( $Acc^{2}_{y} + Acc^{2}_{z}$ ))
 
 - $atan( -Acc_x / sqrt( }$ $Acc^{2}_{y} + Acc^{2}_{z}$ $\text{ ) )}$
 - $\theta_{roll} = atan( Acc_y / \sqrt(Acc^{2}_{x} + Acc^{2}_{z}) )$
