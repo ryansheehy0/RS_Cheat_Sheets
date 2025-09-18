@@ -34,7 +34,7 @@ Quadcopters allow you to control all 3 axes with the fewest moving parts.
 
 ## [Electrical](./quadcopter.md)
 
-<img src="./electrical_diagram.png" width=500  alt="Electrical diagram">
+<img src="./electrical_diagram.png" width=750  alt="Electrical diagram">
 
 ## [Code](./quadcopter.md)
 - Init
@@ -64,7 +64,7 @@ The problem with this is that error accumulates, causing the angle estimation to
 
 #### [Angles from accelerometer](./quadcopter.md)
 The acceleration from each axis must be converted into an angle.
-- $\theta_{pitch} = atan( -Acc_x / \sqrt(Acc^{2}_{y} + Acc^{2}_{z}) )$
+- $\theta_{pitch}$ $ = atan( -Acc_x / sqrt(Acc^{2}_{y} + Acc^{2}_{z}) )$
 - $\theta_{roll} = atan( Acc_y / \sqrt(Acc^{2}_{x} + Acc^{2}_{z}) )$
 - The yaw position of the drone cannot be found using the accelerometer because its axis aligns with gravity.
 
