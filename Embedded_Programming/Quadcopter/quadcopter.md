@@ -64,7 +64,7 @@ The problem with this is that error accumulates, causing the angle estimation to
 
 #### [Angles from accelerometer](./quadcopter.md)
 The acceleration from each axis must be converted into an angle.
-- $\theta_{pitch} = $ atan( $-Acc_x$ / sqrt( $Acc^2_y$ + $Acc^2_z$ ))
+- $\theta_{pitch} = atan( \frac{-Acc_x}{\sqrt( Acc^2_y + Acc^2_z )})$
 
 - $\theta_{roll} = atan( Acc_y / \sqrt(Acc^2_x + Acc^2_z) )$
 - The yaw position of the drone cannot be found using the accelerometer because its axis aligns with gravity.
