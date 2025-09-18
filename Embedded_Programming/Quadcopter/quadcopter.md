@@ -68,8 +68,8 @@ The acceleration from each axis must be converted into an angle.
 - $atan( -Acc_x / sqrt(Acc^{2}_{y} + Acc^{2}_{z}) )$
 
 - $\sqrt(Acc^{2}_{y}+Acc^{2}_{z})$
-- $\sqrt(x)$
-- $atan( -Acc_x )$
+- $\sqrt(Acc^{2}_{y})$
+- $atan( -Acc_x / )$
 
 - $\theta_{roll} = atan( Acc_y / \sqrt(Acc^{2}_{x} + Acc^{2}_{z}) )$
 - The yaw position of the drone cannot be found using the accelerometer because its axis aligns with gravity.
