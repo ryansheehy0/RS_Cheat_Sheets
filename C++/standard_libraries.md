@@ -3,6 +3,8 @@
 # C++ Standard Libraries
 `using std namespace;` is assumed for these libraries.
 
+- To Do: static_assert()
+
 <!-- TOC -->
 
 - [iostream](#iostream)

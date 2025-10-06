@@ -35,14 +35,12 @@ My personal C++ notes.
 	- [Single line conditions](#single-line-conditions)
 	- [Range based for loop](#range-based-for-loop)
 - [Functions](#functions)
-	- [Types of functions](#types-of-functions)
 	- [Pass by value or reference](#pass-by-value-or-reference)
 	- [Optional arguments](#optional-arguments)
 	- [Function overloading](#function-overloading)
 	- [Lambda functions](#lambda-functions)
 - [Global and static variables](#global-and-static-variables)
 - [Exception/Error handling](#exceptionerror-handling)
-- [Templates](#templates)
 - [new and delete](#new-and-delete)
 - [Enums](#enums)
 - [Structs](#structs)
@@ -410,13 +408,6 @@ for (std::vector<int>::iterator it = arr.begin(); it != arr.end(); it++) {
 
 - The purpose of putting a function's prototype at the top is to allow the function to be used before it is implemented.
 
-### [Types of functions](#c)
-
-|                          |                                                                             |
-|--------------------------|-----------------------------------------------------------------------------|
-| `constexpr void func();` | A function can be evaluated at compile time if possible.                    |
-| `inline void func();`    | Compiler searches and replaces. Speed up performance, but uses more memory. |
-
 ### [Pass by value or reference](#c)
 - If you don't want to change the argument
 	- If the argument is less than 64bits/8bytes
@@ -503,28 +494,6 @@ void func3() {
 			- std::overflow_error - When an arithmetic operation results in an overflow.
 			- std::underflow_error - When an arithmetic operation results in an underflow.
 			- std::ios_base::failure - When the input/output operations fail. Common if a file can't read or write.
-
-## [Templates](#c)
-Templates are used to allow the same piece of code to use different data types.
-
-```C++
-template <typename T>
-void print(T value) {
-	std::cout << value << "\n";
-}
-
-print(5) // Defined implicitly based upon the type of the argument
-print<char>('a') // Defined explicitly
-```
-
-- Using `class` is the same as using `typename`
-- `= void` makes a template parameter optional.
-- When creating a template class, each of the defined member methods needs to also be templates.
-
-```C++
-template<typename T>
-void Class<T>::method() {}
-```
 
 ## [new and delete](#c)
 Heap memory is used when teh size is only known at run time.

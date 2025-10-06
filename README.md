@@ -35,6 +35,7 @@ My personal notes(some are unfinished).
 - Non Standard Libraries
 - Memory Management
 - Concurrency
+- [Compile time C++](./C++/compile_time_cpp.md)
 
 ## [Embedded Programming](#ryan-sheehy-cheat-sheets)
 - [Low level concepts](./Embedded_Programming/low_level_concepts.md)
@@ -92,6 +93,6 @@ My personal notes(some are unfinished).
 - [Matrices](./Math/matrices.md)
 - [Probability](./Math/Probability/probability.md)
 - [Basic Graphing](./Math/Basic_Graphing/basic_graphing.md)
-- [Trigonometric Functions](./Math/trigonometric_functions.md)
-- [Newtons Method](./Algorithms/Newtons_Method/newtons_method.md)
-- [Taylor Series](./Algorithms/Taylor_Series/taylor_series.md)
+- [Trigonometric Functions](./Math/Trigonometric_Functions/trigonometric_functions.md)
+- [Newtons Method](./Math/Newtons_Method/newtons_method.md)
+- [Taylor Series](./Math/Taylor_Series/taylor_series.md)
