@@ -1,4 +1,4 @@
-# Ryan Sheehy Cheat Sheets
+# [Ryan Sheehy Cheat Sheets](https://github.com/ryansheehy0/RS_Cheat_Sheets)
 My personal notes(some are unfinished).
 
 <!-- TOC -->
@@ -90,6 +90,8 @@ My personal notes(some are unfinished).
 	- [Cross Site Request Forgery(CSRF)](./Web_Dev/cross_site_request_forgery.md)
 
 ## [Math](#ryan-sheehy-cheat-sheets)
+- [Calc 1](./Math/Calc_1/calc_1.md)
+
 - [Matrices](./Math/matrices.md)
 - [Probability](./Math/Probability/probability.md)
 - [Basic Graphing](./Math/Basic_Graphing/basic_graphing.md)
