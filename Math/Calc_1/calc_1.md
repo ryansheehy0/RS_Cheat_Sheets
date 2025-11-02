@@ -6,4 +6,6 @@
 
 [Finding the limit](./finding_the_limit.pdf)
 
+[Continuity](./continuity.pdf)
+
 [Finding derivatives](./finding_derivatives.pdf)
