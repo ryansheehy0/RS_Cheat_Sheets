@@ -9,7 +9,7 @@ My personal notes(some are unfinished).
 - [Data Structures](#data-structures)
 - [Algorithms](#algorithms)
 - [Web Dev](#web-dev)
-- [Math](#math)
+- [Math and Physics](#math-and-physics)
 
 <!-- /TOC -->
 
@@ -89,12 +89,13 @@ My personal notes(some are unfinished).
 	- [SQL Injection](./Web_Dev/sql_injection.md)
 	- [Cross Site Request Forgery(CSRF)](./Web_Dev/cross_site_request_forgery.md)
 
-## [Math](#ryan-sheehy-cheat-sheets)
-- [Calc 1](./Math/Calc_1/calc_1.md)
+## [Math and Physics](#ryan-sheehy-cheat-sheets)
+- [Calc 1](./Math_And_Phys/Calc_1/calc_1.md)
+- [Phys 1](./Math_And_Phys/Phys_1/phys_1.md)
 
-- [Matrices](./Math/matrices.md)
-- [Probability](./Math/Probability/probability.md)
-- [Basic Graphing](./Math/Basic_Graphing/basic_graphing.md)
-- [Trigonometric Functions](./Math/Trigonometric_Functions/trigonometric_functions.md)
-- [Newtons Method](./Math/Newtons_Method/newtons_method.md)
-- [Taylor Series](./Math/Taylor_Series/taylor_series.md)
+- [Matrices](./Math_And_Phys/matrices.md)
+- [Probability](./Math_And_Phys/Probability/probability.md)
+- [Basic Graphing](./Math_And_Phys/Basic_Graphing/basic_graphing.md)
+- [Trigonometric Functions](./Math_And_Phys/Trigonometric_Functions/trigonometric_functions.md)
+- [Newtons Method](./Math_And_Phys/Newtons_Method/newtons_method.md)
+- [Taylor Series](./Math_And_Phys/Taylor_Series/taylor_series.md)
