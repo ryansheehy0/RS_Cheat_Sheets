@@ -2,7 +2,7 @@
 
 # Phys 1
 
-[Kinematic equations]()
+[Kinematic equations](./kinematic_equations.pdf)
 
 [Circular motion]()
 
