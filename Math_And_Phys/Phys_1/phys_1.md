@@ -13,3 +13,7 @@
 [Work/Energy]()
 
 [Collisions](./collisions.pdf)
+
+[Center of Mass](center_of_mass.pdf)
+
+[Rotation]()
