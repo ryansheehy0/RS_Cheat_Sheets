@@ -92,7 +92,6 @@ My personal notes(some are unfinished).
 ## [Math and Physics](#ryan-sheehy-cheat-sheets)
 - [Calc 1](./Math_And_Phys/Calc_1/calc_1.md)
 - [Phys 1](./Math_And_Phys/Phys_1/phys_1.md)
-
 - [Matrices](./Math_And_Phys/matrices.md)
 - [Probability](./Math_And_Phys/Probability/probability.md)
 - [Basic Graphing](./Math_And_Phys/Basic_Graphing/basic_graphing.md)
