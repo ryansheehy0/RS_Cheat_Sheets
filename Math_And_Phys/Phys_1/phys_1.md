@@ -4,7 +4,7 @@
 
 [Kinematic equations](./kinematic_equations.pdf)
 
-[Circular motion]()
+[Uniform circular motion]()
 
 [Forces]()
 
@@ -16,4 +16,4 @@
 
 [Center of Mass](center_of_mass.pdf)
 
-[Rotation]()
+[Rotation on a fixed axis]()
