@@ -9,3 +9,5 @@
 [Finding derivatives](./finding_derivatives.pdf)
 
 [Use cases for derivatives](./use_cases_for_derivatives.pdf)
+
+[Finding integrals](./finding_integrals.pdf)

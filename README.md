@@ -96,5 +96,4 @@ My personal notes(some are unfinished).
 - [Probability](./Math_And_Phys/Probability/probability.md)
 - [Basic Graphing](./Math_And_Phys/Basic_Graphing/basic_graphing.md)
 - [Trigonometric Functions](./Math_And_Phys/Trigonometric_Functions/trigonometric_functions.md)
-- [Newtons Method](./Math_And_Phys/Newtons_Method/newtons_method.md)
 - [Taylor Series](./Math_And_Phys/Taylor_Series/taylor_series.md)
