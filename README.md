@@ -36,6 +36,7 @@ My personal notes(some are unfinished).
 - Memory Management
 - Concurrency
 - [Compile time C++](./C++/compile_time_cpp.md)
+- QML
 
 ## [Embedded Programming](#ryan-sheehy-cheat-sheets)
 - [Low level concepts](./Embedded_Programming/low_level_concepts.md)

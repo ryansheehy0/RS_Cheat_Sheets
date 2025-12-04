@@ -17,3 +17,9 @@
 [Center of Mass](center_of_mass.pdf)
 
 [Rotation on a fixed axis]()
+
+## Extra credit
+
+[Extra credit rain](./extra_credit_rain.pdf)
+
+[Extra credit spring](./extra_credit_spring.pdf)
