@@ -92,19 +92,19 @@ My personal notes(some are unfinished).
 	- [Cross Site Request Forgery(CSRF)](./Web_Dev/cross_site_request_forgery.md)
 
 ## [Physics](#ryan-sheehy-cheat-sheets)
-- [Kinematic equations](./kinematic_equations.pdf)
+- [Kinematic equations](./Physics/kinematic_equations.pdf)
 - [Uniform circular motion]
 - [Forces]
 - [Circular forces]
-- [Work/Energy](./work_energy.pdf)
-- [Collisions and momentum](./collisions.pdf)
-- [Center of Mass](./center_of_mass.pdf)
-- [Rotation around an axis](./rotation_around_an_axis.pdf)
+- [Work/Energy](./Physics/work_energy.pdf)
+- [Collisions and momentum](./Physics/collisions.pdf)
+- [Center of Mass](./Physics/center_of_mass.pdf)
+- [Rotation around an axis](./Physics/rotation_around_an_axis.pdf)
 - [Angular momentum]
 - [Gravity]
 - Extra credit
-	- [Extra credit rain](./extra_credit_rain.pdf)
-	- [Extra credit spring](./extra_credit_spring.pdf)
+	- [Extra credit rain](./Physics/extra_credit_rain.pdf)
+	- [Extra credit spring](./Physics/extra_credit_spring.pdf)
 
 ## [Math](#ryan-sheehy-cheat-sheets)
 - [Calculus](./Math/Calculus/calculus.md)
