@@ -9,7 +9,8 @@ My personal notes(some are unfinished).
 - [Data Structures](#data-structures)
 - [Algorithms](#algorithms)
 - [Web Dev](#web-dev)
-- [Math and Physics](#math-and-physics)
+- [Physics](#physics)
+- [Math](#math)
 
 <!-- /TOC -->
 
@@ -90,11 +91,25 @@ My personal notes(some are unfinished).
 	- [SQL Injection](./Web_Dev/sql_injection.md)
 	- [Cross Site Request Forgery(CSRF)](./Web_Dev/cross_site_request_forgery.md)
 
-## [Math and Physics](#ryan-sheehy-cheat-sheets)
-- [Calc 1](./Math_And_Phys/Calc_1/calc_1.md)
-- [Phys 1](./Math_And_Phys/Phys_1/phys_1.md)
-- [Matrices](./Math_And_Phys/matrices.md)
-- [Probability](./Math_And_Phys/Probability/probability.md)
-- [Basic Graphing](./Math_And_Phys/Basic_Graphing/basic_graphing.md)
-- [Trigonometric Functions](./Math_And_Phys/Trigonometric_Functions/trigonometric_functions.md)
-- [Taylor Series](./Math_And_Phys/Taylor_Series/taylor_series.md)
+## [Physics](#ryan-sheehy-cheat-sheets)
+- [Kinematic equations](./kinematic_equations.pdf)
+- [Uniform circular motion]()
+- [Forces]()
+- [Circular forces]()
+- [Work/Energy](./work_energy.pdf)
+- [Collisions and momentum](./collisions.pdf)
+- [Center of Mass](./center_of_mass.pdf)
+- [Rotation around an axis](./rotation_around_an_axis.pdf)
+- [Angular momentum]()
+- [Gravity]()
+- Extra credit
+	- [Extra credit rain](./extra_credit_rain.pdf)
+	- [Extra credit spring](./extra_credit_spring.pdf)
+
+## [Math](#ryan-sheehy-cheat-sheets)
+- [Calculus](./Math/Calculus/calculus.md)
+- Linear algibra
+- [Probability](./Math/Probability/probability.md)
+- [Basic Graphing](./Math/Basic_Graphing/basic_graphing.md)
+- [Trigonometric Functions](./Math/Trigonometric_Functions/trigonometric_functions.md)
+- [Taylor Series](./Math/Taylor_Series/taylor_series.md)
