@@ -1,4 +1,4 @@
-[Home](../../README.md#math-and-physics)
+[Home](../../README.md#math)
 
 # Probability
 Some basic probability concepts.
@@ -15,20 +15,19 @@ Some basic probability concepts.
 
 ## [Probability Logic](#probability)
 
-| Name               | Calculation                                      | Venn Diagram          | Description                         |
-|--------------------|--------------------------------------------------|-----------------------|-------------------------------------|
-| A Not/A Complement | 1 - P(A) = P(A')                                 | ![A Not](./not-a.png) |                                     |
-| B Not/B Complement | 1 - P(B) = P(B')                                 | ![B Not](./not-b.png) |                                     |
-| And/Intersection   | P(A) * P(B) = P(A &cap; B)                       | ![And](./and.png)     | Probability of A and B              |
-| Or/Union           | P(A) + P(B) - (P(A) * P(B)) = P(A &cup; B)       | ![Or](./or.png)       | Probability of A or B or both       |
-| Xor                | P(A) + P(B) - (2 * P(A) * P(B)) = P(A &Delta; B) | ![xor](./xor.png)     | Probability of A or B, but not both |
-| Neither nor        | 1 - P(A &cup; B) = P((A &cup; B)')               | ![nn](./nn.png)       | Probability fo neither A nor B      |
-| A Not B            | P(A) * P(B')                                     | ![anotb](./anotb.png) | Probability of A, but not B         |
-| B Not A            | P(B) * P(A')                                     | ![bnota](./bnota.png) | Probability of B, but not A         |
-
+| Name               | Calculation                                       | Venn Diagram          |
+|--------------------|---------------------------------------------------|-----------------------|
+| A Not/A Complement | $1 - P(A) = P(A')$                                | ![A Not](./not-a.png) |
+| B Not/B Complement | $1 - P(B) = P(B')$                                | ![B Not](./not-b.png) |
+| And/Intersection   | $P(A) * P(B) = P(A \cap B)$                       | ![And](./and.png)     |
+| Or/Union           | $P(A) + P(B) - (P(A) * P(B)) = P(A \cup B)$       | ![Or](./or.png)       |
+| Xor                | $P(A) + P(B) - (2 * P(A) * P(B)) = P(A \Delta B)$ | ![xor](./xor.png)     |
+| Neither nor        | $1 - P(A \cup B) = P((A \cup B)')$                | ![nn](./nn.png)       |
+| A Not B            | $P(A) * P(B')$                                    | ![anotb](./anotb.png) |
+| B Not A            | $P(B) * P(A')$                                    | ![bnota](./bnota.png) |
 
 ## [Law of Large Numbers](#probability)
-A the number of outcomes for a probabilistic event goes to infinity the outcomes get closer and closer to the true probability of that event.
+As the number of outcomes for a probabilistic event goes to infinity the outcomes get closer and closer to the true probability of that event.
 
 Ex: If you flip a coin an infinite amount of times, 50% of the outcomes will be heads and 50% tails.
 
@@ -77,9 +76,5 @@ E = They are a meek and tidy person
 What is P(A\|E)? What's the probability of the meek and tidy person being a librarian?
 
 $P(A\|E) = \frac{.04761 * .4}{.04761 * .4 + .95239 * .1} = .16667$
-
-or
-
-$P(A\|E) = \frac{1 * .4}{1 * .4 + (21 - 1) * .1} = .16667$
 
 Even if librarians are 4 times more likely to be meek and tidy, it doesn't mean that the person is more likely a librarian.

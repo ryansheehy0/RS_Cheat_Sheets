@@ -1,4 +1,4 @@
-[Home](../README.md#math-and-physics)
+[Home](../README.md#math)
 
 # Matrices
 

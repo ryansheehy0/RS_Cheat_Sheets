@@ -1,4 +1,4 @@
-[Home](../../README.md#math-and-physics)
+[Home](../../README.md#math)
 
 # Trigonometric Functions
 **Radians** are the arc length of a unit circle.
