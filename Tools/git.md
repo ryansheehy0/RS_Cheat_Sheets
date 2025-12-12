@@ -1,6 +1,6 @@
 [Home](../README.md#tools)
 
-# Git Cheat Sheet
+# Git
 A version control system that manages changes to files.
 
 Using git with other people:
