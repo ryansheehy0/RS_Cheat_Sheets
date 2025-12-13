@@ -101,7 +101,7 @@ My personal notes(some are unfinished).
 - [Center of Mass](./Physics/center_of_mass.pdf)
 - [Rotation around an axis](./Physics/rotation_around_an_axis.pdf)
 - [Angular momentum]
-- [Gravity]
+- [Gravity](./Physics/gravity.pdf)
 - Extra credit
 	- [Extra credit rain](./Physics/extra_credit_rain.pdf)
 	- [Extra credit spring](./Physics/extra_credit_spring.pdf)

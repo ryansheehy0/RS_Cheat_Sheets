@@ -5,13 +5,29 @@ To Do
 	- Organize into categories.
 	- Draw diagrams of examples.
 
-- Git is a database of commits.
-- **Commit** - Snapshot of your entire project at one moment in time.
-	- Pointer to your snapshot
-	- Metadata - Who created it, when, and commit message.
-	- Pointer backwards to the parent commit
-		- Creates a chain of commits.
+Git can be thought of as a database of commits.
+
+## [Commits](#git)
+A **commit** is a snapshot of your entire project. It's made of three parts:
+
+- Pointer to your snapshot.
+- Metadata: Who created it, when it was created, and the commit message.
+- Pointer backwards to the parent commit.
+
+This creates a chain of commits:
+[Image]()
+
+| Command | Description |
+|-|-|
+| 
+
+
 - **Merge commit** - A commit with two or more parents.
+
+## [Branches](#git)
+A **branch** is a pointer to a specific commit and when you commit to a branch, the branch points to the new commit.
+A **
+
 - **Branches** - A pointer to a specific commit.
 	- When you commit to a branch, it moves the branch pointer to that new commit.
 - **Head** - A pointer to a branch that tracks your current location.
