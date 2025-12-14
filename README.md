@@ -93,14 +93,14 @@ My personal notes(some are unfinished).
 
 ## [Physics](#ryan-sheehy-cheat-sheets)
 - [Kinematic equations](./Physics/kinematic_equations.pdf)
-- [Uniform circular motion]
-- [Forces]
-- [Circular forces]
+- Uniform circular motion
+- Forces
+- Circular forces
 - [Work/Energy](./Physics/work_energy.pdf)
 - [Collisions and momentum](./Physics/collisions.pdf)
 - [Center of Mass](./Physics/center_of_mass.pdf)
 - [Rotation around an axis](./Physics/rotation_around_an_axis.pdf)
-- [Angular momentum]
+- Angular momentum
 - [Gravity](./Physics/gravity.pdf)
 - Extra credit
 	- [Extra credit rain](./Physics/extra_credit_rain.pdf)
