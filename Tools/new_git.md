@@ -3,6 +3,8 @@
 # Git
 Git can be thought of as a database of commits.
 
+A **commit** is a snapshot of the entire project made of a point to this snapshot, metadata(who created it, when it was created, and the commit message), and pointer backwards to the parent commit. This creates a chain of commits.
+
 - Useful links:
 	- [Git Will Finally Make Sense After This](https://youtu.be/Ala6PHlYjmw?si=e8KEPPQ2OAivoP1E)
 	- [Never* use git pull](https://youtu.be/xN1-2p06Urc?si=87JsMOu5509BmQV_)
@@ -10,14 +12,12 @@ Git can be thought of as a database of commits.
 <!-- TOC -->
 
 - [Config](#config)
-- [Commits](#commits)
 - [Branches](#branches)
 - [Head](#head)
 - [File states](#file-states)
-- [Reset](#reset)
 - [Revert](#revert)
 - [Combining branches](#combining-branches)
-- [Reflog](#reflog)
+- [History](#history)
 - [Other](#other)
 
 <!-- /TOC -->
@@ -25,41 +25,38 @@ Git can be thought of as a database of commits.
 ## [Config](#git)
 You can set your identity at both the global level and the repository level.
 
-| Command                                                  | Description                  |
+| Config commands                                          | Description                  |
 |----------------------------------------------------------|------------------------------|
 | `git config list`                                        | List out all of your configs |
 | `git config set --global user.name "username"`           | Set your global username     |
 | `git config set --global user.email "email@example.com"` | Set your global email        |
 | `git config set --global init.defaultBranch master`      | Set default branch           |
 
-## [Commits](#git)
-A **commit** is a snapshot of your entire project. It's made of three parts:
-
-- Pointer to your snapshot.
-- Metadata: Who created it, when it was created, and the commit message.
-- Pointer backwards to the parent commit.
-
-This creates a chain of commits:
-[Image]()
-
-| Command | Description |
-|---------|-------------|
-|         |             |
-
 ## [Branches](#git)
 A **branch** is a pointer to a specific commit and when you commit to a branch, the branch points to the new commit.
-A **
 
-- **Branches** - A pointer to a specific commit.
-	- When you commit to a branch, it moves the branch pointer to that new commit.
+| Branch commands | Description |
+|-----------------|-------------|
+|                 |             |
+
+- **Reset** - Moves branch
+	- **--soft** - Moves branch only and doesn't change your staging area or repository.
+		- Want to combine a lot of commits into 1.
+	- **--mixed** - (Default)Moves branch and staging area reset.
+		- Changes still exist in your files, but unstaged.
+	- **--hard** - Moves everything
+		- Resets staging area and working directory.
+		- Uncommited work gone.
+		- Want to completely abandon work and start fresh.
 
 ## [Head](#git)
+The **head** is a pointer to a branch that tracks your current location.
 
-- **Head** - A pointer to a branch that tracks your current location.
-	- **Detatched head state** - The head points directly to a commit, instead of a branch.
-		- When you commit in this state, the commits are orphaned and git's garbage collector can remove them once the head moves away.
+The head can be in a **detatched state** if it points directly to a commit, instead of a branch. This can be dangerous because any commits in this state are orphaned and will eventually be deleted.
 
-- **Checkout** - Moves head
+| Head commands           |                               |
+|-------------------------|-------------------------------|
+| `git checkout <branch>` | Moves the head to the branch. |
 
 ## [File states](#git)
 - **Untracted** - Files not yet tracked by git.
@@ -82,17 +79,6 @@ A **
 |--------------------------------|-----------------------------------------|
 | `git push <location> <branch>` | Sends local commits to the remote repo. |
 
-## [Reset](#git)
-- **Reset** - Moves branch
-	- **--soft** - Moves branch only and doesn't change your staging area or repository.
-		- Want to combine a lot of commits into 1.
-	- **--mixed** - (Default)Moves branch and staging area reset.
-		- Changes still exist in your files, but unstaged.
-	- **--hard** - Moves everything
-		- Resets staging area and working directory.
-		- Uncommited work gone.
-		- Want to completely abandon work and start fresh.
-
 ## [Revert](#git)
 - **Revert** - Creates a new commit that does the opposite of an old commit.
 	- Safe. History is preserved.
@@ -109,10 +95,17 @@ A **
 - Merge conflicts?
 - Pushing, but someone has already pushed.
 
-## [Reflog](#git)
+## [History](#git)
 - **git reflog** - Shows everywhere head has pointed recently
 	- Can recover your work if you made a mistake. `git branch newBranch hash` for creating a branch to your old work.
 	- Expire around 30 days for orphaned commits.
+- **git log** - Shows history of the commits in a repository
+	- Who made the commit, when the commit was made, and the commit message.
+- `git cat-file -p <hash>`
+	- The tree is a snapshot of the directory structure for that commit, pointing to blobs for files and other trees for subdirectories.
+	- **tree** - Gits way of storing a directory
+	- **blob** - Gits way of storing a file
+	- You can also put the tree or block hash instead of the commit hash.
 
 ## Other
 - **Porcelain** - High level commands

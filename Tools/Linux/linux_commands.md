@@ -135,6 +135,7 @@ File types
 | wc -l                | Number of lines                                           |
 | clear                | Clears the contents of the terminal                       |
 | dirname filePath     | Gets the directory portion of a file path                 |
+| xxd <file>           | Hexadecimal dump of a file                                |
 
 ## [Installation](#linux-commands)
 
