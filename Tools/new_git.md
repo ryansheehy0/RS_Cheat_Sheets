@@ -13,7 +13,7 @@ Git can be thought of as a database of commits.
 - [Commits](#commits)
 - [Branches](#branches)
 - [Head](#head)
-- [Areas where your code can live](#areas-where-your-code-can-live)
+- [File states](#file-states)
 - [Reset](#reset)
 - [Revert](#revert)
 - [Combining branches](#combining-branches)
@@ -45,7 +45,6 @@ This creates a chain of commits:
 | Command | Description |
 |---------|-------------|
 |         |             |
-- `git commit -am "message"` - Stages all tracked and modied files and commits them in one step.
 
 ## [Branches](#git)
 A **branch** is a pointer to a specific commit and when you commit to a branch, the branch points to the new commit.
@@ -62,22 +61,27 @@ A **
 
 - **Checkout** - Moves head
 
-## [Areas where your code can live](#git)
-- **Working direcctory** - The folder with your code locally on your computer.
-- **Staging area** - Files that are to be added to your commit.
-	- `git add` - file moves into staging area
-	- Lets you controll which changes go into a commit.
-- **Repository** - Where commits are stored.
-	- `git commit` - moves changes from the staging area into the local repository
-- **Remote repository** - Online database of your commits and other people's commits.
-	- `git push` moves what's in your repository to the remote repository.
-	- Ex: GitHub, GitLab, or Bitbucket.
+## [File states](#git)
+- **Untracted** - Files not yet tracked by git.
+- **Staged** - Files marked for includsion in the next commit.
+- **Committed** - Files saved in the local repos's history.
+- **Pushed** - Commits sent to a remote repository for sharing or backup.
+- `git status` - Shows current state of your files.
 
-- Files can be in one of several states
-	- `untracked` - Not being tracked by git
-	- `staged` - Marked for inclusion in the next commit
-	- `committed` - Saved to the repository's history
-	- `git status` - Shows current state of yoru repo
+| Staging commands | Description         |
+|------------------|---------------------|
+| `git add <file>` | Stages a file       |
+| `git add -A`     | Stages all changes  |
+
+| Committing commands               | Description                                      |
+|-----------------------------------|--------------------------------------------------|
+| `git commit -m "message"`         | Commits staged changes with a message.           |
+| `git commit -am "message"`        | Stages all changes and commits them in one step. |
+| `git commit --amend -m "message"` | Change the last commit message.                  |
+
+| Pushed commands                | Description                             |
+|--------------------------------|-----------------------------------------|
+| `git push <location> <branch>` | Sends local commits to the remote repo. |
 
 ## [Reset](#git)
 - **Reset** - Moves branch
@@ -103,6 +107,8 @@ A **
 		- Most useful when your branch hasn't made it to the remote repository yet and you want to add your features to main.
 
 - **Merge commit** - A commit with two or more parents.
+- Merge conflicts?
+- Pushing, but someone has already pushed.
 
 ## [Reflog](#git)
 - **git reflog** - Shows everywhere head has pointed recently
