@@ -76,7 +76,6 @@ A **
 | Committing commands               | Description                                      |
 |-----------------------------------|--------------------------------------------------|
 | `git commit -m "message"`         | Commits staged changes with a message.           |
-| `git commit -am "message"`        | Stages all changes and commits them in one step. |
 | `git commit --amend -m "message"` | Change the last commit message.                  |
 
 | Pushed commands                | Description                             |
