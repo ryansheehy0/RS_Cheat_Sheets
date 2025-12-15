@@ -95,7 +95,7 @@ My personal notes(some are unfinished).
 ## [Physics](#ryan-sheehy-cheat-sheets)
 - [Kinematic equations](./Physics/kinematic_equations.pdf)
 - [Uniform circular motion](./Physics/uniform_circular_motion.pdf)
-- Forces
+- [Forces](./Physics/force.pdf)
 - Circular forces
 - [Work/Energy](./Physics/work_energy.pdf)
 - [Collisions and momentum](./Physics/collisions.pdf)
