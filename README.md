@@ -93,15 +93,16 @@ My personal notes(some are unfinished).
 	- [Cross Site Request Forgery(CSRF)](./Web_Dev/cross_site_request_forgery.md)
 
 ## [Physics](#ryan-sheehy-cheat-sheets)
+- [Error propigation](./Physics/error_propagation.pdf)
 - [Kinematic equations](./Physics/kinematic_equations.pdf)
 - [Uniform circular motion](./Physics/uniform_circular_motion.pdf)
 - [Forces](./Physics/force.pdf)
-- Circular forces
+- [Circular forces](./Physics/circular_forces.pdf)
 - [Work/Energy](./Physics/work_energy.pdf)
 - [Collisions and momentum](./Physics/collisions.pdf)
 - [Center of Mass](./Physics/center_of_mass.pdf)
 - [Rotation around an axis](./Physics/rotation_around_an_axis.pdf)
-- Angular momentum
+- [Angular momentum](./Physics/angular_momentum.pdf)
 - [Gravity](./Physics/gravity.pdf)
 - Extra credit
 	- [Extra credit rain](./Physics/extra_credit_rain.pdf)
