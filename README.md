@@ -100,6 +100,7 @@ My personal notes(some are unfinished).
 - [Circular forces](./Physics/circular_forces.pdf)
 - [Work/Energy](./Physics/work_energy.pdf)
 - [Collisions and momentum](./Physics/collisions.pdf)
+- [Rocket equation](./Physics/rocket_equation.pdf)
 - [Center of Mass](./Physics/center_of_mass.pdf)
 - [Rotation around an axis](./Physics/rotation_around_an_axis.pdf)
 - [Angular momentum](./Physics/angular_momentum.pdf)
@@ -110,6 +111,7 @@ My personal notes(some are unfinished).
 
 ## [Math](#ryan-sheehy-cheat-sheets)
 - [Calculus](./Math/Calculus/calculus.md)
+- [Dot and Cross product](./Math/dot_and_cross_product.pdf)
 - Linear algibra
 - [Probability](./Math/Probability/probability.md)
 - [Basic Graphing](./Math/Basic_Graphing/basic_graphing.md)
