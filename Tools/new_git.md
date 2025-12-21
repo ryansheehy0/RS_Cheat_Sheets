@@ -3,7 +3,7 @@
 # Git
 Git can be thought of as a database of commits.
 
-A **commit** is a snapshot of the entire project made of a point to this snapshot, metadata(who created it, when it was created, and the commit message), and pointer backwards to the parent commit. This creates a chain of commits.
+A **commit** is a snapshot of the entire project made of a pointer to this snapshot, metadata(who created it, when it was created, and the commit message), and a pointer backwards to the parent commit. This creates a chain of commits.
 
 - Useful links:
 	- [Git Will Finally Make Sense After This](https://youtu.be/Ala6PHlYjmw?si=e8KEPPQ2OAivoP1E)
@@ -23,21 +23,40 @@ A **commit** is a snapshot of the entire project made of a point to this snapsho
 <!-- /TOC -->
 
 ## [Config](#git)
-You can set your identity at both the global level and the repository level.
 
-| Config commands                                          | Description                  |
-|----------------------------------------------------------|------------------------------|
-| `git config list`                                        | List out all of your configs |
-| `git config set --global user.name "username"`           | Set your global username     |
-| `git config set --global user.email "email@example.com"` | Set your global email        |
-| `git config set --global init.defaultBranch master`      | Set default branch           |
+| Config commands                          | Description                                         |
+|------------------------------------------|-----------------------------------------------------|
+| `git config list`                        | Lists out all of your configs.                      |
+| `git config set <section>.<key> <value>` | Sets the key for that section.                      |
+| `git config get <section>.<key>`         | Gets the value for that section and key.            |
+| `git config unset <section>.<key>`       | Removes the key from that section.                  |
+| `git config remove-section <section>`    | Removes a section and all the keys in that section. |
+
+- Keys sets on the `--local` level override keys set on the `--global` level.
+	- If you don't specify, the default is `--local`
+	- You specify it after the command: `git config set --global`
+- Common keys
+	- `user.name`
+	- `user.email`
+	- `init.defaultBranch`
+- Git config allows you to have multiple keys with the same name.
 
 ## [Branches](#git)
-A **branch** is a pointer to a specific commit and when you commit to a branch, the branch points to the new commit.
+A **branch** is a named pointer to a commit. When you commit to a branch, the branch points to the new commit. This allows you to keep track of changes separatly.
 
-| Branch commands | Description |
-|-----------------|-------------|
-|                 |             |
+| Branch commands                     | Description                                                    |
+|-------------------------------------|----------------------------------------------------------------|
+| `git branch`                        | List all branches. * is your current branch.                   |
+| `git branch -m <oldname> <newname>` | Rename a branch.                                               |
+| `git branch <name>`                 | Creates a new branch pointing to your current commit.          |
+| `git switch <branch>`               | Switches to a branch.                                          |
+| `git switch -c <name>`              | Creates a new branch at the current commit and switches to it. |
+
+- GitHub's default branch is main.
+- The old version of the `switch` command is `checkout`.
+- `.git/refs/heads` is a folder holding files of your different branches with the hash of the commit the branch is pointing to.
+
+
 
 - **Reset** - Moves branch
 	- **--soft** - Moves branch only and doesn't change your staging area or repository.
@@ -49,14 +68,9 @@ A **branch** is a pointer to a specific commit and when you commit to a branch, 
 		- Uncommited work gone.
 		- Want to completely abandon work and start fresh.
 
-## [Head](#git)
 The **head** is a pointer to a branch that tracks your current location.
 
 The head can be in a **detatched state** if it points directly to a commit, instead of a branch. This can be dangerous because any commits in this state are orphaned and will eventually be deleted.
-
-| Head commands           |                               |
-|-------------------------|-------------------------------|
-| `git checkout <branch>` | Moves the head to the branch. |
 
 ## [File states](#git)
 - **Untracted** - Files not yet tracked by git.
@@ -96,11 +110,12 @@ The head can be in a **detatched state** if it points directly to a commit, inst
 - Pushing, but someone has already pushed.
 
 ## [History](#git)
-- **git reflog** - Shows everywhere head has pointed recently
+- `git reflog` - Shows everywhere head has pointed recently
 	- Can recover your work if you made a mistake. `git branch newBranch hash` for creating a branch to your old work.
 	- Expire around 30 days for orphaned commits.
-- **git log** - Shows history of the commits in a repository
+- `git log` - Shows history of the commits for a branch
 	- Who made the commit, when the commit was made, and the commit message.
+	- `git log --oneline` More compact view of the log.
 - `git cat-file -p <hash>`
 	- The tree is a snapshot of the directory structure for that commit, pointing to blobs for files and other trees for subdirectories.
 	- **tree** - Gits way of storing a directory
@@ -114,3 +129,6 @@ The head can be in a **detatched state** if it points directly to a commit, inst
 	- apply, commit-tree, hash-object
 - Repository - Represents a single prokect.
 	- .git - Hidden directory where git stores all of its internal tracking and versioning info
+- Commits
+	- Git compresses and packs files
+	- If a file doesn't change between commits, git will only store it once.
