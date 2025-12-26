@@ -23,7 +23,6 @@ My personal notes(some are unfinished).
 	- [Markdown](./Tools/markdown.md)
 	- [Regex](./Tools/regex.md)
 - [Git](./Tools/git.md)
-	- [New git(in progress)](./Tools/new_git.md)
 - [Networking](./Tools/networking.md)
 - [Programming Tips](./Tools/programming_tips.md)
 - PGP Encryption

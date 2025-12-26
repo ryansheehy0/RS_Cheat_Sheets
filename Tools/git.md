@@ -1,207 +1,255 @@
 [Home](../README.md#tools)
 
 # Git
-A version control system that manages changes to files.
+Git can be thought of as a database of commits.
 
-Using git with other people:
-- Each person creates a branch with a specific feature in mind.
-- Once they complete and tested their feature, they rebase.
-	- Rebasing rewrite the commit history of the feature branch, not main, so the commits in the feature branch apply after the latest in main, allowing conflicts to be resolved.
-- Once all the conflicts are resolved, a pull request is given to main.
-- The maintainers of main review the newly added code, and if approved, merge the new changes onto main.
-	- The feature branch may be kept or deleted after the merge.
+A **commit** is a snapshot of the entire project made of a pointer to this snapshot, metadata(who created it, when it was created, and the commit message), and a pointer backwards to the parent commit. This creates a chain of commits.
+
+Git comrpresses files and if a file doesn't change between commits, it's only stored once.
+
+- Useful links:
+	- [Git Will Finally Make Sense After This](https://youtu.be/Ala6PHlYjmw?si=e8KEPPQ2OAivoP1E)
 
 <!-- TOC -->
 
-- [Cloning and Initializing](#cloning-and-initializing)
-- [Committing](#committing)
-	- [Resetting Commits](#resetting-commits)
-	- [Reverting Commits](#reverting-commits)
-	- [Commit Logs](#commit-logs)
-- [Pushing](#pushing)
-- [Pulling](#pulling)
+- [Config](#config)
+- [Status](#status)
 - [Branches](#branches)
-- [Stashing](#stashing)
-- [Setting Personal Access Tokens](#setting-personal-access-tokens)
-- [First push](#first-push)
-	- [SSH](#ssh)
-	- [HTTPS](#https)
-- [Rebasing](#rebasing)
-- [Pull Requests](#pull-requests)
-	- [When your branch says behind main](#when-your-branch-says-behind-main)
-- [Setting up with SSH](#setting-up-with-ssh)
-- [Adding a warning when pushing to main/master from another branch](#adding-a-warning-when-pushing-to-mainmaster-from-another-branch)
-- [Git Ignore](#git-ignore)
+- [Merge](#merge)
+- [Rebase](#rebase)
+- [Reset and revert](#reset-and-revert)
+- [Log](#log)
+- [Remote](#remote)
+	- [Local repo setup](#local-repo-setup)
+	- [Fetch and pull](#fetch-and-pull)
+	- [Pull requests](#pull-requests)
+	- [Setting up ssh with GitHub](#setting-up-ssh-with-github)
+- [Workflow](#workflow)
+- [Worktrees](#worktrees)
 
 <!-- /TOC -->
 
-## [Cloning and Initializing](#git-cheat-sheet)
+## [Config](#git)
 
-|                   |                                             |
-|-------------------|---------------------------------------------|
-| git clone {https} | Pulls github repository and initializes it. |
-| git init          | Creates .git file to allow for pushing.     |
+| Config commands                          | Description                                         |
+|------------------------------------------|-----------------------------------------------------|
+| `git config list`                        | Lists out all of your configs.                      |
+| `git config set <section>.<key> <value>` | Sets the key for that section.                      |
+| `git config get <section>.<key>`         | Gets the value for that section and key.            |
+| `git config unset <section>.<key>`       | Removes the key from that section.                  |
+| `git config remove-section <section>`    | Removes a section and all the keys in that section. |
 
-## [Committing](#git-cheat-sheet)
+- Git config allows multiple entries for the same key, so you need to unset it before setting the new one to rename it.
+- Keys sets on the `--local` level override keys set on the `--global` level.
+	- If you don't specify, the default is `--local`
+	- You specify it after the command: `git config set --global`
+- Common keys
+	- `user.name`
+	- `user.email`
+	- `init.defaultBranch`
 
-|                                            |                                                                                                                                                                                                                                                  |
-|--------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| git status                                 | Shows all files that were updated, created, or deleted and if the files are untracked, tracked, or staged. Tracked meaning Git tracks versioning of the file and staged meaning the file is ready to be committed. All staged files are tracked. |
-| git add {File}                             | Tells git to track and stage the file so it can be committed.                                                                                                                                                                                    |
-| git add -A                                 | Tracks and stages all the files and folders listed in status.                                                                                                                                                                                    |
-| git commit -m ”{Title}” -m ”{Description}” | Commits staged files. It is recommended to have your Title be in the present tense. Ex: "Adds some stuff"                                                                                                                                      |
+## [Status](#git)
+- **Untracted** - Files not yet tracked by git.
+- **Staged** - Files marked for includsion in the next commit.
+- **Committed** - Files saved in the local repos's history.
 
-### [Resetting Commits](#git-cheat-sheet)
+| Status commands                   | Description                            |
+|-----------------------------------|----------------------------------------|
+| `git status`                      | Shows current state of your files.     |
+| `git add <file/folder>`           | Stages a file or folder                |
+| `git add -A`                      | Stages all changes                     |
+| `git commit -m "message"`         | Commits staged changes with a message. |
+| `git commit --amend -m "message"` | Change the last commit message.        |
+| `git rm --cached <file/folder>`   | Unstages a file/folder.                |
 
-|                               |                                                                       |
-|-------------------------------|-----------------------------------------------------------------------|
-| git reset -hard {commit hash} | Resets to commit specified and deletes any commits after that commit. |
-| git reset {commit hash}       | Resets to commit specified and unstages changes.                      |
-| git reset -soft {commit hash} | Resets to commit specified, but leaves files staged.                  |
+- You can list files and folders in a `.gitignore` file to prevent them from being staged.
+	- `*` matches any number of characters except `/`. Ex: `*.txt` ignores any txt files.
+	- Lines that start with `#` are comments.
+	- `/` anchors the patter to the directory containing the .gitignore and not any subdirectories.
+	- You can negate a pattern by prefixing it with `!`
 
-### [Reverting Commits](#git-cheat-sheet)
+## [Branches](#git)
+A **branch** is a named pointer to a commit. Committing to a branch updates it to point to the new commit.
 
-|                          |                                                                                                                            |
-|--------------------------|----------------------------------------------------------------------------------------------------------------------------|
-| git revert {commit hash} | Makes a new commit that undos the changes from the commit hash. Does the opposite of the changes made in that commit hash. |
+| Branch commands                     | Description                                                    |
+|-------------------------------------|----------------------------------------------------------------|
+| `git branch`                        | List all branches. * is your current branch.                   |
+| `git branch -m <oldname> <newname>` | Rename a branch.                                               |
+| `git branch <name>`                 | Creates a new branch pointing to your current commit.          |
+| `git branch <name> <commitHas>`     | Creates a new branch pointing to the commit hash.              |
+| `git branch -d <name>`              | Deletes a branch.                                              |
+| `git switch <branch>`               | Switches to a branch.                                          |
+| `git switch -c <name>`              | Creates a new branch at the current commit and switches to it. |
 
-### [Commit Logs](#git-cheat-sheet)
+- GitHub's default branch is main.
+- The old version of the `switch` command is `checkout`.
 
-|                  |                                                            |
-|------------------|------------------------------------------------------------|
-| git log          | Lists commit history. This can tell you the commit hashes. |
-| git log {branch} | Lists commit history for that branch.                      |
-
-## [Pushing](#git-cheat-sheet)
-
-|                                   |                                                         |
-|-----------------------------------|---------------------------------------------------------|
-| git push {location} {branch}      | Pushes commits to the branch at the specified location. |
-| git remote -v                     | Shows locations you can push to.                        |
-| git remote add {location} {https} | Adds a location you can push to.                        |
-| git remote remove {location}      | Removes a location you can push to.
-
-## [Pulling](#git-cheat-sheet)
-
-|                               |                                                                                                                |
-|-------------------------------|----------------------------------------------------------------------------------------------------------------|
-| git pull {location} {branch}  | Pulls changes made from location’s branch. Pulling is the same as fetching and merging.                        |
-| git fetch {location}          | The metadata in the local repo is updated, but not files are downloaded.                                       |
-| git fetch                     | Fetches all the branches.                                                                                      |
-| git merge {location}/{branch} | Incorporate the changes from fetch into the specified branch. This downloads the changes from the remote repo. |
-
-## [Branches](#git-cheat-sheet)
-
-|                          |                                              |
-|--------------------------|----------------------------------------------|
-| git checkout -b {branch} | Creates a new branch.                        |
-| git branch               | Shows all branches. * is for current branch. |
-| git checkout {branch}    | Switches branch.                             |
-| git branch -d {branch}   | Deletes branch.                              |
-
-## [Stashing](#git-cheat-sheet)
-
-|                        |                                                                                      |
-|------------------------|--------------------------------------------------------------------------------------|
-| git stash              | Saves changes to a temporary storage area.                                           |
-| git stash list         | Lists all the stashes.                                                               |
-| git stash pop          | Restore changes from the stash to your current directory and removes the last stash. |
-| git stash apply        | Restore changes from the stash to your current directory and keeps the last stash.   |
-| git stash drop         | Removes the last stash.                                                              |
-| git stash drop {index} | Removes the stash at the index.                                                      |
-
-## [Setting Personal Access Tokens](#git-cheat-sheet)
-
-Settings $\rightarrow$ Developer settings $\rightarrow$ Personal access tokens $\rightarrow$ Generate new tokens
-
-- Make sure to check repo box so you have access to public and private repositories
-- After a certain time period the token expires and needs to be regenerated and reset
-
-|                                                                                                                         |                                     |
-|-------------------------------------------------------------------------------------------------------------------------|-------------------------------------|
-| git remote set-url {location} https://{username}:{personal access token}@github.com/{owner's username}/{repository}.git | Gives permissions for the location. |
-
-## [First push](#git-cheat-sheet)
-Recommended {location} is `origin` and {branch} is `master`.
-
-1. git init
-2. git add -A
-3. git commit -m "{Title}" -m "{Description}"
-
-### [SSH](#git-cheat-sheet)
-This is recommended over HTTPS.
-
-4. git remote add {location} {ssh}
-5. git push {location} {branch}
-
-### [HTTPS](#git-cheat-sheet)
-
-4. git remote add {location} {https}
-5. git remote set-url {location} https://{username}:{personal access token}@github.com/{owner's username}/{repository}.git
-6. git push {location} {branch}
-
-## [Rebasing](#git-cheat-sheet)
-
-|                     |                                                                                    |
-|---------------------|------------------------------------------------------------------------------------|
-| git rebase {branch} | Takes the commits from current branch and puts them ontop of the specified branch. |
-
-## [Pull Requests](#git-cheat-sheet)
-- A pull request is a request to make changes to a branch from another branch.
-- A merge is the combining changes from one branch to another.
-
-|                       |                                                                                                                                                                         |
-|-----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Create a merge commit | Combines the changes from the source branch and the target branch and makes a commit to the target branch with the changes. Preserves the history.                      |
-| Squash and merge      | Combines all the changes from the source branch and makes a commit to the target branch with the changes. This removes the source branch. Doesn't preserve the history. |
-| Rebase and merge      | Commits all the previous commits in the source branch and adds them to the target branch. This removes the source branch. Preserves the history.                        |
-
-### [When your branch says behind main](#git-cheat-sheet)
-- This means that there are new commits in the main branch that aren't in your branch.
-1. Ensure your changes are committed
-    - git status
-    - git add -A
-    - git commit -m "{Title}" -m "{Description}"
-1. Switch to the main branch
-    - git checkout main
-1. Pull from main
-    - git pull {location} main
-1. Switch to your branch
-    - git checkout {your branch}
-1. Merge changes from main into your branch
-    - git merge main
-1. Resolve any conflicts
-    - Git will tell you which files. If 2 or more people changed the same file then there will be conflicts..
-    - Inside the conflicting files
+## [Merge](#git)
+A **merge commit** combines changes from two branches into a single commit that has two parent commits.
 
 ```
-<<<<<<< HEAD
-// Your changes in the current branch
-=======
-// Changes from the branch you are merging with
->>>>>>> branch-name
+Before:
+A - B - C  main(current branch)
+   \
+    D - E  branch
+
+After:
+A - B - C - F  main(current branch)
+   \     /
+    D - E      branch
 ```
 
-<ol start="7">
-    <li>Once resolved commit and push your update</li>
-    <ul>
-        <li>git add -A</li>
-        <li>git commit -m "{Title}" -m "{Description}"</li>
-        <ul>
-            <li>It is recommended to make the Title something like "Merged main into {your branch}"</li>
-        </ul>
-        <li>git push {location} {your branch}</li>
-    </ul>
-    <li>It should now say ahead of main</li>
-    <ul>
-        <li>This means that your branch has additional commits compared to the main branch.</li>
-    </ul>
-</ol>
+- What the merge command does:
+	1. Finds the **merge base**/**best common ancestor** - the commit closest to both branches.
+		- `A` in this example.
+	2. Adds the changes from main starting from the merge base, into a new commit.
+	3. Adds the changes from the other branch starting from the merge base.
+	4. Creates a new commit with two parents.
+		- `F` in this example.
 
-## [Setting up with SSH](#git-cheat-sheet)
-1. `ssh-keygen -t ed25519 -C {github email}`
+| Merge commands       | Description                                                                  |
+|----------------------|------------------------------------------------------------------------------|
+| `git merge <branch>` | Creates a merge commit on your current branch from the branch you specified. |
+
+- **Faster forward merge** - Sometimes git doesn't need to create a new merge commit.
+
+```
+Before:
+      C   branch
+     /
+A - B     main(current branch)
+
+After:
+            branch
+A - B - C   main(current branch)
+```
+
+## [Rebase](#git)
+**Rebase** moves the commits from one branch onto the tip of another branch.
+
+- This allows a future merge to be a fast-forward merge, if no new commits were added to the target branch.
+- When to use rebase?
+	- Merge is useful when you want to preserve the true history of the project, but it can create a lot of merge commits.
+	- Rebase is useful for simplifying the commit history.
+	- You should never rebase a branch that others may have already pulled because it will change their history.
+		- You should only rebase for private branches where no one else has based work on it.
+
+```
+Before:
+A - B - C   main
+   \
+    D - E   branch(current branch)
+
+After:
+A - B - C         main
+         \
+          D - E   branch(current branch)
+```
+
+- What the rebase command does:
+	1. Find the latest commit from the specified branch(main).
+	2. Replays each commit from your current branch(branch) onto the end of the specified branch(main).
+	3. Updates your current branch(branch) to point to the last replayed commit and doesn't change the specified branch(main).
+
+| Command               | Description                                           |
+|-----------------------|-------------------------------------------------------|
+| `git rebase <branch>` | Rebases the current branch onto the specified branch. |
+
+```
+Example with a merge:
+
+Before:
+A - B - C - E - F - G   main
+          \   /
+            D - H - I   branch(current branch)
+
+After:
+A - B - C - E - F - G         main
+          \   /      \
+            D         H - I   branch(current branch)
+```
+
+## [Reset and revert](#git)
+These commands are used to undo commits.
+
+- `git reset`
+	- All options move the branch to the commit.
+	- Mainly used for private branches that aren't shared with anyone.
+	- `git reset --soft <commitHash>`
+		- Keeps the changes from the reset commits and stages them.
+	- `git reset --mixed <commitHash>`
+		- Keeps the changes from the reset commits, but doesn't stage them.
+		- The default option.
+		- Can be used to remove all staged files.
+	- `git reset --hard <commitHash>`
+		- Discards the changes. Makes your working directory and staging area match the specified commit.
+		- Warning: All changes are lost forever.
+- `git revert <commitHash>`
+	- Creates a new commit that reverts all the changes of an old commit.
+	- Mainly used for public branches where you don't want to break other people's history.
+
+## [Log](#git)
+`git log` shows the history of commits.
+
+| Flags              | Description                          |
+|--------------------|--------------------------------------|
+| `--oneline`        | Condensed view of commits.           |
+| `--graph`          | Draws lines for the path.            |
+| `--decorate`       | Give branch and tag information.     |
+| `--all`            | Commits reachable from all branches. |
+| `--parents`        | Gives parent commit.                 |
+| `--author <regex>` | Searches for author.                 |
+
+```
+git log --oneline --graph --decorate --all
+```
+
+- You can also specify a remote location and a branch in that remote location: `git log <locationName>/<branch>`
+- `git reflog` shows everywhere the head has pointed to, which is useful for reversing resets or rebases.
+	- You can recover work by creating a branch to a orphaned commit if it's still there.
+
+## [Remote](#git)
+
+### [Local repo setup](#git)
+
+| Commands                                | Description                                                        |
+|-----------------------------------------|--------------------------------------------------------------------|
+| `git clone <https/ssh>`                 | Copies an existing remote repo to your machine and initializes it. |
+| `git init`                              | Initializes a new empty local repo.                                |
+| `git remote -v`                         | Shows list of locations and their urls.                            |
+| `git remote add <location> <https/ssh>` | Adds a location.                                                   |
+| `git remote remove <location>`          | Removes a loction.                                                 |
+
+- `origin` is the most common location name for the default remote repository.
+
+### [Fetch and pull](#git)
+
+| Commands                                | Description                                                                        |
+|-----------------------------------------|------------------------------------------------------------------------------------|
+| `git fetch <location>`                  | Updates metadata(trees/folders and blobs/files). Doesn't update working directory. |
+| `git fetch`                             | By defualt it fetches from origin.                                                 |
+| `git merge <location>/<branch>`         | Merges the remote location's branch onto your current branch.                      |
+| `git push <location> <branch>`          | Sends local changes to any remote location.                                        |
+| `git pull <location> <branch>`          | Fetches, then merges what was pulled into your current branch.                     |
+| `git pull --rebase <location> <branch>` | Fetches, then rebases your changes ontop of what was pulled.                       |
+
+- You should use `git pull --rebase` instead of `git pull` to prevent excessive merge commits.
+	- If there's a conflict, you can do `git rebase --abort` and pull normally.
+	- https://youtu.be/xN1-2p06Urc?si=ARehzgXvVYUYDHQU
+- You can also push a local branch to a remote branch with a different name: `git push <location> <localBranch>:<remoteBranch>`
+	- You can also delete a remote branch: `git push <location> :<remoteBranch>`
+
+### [Pull requests](#git)
+**Pull requests** are a way to request merging changes from one branch into another on GitHub.
+
+1. Pull requests tab
+2. New pull request
+3. Set your branches so that the compare branch gets merged into the base branch.
+
+### [Setting up ssh with GitHub](#git)
+1. `ssh-keygen -t ed25519 -C <githubEmail>`
     - Used to generate a public and private key pair.
-        - Private key is in: .ssh/id_ed25519 (Don't share with anyone)
+        - Private key is in: .ssh/id_ed25519
         - Public key is in: .ssh/id_ed25519.pub
     - Note: ed25519 an elliptic curve type of encryption, but this type of encryption may change in the future.
     - You usually create one ssh key per computer/device.
@@ -216,7 +264,7 @@ This is recommended over HTTPS.
     ```
     - `Host *` means that the variables are being applied to all the hosts.
     - `AddKeysToAgent yes` means the private keys will be automatically added to the ssh-agent when you connect to a remote host.
-    - `IdentifyFile ~/.shh/id_ed25519` sets the default private key for all SSH connections.
+    - `IdentityFile ~/.shh/id_ed25519` sets the default private key for all SSH connections.
     - These settings make is so that you don't need to run `ssh-add ~/.ssh/id_ed25519` with a new terminal session.
 1. Go to github settings -> SSH and GPG keys -> New SSH key
 1. Paste the contents of id_ed25519.pub into github and press Add Key
@@ -224,45 +272,24 @@ This is recommended over HTTPS.
     - If this doesn't work then you may need to run `eval "$(ssh-agent -s)"` in order to start the ssh-agent
 1. To use with SSH make sure your github repo locations are SSHs(they starts with git@github.com)
 
-## [Adding a warning when pushing to main/master from another branch](#git-cheat-sheet)
-- Put this code inside .git/hooks/pre-push
-    - Not pre-push.sample
+## [Workflow](#git)
+- Solo workflow
+	- Stay on main branch.
+	- Make changes.
+	- `git add -A`
+	- `git commit -m "Message"`
+	- `git push origin main`
+- Team workflow
+	- Update main branch: `git pull --rebase origin main`
+	- Create a new branch for your changes: `git switch -c <branch>`
+	- Make changes.
+	- `git add -A`
+	- `git commit -m "message"`
+	- `git push origin <branch>`
+	- Once you're done with your changes open a pull request on GitHub.
+	- Ask a team member to review pull requet.
+	- Once approved, click the Merge button.
+	- Delete feature branch.
 
-```
-#!/bin/bash
-
-current_branch=$(git symbolic-ref --short HEAD)
-
-while read local_ref local_oid remote_ref remote_oid
-do
-	if [[ "$current_branch" != "main" && "$current_branch" != "master" ]]; then
-		if [[ $remote_ref =~ master || $remote_ref =~ main ]]; then
-			read -p "You're about to push to main/master. Are you sure? [y/n] " -n 1 -r < /dev/tty
-    	    echo
-			if [[ $REPLY != "y" || $REPLY != "Y" ]]; then
-				exit 1
-			fi
-		fi
-	fi
-done
-
-exit 0
-```
-
-- Make it executable with `chmod +x ./.git/hooks/pre-push`
-
-## [Git Ignore](#git-cheat-sheet)
-A file called `.gitignore` which is used to ignore folders or files when pushed to github.
-
-Git ignores use regexes.
-
-This simply doesn't push the folder called "Folder", the file called "file", and any files that start with regex. that are in the Regex folders.
-
-```
-#titles
-Folder
-file
-Regex/regex.*
-```
-
-- Often times different passwords or api keys are stored in the `.env` file and this should always be in the `.gitignore` for security reasons.
+## [Worktrees](#git)
+https://youtu.be/ntM7utSjeVU?si=zyk8xC9Pii2EDW4z
