@@ -30,6 +30,7 @@
 	- This is RAM space, not hard drive space.
 
 Binary units
+
 | Number of bytes | Symbol | Name     |
 |-----------------|--------|----------|
 | 2^10            | 1 KiB  | Kibibyte |
@@ -40,6 +41,7 @@ Binary units
 | 2^60            | 1 EiB  | Exbibyte |
 
 Decimal units
+
 | Number of bytes | Symbol | Name     |
 |-----------------|--------|----------|
 | 10^3            | 1 KB   | Kilobyte |
@@ -110,6 +112,7 @@ Each number system has 3 characteristics:
 ## Unsigned ints
 ### Addition
 
+```
 Example:
 1
   8 2 6 3      3 + 8 = 11 = B
@@ -117,6 +120,7 @@ Example:
 ---------      2 + 6 = 8
   4 8 F B      8 + C = 8 + 12 = 20 = 16 + 4 = 0x14
 	With OV
+```
 
 ### Subtractions
 - A negative/opposite number is defined as the number added to another to produce 0.
@@ -127,6 +131,7 @@ Example:
 	2. Add 1
 2. Add the opposite together
 
+```
 Example:
   F F 6 3
 - E A 7 F
@@ -143,6 +148,7 @@ Opposite(0xEA7F) = 0x1580 + 1 = 0x1581
 + 1 5 8 1      1 + F + 1 = 1 + 15 + 1 = 16 + 1 = 0x11
 ---------
   1 4 E 4
+```
 
 ## Signed ints/2's complement
 - The weight of the MSB is always negative
@@ -160,6 +166,7 @@ Opposite(0xEA7F) = 0x1580 + 1 = 0x1581
 	- Overflow can never happen when the numbers are opposite signs
 	- Overflows can only happen when the numbers are the same sign, but the result is a different sign then the other two numbers.
 
+```
 Example:
 1 1 1
   8 3 D 1      D + 3 = 13 + 3 = 16 = 0x10
@@ -170,11 +177,13 @@ Example:
 0x83D1 is neg
 0x8F37 is neg
 0x1308 is pos therefore, there is an overflow.
+```
 
 ### Subtractions
 1. Convert the subtraction number to it's 2's complement, aka reverse its sign.
 2. Add them together
 
+```
 Example:
 
   F F 2 9
@@ -195,16 +204,19 @@ Example:
 0xFF29 is neg
 0xDC61 is neg
 0xDB8A is neg therefore, there is no overflow.
+```
 
 ## Floats
 - IEEE(Institute of Electrical and Electronics Engineers) has RFCs(Request for Comment). Floats have the RFC of 754.
 
+```
 _ ________ _______________________
 | \8 bits/ \       23 bits       /     = 32 bits
 |    |               |
 |    |               Mantissa/Fraction
 |    Biased exponent
 Sign bit
+```
 
 - 64 bit float has 11 bits as the biased exponent.
 - The Mantissa/Fraction doesn't need to include the 1. because it can be assumed.
@@ -222,6 +234,7 @@ Sign bit
 		- If you can find a pattern, then this can reduce your amount of calculations.
 4. Combine all the bits together and convert into hex
 
+```
 Example:
 Convert 4.56 to 32 bit float.
 
@@ -268,6 +281,7 @@ Fraction: 001 0001 1110 1011 1000 0101
               0100 0000 1001 0001 1110 1011 1000 0101
                 4    0    9    1    E    B    8    5
               0x4091EB85
+```
 
 ### Special cases
 - If exponential field is all 1s and fraction field is all 0s, then it's +/- infinite.
@@ -276,6 +290,7 @@ Fraction: 001 0001 1110 1011 1000 0101
 	- Ex: -0.75 = 1 0000 0000 110 0000 0000 0000 0000 0000
 	- Has to be in the form of 0.#. If it's 0.0#, then use negative exponents.
 
+```
 Example of a negative exponent:
 -0.043 = 1.372 * 2^-5
 
@@ -286,7 +301,7 @@ Fraction
 	0.744 * 2 = 1.488   -> 1
 	0.488 * 2 = 0.976   -> 0
 	                    -> etc.
-
+```
 
 - Questions
 	- Why biased by 127 and not 128?

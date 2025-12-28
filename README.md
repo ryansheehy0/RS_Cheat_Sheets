@@ -45,6 +45,7 @@ My personal notes(some are unfinished).
 - [x86 Assembly](./Embedded_Programming/x86_assembly.md)/[MASM](./Embedded_Programming/masm.md)
 - [Serial Protocols](./Embedded_Programming/serial_protocols.md)
 - [Quadcopter](./Embedded_Programming/Quadcopter/quadcopter.md)
+- [Pi Pico](./Embedded_Programming/pi_pico.md)
 
 ## [Data Structures](#ryan-sheehy-cheat-sheets)
 - [Stacks, Queues, and Lists](./Data_Structures/stacks_queues_and_lists.md)
