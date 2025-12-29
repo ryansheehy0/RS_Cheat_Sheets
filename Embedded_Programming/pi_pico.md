@@ -3,13 +3,26 @@
 # Pi Pico
 [Documentation](https://www.raspberrypi.com/documentation/pico-sdk/hardware.html)
 
-- Pin layout
-- Explain Pi Pico vs Pi Pico 2
-	- With specs
+![pin layout](./pi_pico_pin_layout.png)
+
+| Feature   | Pi Pico              | Pi Pico 2            |
+|-----------|----------------------|----------------------|
+| MCU       | RP2040               | RP2350               |
+| CPU       | 2xCortex M0+, 133MHz | 2xCortex M33, 150MHz |
+| Overclock | 240MHZ               | 300MHz               |
+| RAM       | 264kB                | 512kB                |
+| Flash     | External 2MB         | External 4MB         |
+| GPIO      | 26                   | 26                   |
+| ADC       | 12 bit               | 12 bit               |
+| UART      | 2                    | 2                    |
+| I2C       | 2                    | 2                    |
+| SPI       | 2                    | 2                    |
+| Current   | 25mA - 39mA          | 21mA - 34mA          |
+| FPU       | No                   | Yes                  |
 
 <!-- TOC -->
 
-- [Blinking LEDs](#blinking-leds)
+- [Blinking LEDs and Hello World](#blinking-leds-and-hello-world)
 - [Compile and flash](#compile-and-flash)
 - [Debugging](#debugging)
 - [UART](#uart)
@@ -24,7 +37,28 @@
 
 <!-- /TOC -->
 
-## [Blinking LEDs](#pi-pico)
+## [Blinking LEDs and Hello World](#pi-pico)
+
+```C++
+#include <stdio.h>
+#include "pico/stdlib.h"
+
+int main() {
+	static constexpr uint _LED_PIN = 25;
+
+	stdio_init_all();
+
+	gpio_init(_LED_PIN);
+	gpio_set_dir(_LED_PIN, true);
+
+	while (true) {
+		printf("Hello, pico.\n");
+		gpio_put(_LED_PIN, 1); // on
+		sleep_ms(1000);
+		gpio_put(_LED_PIN, 0); // off
+	}
+}
+```
 
 ## [Compile and flash](#pi-pico)
 [How to compile for pico](https://github.com/tttapa/pico-cpp/tree/main)
