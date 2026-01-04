@@ -29,7 +29,7 @@ My personal notes(some are unfinished).
 
 ## [C++](#ryan-sheehy-cheat-sheets)
 - [Make Files](./C++/make_files.md)
-- GNU Debugger
+- CMake
 - [C++ Notes](./C++/cpp.md)
 - [Standard Libraries](./C++/standard_libraries.md)
 - [Data Structures](./C++/data_structures.md)
@@ -45,7 +45,6 @@ My personal notes(some are unfinished).
 - [x86 Assembly](./Embedded_Programming/x86_assembly.md)/[MASM](./Embedded_Programming/masm.md)
 - [Serial Protocols](./Embedded_Programming/serial_protocols.md)
 - [Quadcopter](./Embedded_Programming/Quadcopter/quadcopter.md)
-- [Pi Pico](./Embedded_Programming/pi_pico.md)
 
 ## [Data Structures](#ryan-sheehy-cheat-sheets)
 - [Stacks, Queues, and Lists](./Data_Structures/stacks_queues_and_lists.md)
