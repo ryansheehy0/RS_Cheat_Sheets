@@ -1,49 +1,27 @@
 # Learning Path for Job in Embedded programming
-- Electrical Engineering
-	- Basics
-		- Ohms law, resister dividers, capacitors, inductors.
-		- MOSFETs, BJTs
-	- Filters
-		- High-pass, loe-pass, bond-pass filters
-		- Chebyshew, butterworth designs
+- Electrical engineering
+	- Ohms law, resistor dividers, capacitors, and inductors.
+	- Analog filters
 	- RF theory
+- Computer engieering
+	- How a CPU works
+	- Serial protocals
+	- FreeRTOS
 - C++
-	- Low level data types and volatile
 	- CMAKE
-	- Templates
-	- Smart Pointers
-	- Move Semantics
-	- Standard Library data structures and algorithms
-	- Multi-Threading
+	- OOP
+	- Low level concepts
 - Algorithms
-	- PID control
+	- Feedback control
+		- PID
+		- LQR
+		- MPC
 	- Sensor fusion
 		- Complementary filter
-		- Madgwicj filter
+		- Madgwick filter
 		- Kalman filter
 	- Digital filtering
 		- Moving Average filter
 		- Finite Impulse Response
 		- Infinite Impulse Response
-	- Fast Fourier Transform
-	- SLAM
-	- Path planning
-		- A* algorithm
-		- RRT(Rapidly-exploring Random Tree)
-- FreeRTOS
-- Serial protocals
-	- UART
-	- I2C
-	- SPI
-	- CAN
-	- USB
-- STM32F411 black pill
-	- Documentation link, Specs, and Pin layout
-	- Compiling and flashing
-	- Debugging
-	- Timers, watchdogs, and power modes
-	- Flashing LED
-	- UART, I2C, and SPI
-	- PWM
-	- ADC and DAC
-	- Interrupts
+- STM32F411 Black Pill

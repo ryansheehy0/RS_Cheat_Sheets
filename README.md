@@ -45,6 +45,7 @@ My personal notes(some are unfinished).
 - [x86 Assembly](./Embedded_Programming/x86_assembly.md)/[MASM](./Embedded_Programming/masm.md)
 - [Serial Protocols](./Embedded_Programming/serial_protocols.md)
 - [Quadcopter](./Embedded_Programming/Quadcopter/quadcopter.md)
+- [STM32F411 Black Pill](./Embedded_Programming/stm32f411_black_pill.md)
 
 ## [Data Structures](#ryan-sheehy-cheat-sheets)
 - [Stacks, Queues, and Lists](./Data_Structures/stacks_queues_and_lists.md)
