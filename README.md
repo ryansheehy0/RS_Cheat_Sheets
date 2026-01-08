@@ -28,8 +28,8 @@ My personal notes(some are unfinished).
 - PGP Encryption
 
 ## [C++](#ryan-sheehy-cheat-sheets)
-- [Make Files](./C++/make_files.md)
-- CMake
+- [CMake](./C++/cmake.md)
+	- [Make Files](./C++/make_files.md)
 - [C++ Notes](./C++/cpp.md)
 - [Standard Libraries](./C++/standard_libraries.md)
 - [Data Structures](./C++/data_structures.md)

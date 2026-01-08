@@ -19,6 +19,26 @@
 | I2S                 | 2                |
 | Current consumption | 26mA             |
 
+## Memory layout
+
+![STM Memory Layout](./stm_memory_layout.png)
+
+- Flash - Slow, permanant storage.
+- SRAM - Fast, reset after power off.
+
+| Memory      | Description                                           |
+|-------------|-------------------------------------------------------|
+| .isr_vector | Stores interrupt vectors and reset handler addresses. |
+| .text       | Your code                                             |
+| .rodata     | Read only constants and literals.                     |
+| .data       | Initialized global and static variables.              |
+| .bss        | Uninitialized global and static variables.            |
+
+- Interrupt vectors - Pointer to functions that run when an interrupt happens.
+- Reset handler - The function that is ran first after a reset to initialize the system before main().
+	- .data is copied from flash to sram
+	- .bss is zeroed
+
 ## Compiling and flashing
 - Cross compiler prefix: arm-none-eabi-
 - Cross compiler path: /usr/bin/
