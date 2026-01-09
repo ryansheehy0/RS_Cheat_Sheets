@@ -43,6 +43,12 @@
 - Cross compiler prefix: arm-none-eabi-
 - Cross compiler path: /usr/bin/
 
+- **CMSIS** - Collection of components for Arm Cortex-based microcontrollers.
+	- API to the core registers.
+	- DSP library - Optimized signal processing functions.
+	- RTOS abstraction layer
+	- DMA controller code - Transfers data between memory and peripherals without involvement of the CPU.
+
 ## Debugging
 ## Timers, watchdogs, and power modes
 ## Flashing LED
