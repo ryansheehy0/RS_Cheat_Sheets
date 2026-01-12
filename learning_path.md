@@ -25,3 +25,22 @@
 		- Finite Impulse Response
 		- Infinite Impulse Response
 - STM32F411 Black Pill
+- FPGAs
+
+- Books
+	- "Digital signal processing using the ARM Cortex M4" by Donald S. Reay
+	- "Real-time Systems: Design Principles for Distributed Embedded Applications" by Hermann Kopetz
+	- "Feedback Systems: An Introduction for Scientists and Engineers" by Karl J. Astrom and Richard
+	- "State Estimation for Robotics" by Timothy Barfoot
+	- "C++ in Embedded Systems: A practical transition from C to modern C++" by Amar Mahmutbegovic
+
+- Why C++ for embedded
+	- Classes, overloading methods, and RAII(destructor automatically runs when obj out of scope.)
+	- `#progma once` instead of `#ifndef`
+	- `constexpr` instead of `#define`
+	- Templates
+	- Enum class insead of enums
+	- Compile time checks
+	- Better casts. Easier to search for.
+	- Binary literals(`0b0101`)
+	- Digit separators(`123'456`)
