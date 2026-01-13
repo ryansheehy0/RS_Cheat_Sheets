@@ -28,10 +28,10 @@
 - FPGAs
 
 - Books
+	- "State Estimation for Robotics" by Timothy Barfoot
 	- "Digital signal processing using the ARM Cortex M4" by Donald S. Reay
 	- "Real-time Systems: Design Principles for Distributed Embedded Applications" by Hermann Kopetz
 	- "Feedback Systems: An Introduction for Scientists and Engineers" by Karl J. Astrom and Richard
-	- "State Estimation for Robotics" by Timothy Barfoot
 	- "C++ in Embedded Systems: A practical transition from C to modern C++" by Amar Mahmutbegovic
 
 - Why C++ for embedded
@@ -44,3 +44,11 @@
 	- Better casts. Easier to search for.
 	- Binary literals(`0b0101`)
 	- Digit separators(`123'456`)
+
+## Text Books
+- Sources:
+	- https://www.getcracked.io/
+	- https://freecomputerbooks.com/
+	- https://zybooks.com
+	- Library Genesis - https://libgen.is/
+	- https://build-your-own-x.vercel.app/
