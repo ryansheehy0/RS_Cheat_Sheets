@@ -1,7 +1,8 @@
 [Home](../README.md#embedded-programming)
 
 # STM32F411 Black Pill
-[HAL Documentation](https://www.st.com/resource/en/user_manual/um1725-description-of-stm32f4-hal-and-lowlayer-drivers-stmicroelectronics.pdf)
+- [HAL Documentation](https://www.st.com/resource/en/user_manual/um1725-description-of-stm32f4-hal-and-lowlayer-drivers-stmicroelectronics.pdf)
+- [Reference manual](https://www.st.com/resource/en/reference_manual/rm0383-stm32f411xce-advanced-armbased-32bit-mcus-stmicroelectronics.pdf)
 
 ![Pinout](./black_pill_pinout.png)
 
@@ -22,10 +23,10 @@
 <!-- TOC -->
 
 - [Set up](#set-up)
+- [Timers, watchdogs, and power modes](#timers-watchdogs-and-power-modes)
 - [GPIO](#gpio)
 - [PWM](#pwm)
 - [UART, I2C, SPI, and I2S](#uart-i2c-spi-and-i2s)
-- [Timers, watchdogs, and power modes](#timers-watchdogs-and-power-modes)
 - [ADC and DAC](#adc-and-dac)
 - [Interrupts](#interrupts)
 - [DMA](#dma)
@@ -124,6 +125,26 @@
 	- If it's your first time, you'll have to accept the popups that show up in the bottom right.
 	- If you add new .cpp files, you may have to delete build/ to ensure CMake adds it in.
 
+## [Timers, watchdogs, and power modes](#stm32f411-black-pill)
+- Timers
+	- RTC - Low power real time clock.
+	- TIM1 - Advanced control timer.
+		- For precise PWM and motor control.
+	- TIM2 and TIM5 - 32 bit general purpose timers.
+	- TIM3 and TIM4 - 16 bit general purpose timers.
+	- TIM9, TIM10, and TIM11 - 16 bit general purpose timers.
+- Each timer controlls certain pins(~4).
+	- The channel sets which particular pin.
+
+-
+- Trigger Output (TRGO) Parameters - When you want one timer to trigger another timer.
+
+- `HAL_Delay(ms)`
+- 
+- millis(), micros()
+
+- A watchdog timer - A timer that needs to be periodically refreshed within a time interval, otherwise it resets the device because it indivates the code is no longer runnign corrently.
+
 ## [GPIO](#stm32f411-black-pill)
 GPIO allows the software to turn on and off a pin and read high or low from a pin.
 
@@ -144,28 +165,57 @@ PWM approzimates an analog voltage by quickly switching between a fixed high vol
 	- Duty cycle - Percentage of time the pin is on during the cycle.
 	- Resolution - Number of possible duty cycle settings.
 	- Frequency - How many times the cycle repeats per second.
-
-- How microcontrollers 
+- How microcontrollers do PWM?
 	- Inverse corelation between resolution and frequency.
+- Ex: Given a system clock cycle of 72MHz and 8-bit(0-255) resolution, what's teh frequency of the PWM?
+	- $\frac{72,000,000 \text{ counts}}{1 \text{ sec}} * \frac{1 \text{ cycle}}{256 \text{ counts}} = 218,250 \text{ cycles per second}$
 
 - How to set up in cubeMX
-	- What each setting means
+	- Click timers on the left
+	- Select any general purpose timers
+	- Clock Source: Internal Clock
+	- Under Configuration
+		- Counter Settings - Effects all 4 channels
+			- Prescalar - The timer only increments after it has counted to the prescalar.
+				- It's used to slow down the timer.
+				- Ex: Prescalar 3: (1,2,3,4)1, (1,2,3,4)2, (1,2,3,4)3, etc.
+					- When the prescalar counts to 4, it resets to 0 and incrmeents the timer by 1.
+			- Counter Mode: Counting up or down.
+			- Counter Period: Max number the timer counts up to before restarting.
+			- Internal Clock Division: Another way to slow down clock signal.
+				- Not sur how it's different than the prescalar.
+			- Auto-reload preload: "Enable" means it will auto restart the timer when i
+				- Automatically restart at 0 when it reaches the max number.
+				- I'm not sure this is correct.
+	- The channel determins what pin you're going to be using.
+		- Set it to PWM Generation CH1
+	- PWM Genration Channel 1 - Only effects channel 1
+		- PWM mode 1 vs PWM mode 2?
+		- Pulse: Sets the duty cycle
+		- Output compare preload: 
+		- Fast Mode:
+		- CH Polarity: Flips the graph.
 
 - Code you impliment yourself
 
+`HAL_TIM_PW_Start(htim, Channel);`
+	- htim - Reference to the timer: `&htim2`
+	- Channel - TIM_CHANNEL_1
+
+- Hardware PWM runs automatically on timer peripherals so it doesn't use CPU cycles.
+- You can set up PWM via software by toggling the pin in code, but it uses CPU cycles.
+
 ## [UART, I2C, SPI, and I2S](#stm32f411-black-pill)
 
-## [Timers, watchdogs, and power modes](#stm32f411-black-pill)
+How to print out? And how to graph serial output.
 
-- `HAL_Delay(ms)`
-- 
-- millis(), micros()
-
-- A watchdog timer - A timer that needs to be periodically refreshed within a time interval, otherwise it resets the device because it indivates the code is no longer runnign corrently.
 
 ## [ADC and DAC](#stm32f411-black-pill)
 ## [Interrupts](#stm32f411-black-pill)
 - NVIC, EXTI
+
+`TIM2_IRQHandler` - is a special function name that matches the entry in the STM32 interrupt vector table for TIM2.
+	- So when TIM2 throws an interupt event, this function is automatically called.
 
 ## [DMA](#stm32f411-black-pill)
 Direct memory access.
