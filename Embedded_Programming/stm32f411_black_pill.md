@@ -23,10 +23,14 @@
 <!-- TOC -->
 
 - [Set up](#set-up)
-- [Timers, watchdogs, and power modes](#timers-watchdogs-and-power-modes)
 - [GPIO](#gpio)
 - [PWM](#pwm)
-- [UART, I2C, SPI, and I2S](#uart-i2c-spi-and-i2s)
+- [UART](#uart)
+	- [Serial output via debugger](#serial-output-via-debugger)
+- [I2C](#i2c)
+- [SPI](#spi)
+- [I2S](#i2s)
+- [Timers, watchdogs, and power modes](#timers-watchdogs-and-power-modes)
 - [ADC and DAC](#adc-and-dac)
 - [Interrupts](#interrupts)
 - [DMA](#dma)
@@ -58,72 +62,155 @@
 | SWCLK       | SCLK      |
 
 4. If it's your first time using your ST-Link device, you'll need to upgrade its firmware.
-	- Left side in vs code click Run and Debug
+	- Left side in vs code click Run and Debug icon
 	- Under STM32CUBE DEVICES AND BOARDS at the bottom left
 		- Click the little download icon
 5. Setup your code
 	1. Create My_Code folder at the root level of your project.
 
-	```C
-	// In my_main.h
-	#ifdef __cplusplus
-	extern "C" {
-	#endif
+In my_main.h
 
-	void myCode();
+```C
+#include "stm32f4xx_hal.h"
 
-	#ifdef __cplusplus
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+void myCode();
+
+#ifdef __cplusplus
+}
+#endif
+```
+
+In my_main.cpp
+
+```C
+#include "my_main.h"
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+void myCode(){
+	// Init code
+	while(true) {
+		// Loop code
 	}
-	#endif
-	```
+}
 
-	```C
-	// In my_main.cpp
-	#include "my_main.h"
-	#include "stm32f4xx_hal.h"
+#ifdef __cplusplus
+}
+#endif
+```
 
-	#ifdef __cplusplus
-	extern "C" {
-	#endif
+2. In Core/Src/main.c
 
-	void myCode(){
-		// Init code
-		while(true) {
-			// Loop code
-		}
-	}
+```C
+/* USER CODE BEGIN Includes */
+#include "../../My_Code/my_main.h"
+/* USER CODE END Includes */
 
-	#ifdef __cplusplus
-	}
-	#endif
-	```
+// ...
 
-	3. In Core/Src/main.c
+/* USER CODE BEGIN WHILE */
+myCode();
+/* USER CODE END WHILE */
+```
 
-	```C
-	#include "../../My_Code/my_main.h"
+3. In CMakeLists.txt
 
-	// ...
-
-  /* USER CODE BEGIN WHILE */
-  myCode();
-  /* USER CODE END WHILE */
-	```
-
-	4. In CMakeLists.txt
-
-	```
-	file(GLOB MY_CODE_SOURCES My_Code/*.cpp)
-	target_sources(${CMAKE_PROJECT_NAME} PRIVATE
-			# Add user sources here
-			${MY_CODE_SOURCES}
-	)
-	```
+```
+file(GLOB MY_CODE_SOURCES My_Code/*.cpp)
+target_sources(${CMAKE_PROJECT_NAME} PRIVATE
+	# Add user sources here
+	${MY_CODE_SOURCES}
+)
+```
 
 6. Compiling, Flashing, and Debugging
 	- Top bar -> Run -> Start Debugging or Run Without Debugging
 	- If it's your first time, you'll have to accept the popups that show up in the bottom right.
 	- If you add new .cpp files, you may have to delete build/ to ensure CMake adds it in.
+
+## [GPIO](#stm32f411-black-pill)
+GPIO allows the software to turn on and off a pin and read high or low from a pin.
+
+- CubeMX: GPIO_Output or GPIO_Input
+- HAL
+	- `void HAL_GPIO_WritePin(Port, Pin, PinState)`
+	- `void HAL_GPIO_TogglePin(Port, Pin)`
+	- `PinState HAL_GPIO_ReadPin(Port, Pin)`
+- Arguments
+	- Port: `GPIOA`, `GPIOB`, `GPIOC`
+	- Pin: `GPIO_PIN_1`, `GPIO_PIN_2`, ...
+	- PinState: `GPIO_PIN_SET`, `GPIO_PIN_RESET`
+
+## [PWM](#stm32f411-black-pill)
+PWM approzimates an analog voltage by quickly switching between a fixed high voltage and ground so the average over time is the desired analogy voltage.
+
+- PWM has three variables
+	- **Duty cycle** - Percentage of time the pin is on during the cycle.
+	- **Resolution** - Number of possible duty cycle values.
+	- **Frequency** - How many times the cycle repeats per second.
+
+Microcontrollers use a timer that counts up to a set value, then resets to 0. This is one PWM cycle, consisting of a high phase and a low phase. When the timer count exceeds a compare vlaue, the output switches from high to low. Changing this compare value changes the duty cycle. Chaning the maximum count value changes the resolution. The frequency depends on the clock frequency and the resoltion, where high resoltion lowers the frequency.
+
+- Ex: Given a system clock cycle of 72MHz and 8-bit(0-255) resolution, what's teh frequency of the PWM?
+	- $\frac{72,000,000 \text{ counts}}{1 \text{ sec}} * \frac{1 \text{ cycle}}{256 \text{ counts}} = 218,250 \text{ cycles per second}$
+
+
+- CubeMX
+	- Click Timers on the left
+	- Select any general purpose timers: TIM2, TIM3, etc.
+	- Clock Source: Internal Clock
+	- Channel#: PWM Generation CH#
+		- The channel changes which pin the PWM is outputed on.
+	- Under Configuration, Parameter Settings
+		- **Counter Period**: Max number the timer counts up to.
+		- **Pulse**: The compare value to set the duty cycle. Has to be less than the counter period.
+- HAL
+	- `HAL_TIM_PWM_Start(HtimPtr, Channel);`
+	- `__HAL_TIM_SET_COMPARE(HtimPtr, Channel, Pulse);` - Change the duty cycle.
+- Arguments
+	- HtimPtr: Reference to the timer. `&htim1`, `&htim2`, ...
+	- Channel: `TIM_CHANNEL_1`, `TIM_CHANNEL_2`, ...
+	- Pulse: 0 to counter period.
+- Advanced settings
+	- Prescaler: The timer only increments after it has counted to the prescalar, it's used to slow down the timer.
+
+## [UART](#stm32f411-black-pill)
+How to print out? And how to graph serial output.
+
+- CubeMX
+	- Set pin to USART
+		- USART1, USART2, USART3
+	- Mode: Asynchronous
+- HAL
+	- `HAL_UART_Transmit();`
+	`UART_HandleTypeDef * huart, const uint8_t * pData, uint16_t Size, uint32_t Timeout);`
+	- `HAL_UART_Receive(UART_HandleTypeDef * huart, uint8_t * pData, uint16_t Size, uint32_t Timeout);`
+- Arguments
+
+### [Serial output via debugger](#stm32f411-black-pill)
+
+```C++
+int write(int file)
+
+// Enable ITM printf output over debugger (SWV)
+int _write(int file, char *ptr, int len)
+{
+    for (int i = 0; i < len; i++)
+        ITM_SendChar(ptr[i]);
+    return len;
+}
+```
+
+## [I2C](#stm32f411-black-pill)
+## [SPI](#stm32f411-black-pill)
+## [I2S](#stm32f411-black-pill)
+
 
 ## [Timers, watchdogs, and power modes](#stm32f411-black-pill)
 - Timers
@@ -145,70 +232,19 @@
 
 - A watchdog timer - A timer that needs to be periodically refreshed within a time interval, otherwise it resets the device because it indivates the code is no longer runnign corrently.
 
-## [GPIO](#stm32f411-black-pill)
-GPIO allows the software to turn on and off a pin and read high or low from a pin.
-
-- CubeMX: GPIO_Output or GPIO_Input
-- HAL
-	- `void HAL_GPIO_WritePin(Port, Pin, PinState)`
-	- `void HAL_GPIO_TogglePin(Port, Pin)`
-	- `PinState HAL_GPIO_ReadPin(Port, Pin)`
-- Arguments
-	- Port: `GPIOA`, `GPIOB`, `GPIOC`
-	- Pin: `GPIO_PIN_1`, `GPIO_PIN_2`, ...
-	- PinState: `GPIO_PIN_SET`, `GPIO_PIN_RESET`
-
-## [PWM](#stm32f411-black-pill)
-PWM approzimates an analog voltage by quickly switching between a fixed high voltage and ground so the average over time is the desired analogy voltage.
-
-- PWM has three variables:
-	- Duty cycle - Percentage of time the pin is on during the cycle.
-	- Resolution - Number of possible duty cycle settings.
-	- Frequency - How many times the cycle repeats per second.
-- How microcontrollers do PWM?
-	- Inverse corelation between resolution and frequency.
-- Ex: Given a system clock cycle of 72MHz and 8-bit(0-255) resolution, what's teh frequency of the PWM?
-	- $\frac{72,000,000 \text{ counts}}{1 \text{ sec}} * \frac{1 \text{ cycle}}{256 \text{ counts}} = 218,250 \text{ cycles per second}$
-
-- How to set up in cubeMX
-	- Click timers on the left
-	- Select any general purpose timers
-	- Clock Source: Internal Clock
-	- Under Configuration
-		- Counter Settings - Effects all 4 channels
-			- Prescalar - The timer only increments after it has counted to the prescalar.
-				- It's used to slow down the timer.
-				- Ex: Prescalar 3: (1,2,3,4)1, (1,2,3,4)2, (1,2,3,4)3, etc.
-					- When the prescalar counts to 4, it resets to 0 and incrmeents the timer by 1.
-			- Counter Mode: Counting up or down.
-			- Counter Period: Max number the timer counts up to before restarting.
-			- Internal Clock Division: Another way to slow down clock signal.
-				- Not sur how it's different than the prescalar.
-			- Auto-reload preload: "Enable" means it will auto restart the timer when i
-				- Automatically restart at 0 when it reaches the max number.
-				- I'm not sure this is correct.
-	- The channel determins what pin you're going to be using.
-		- Set it to PWM Generation CH1
-	- PWM Genration Channel 1 - Only effects channel 1
-		- PWM mode 1 vs PWM mode 2?
-		- Pulse: Sets the duty cycle
-		- Output compare preload: 
-		- Fast Mode:
-		- CH Polarity: Flips the graph.
-
-- Code you impliment yourself
-
-`HAL_TIM_PW_Start(htim, Channel);`
-	- htim - Reference to the timer: `&htim2`
-	- Channel - TIM_CHANNEL_1
-
-- Hardware PWM runs automatically on timer peripherals so it doesn't use CPU cycles.
-- You can set up PWM via software by toggling the pin in code, but it uses CPU cycles.
-
-## [UART, I2C, SPI, and I2S](#stm32f411-black-pill)
-
-How to print out? And how to graph serial output.
-
+- Timer
+	- HAL_Delay(uint32_t ms);
+	- HAL_TIM_Base_Init(TIM_HandleTypeDef *htim)
+	- HAL_TIM_Base_Start(TIM_HandleTypeDef *htim)
+	- HAL_TIM_Base_Stop(TIM_HandleTypeDef *htim)
+- Power modes
+	- HAL_PWR_EnterSleepMode(Regulator, SLEEPEntry);
+	- HAL_PWR_EnterStopMode(Regulator, STOPEntry);
+	- HAL_PWR_EnterStandbyMode();
+- Watchdog
+	- HAL_IWDG_Init(IWDG_HandleTypeDef *hiwdg)
+	- HAL_IWDG_Start(IWDG_HandleTypeDef *hiwdg)
+	- HAL_IWDG_Refresh(IWDG_HandleTypeDef *hiwdg) - Resets the watchdog timer to prevent a reset.
 
 ## [ADC and DAC](#stm32f411-black-pill)
 ## [Interrupts](#stm32f411-black-pill)
@@ -216,6 +252,10 @@ How to print out? And how to graph serial output.
 
 `TIM2_IRQHandler` - is a special function name that matches the entry in the STM32 interrupt vector table for TIM2.
 	- So when TIM2 throws an interupt event, this function is automatically called.
+
+- `HAL_TIM_PWM_Start_IT(htim, Channel);`
+	- Starts the interupts associated with the timer.
+	- Need to Enable NVIC Settings: TIM# global interupt
 
 ## [DMA](#stm32f411-black-pill)
 Direct memory access.
