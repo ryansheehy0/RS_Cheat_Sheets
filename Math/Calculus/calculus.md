@@ -1,6 +1,7 @@
 [Home](../../README.md#math)
 
 # Calculus
+- [Calc trig](./calc_trig.pdf)
 
 ## Calc 1
 - [Finding the limit](./finding_the_limit.pdf)

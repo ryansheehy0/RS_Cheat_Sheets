@@ -33,6 +33,7 @@
 - [Timers, watchdogs, and power modes](#timers-watchdogs-and-power-modes)
 - [ADC and DAC](#adc-and-dac)
 - [Interrupts](#interrupts)
+- [USB](#usb)
 - [DMA](#dma)
 - [Other](#other)
 	- [Memory layout](#memory-layout)
@@ -256,6 +257,8 @@ int _write(int file, char *ptr, int len)
 - `HAL_TIM_PWM_Start_IT(htim, Channel);`
 	- Starts the interupts associated with the timer.
 	- Need to Enable NVIC Settings: TIM# global interupt
+
+## [USB](#stm32f411-black-pill)
 
 ## [DMA](#stm32f411-black-pill)
 Direct memory access.
