@@ -97,12 +97,28 @@ $\frac{72,000,000 \text{ counts}}{1 \text{ sec}} * \frac{1 \text{ cycle}}{256 \t
 	- `HAL_UART_Transmit(uart, bufferArr, size, timeout);`
 	- `HAL_UART_Receive(uart, bufferArr, size, timeout);`
 - Arguments
-	- uart: `&huart1`, `&huart2`, etc
-	- bufferArr is usually an array of uint8_t
-	- size is the number of bytes to transmit or receive. `sizeof(bufferArr) - 1`
-	- timeout is in mili-seconds
+	- uart: `&huart1`, `&huart2`, etc.
+	- bufferArr is an array of uint8_t
+	- size is the number of bytes to transmit or receive(uint16_t). `sizeof(bufferArr) - 1`
+	- timeout in milliseconds
 
 ## [I2C](#stm32f411-black-pill)
+
+- CubeMX
+	- Under Connectivity: I2C#
+	- Set Primary slave address: Is your device's slave address if it's used as an I2C slave.
+- HAL
+	- `HAL_I2C_Master_Transmit(hi2c, address, bufferArr, size, timeout);`
+	- `HAL_I2C_Master_Receive(hi2c, address, bufferArr, size, timeout);`
+	- `HAL_I2C_Slave_Transmit(hi2c, bufferArr, size, timeout);`
+	- `HAL_I2C_Slave_Receive(hi2c, bufferArr, size, timeout);`
+- Arguments
+	- hi2c: `&hi2c1`, `&hi2c2`, etc.
+	- address is the address left shifted by 1. `0x3C << 1`
+	- bufferArr is an array of uint8_t
+	- size is the number of bytes to transmit or receive(uint16_t).
+	- timeout in milliseconds
+
 ## [SPI](#stm32f411-black-pill)
 ## [I2S](#stm32f411-black-pill)
 
