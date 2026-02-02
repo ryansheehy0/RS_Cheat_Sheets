@@ -41,6 +41,9 @@
 
 <!-- /TOC -->
 
+--------------------------------------------------------------------------------
+`#include "stm32f4xx_hal.h"`
+
 ## [GPIO](#stm32f411-black-pill)
 GPIO allows the software to turn on and off a pin and read high or low from a pin.
 
@@ -108,14 +111,14 @@ $\frac{72,000,000 \text{ counts}}{1 \text{ sec}} * \frac{1 \text{ cycle}}{256 \t
 	- Under Connectivity: I2C#
 	- Set Primary slave address: Is your device's slave address if it's used as an I2C slave.
 - HAL
-	- `HAL_I2C_Master_Transmit(hi2c, address, bufferArr, size, timeout);`
-	- `HAL_I2C_Master_Receive(hi2c, address, bufferArr, size, timeout);`
-	- `HAL_I2C_Slave_Transmit(hi2c, bufferArr, size, timeout);`
-	- `HAL_I2C_Slave_Receive(hi2c, bufferArr, size, timeout);`
+	- `HAL_I2C_Master_Transmit(hi2c, address, buffer, size, timeout);`
+	- `HAL_I2C_Master_Receive(hi2c, address, buffer, size, timeout);`
+	- `HAL_I2C_Slave_Transmit(hi2c, buffer, size, timeout);`
+	- `HAL_I2C_Slave_Receive(hi2c, buffer, size, timeout);`
 - Arguments
-	- hi2c: `&hi2c1`, `&hi2c2`, etc.
-	- address is the address left shifted by 1. `0x3C << 1`
-	- bufferArr is an array of uint8_t
+	- hi2c: `&hi2c1`, `&hi2c2`, etc. of type I2C_HandleTypeDef
+	- address is the address left shifted by 1 of typ uint8_t. `0x3C << 1`
+	- buffer is usually an array of uint8_t
 	- size is the number of bytes to transmit or receive(uint16_t).
 	- timeout in milliseconds
 
@@ -138,8 +141,7 @@ $\frac{72,000,000 \text{ counts}}{1 \text{ sec}} * \frac{1 \text{ cycle}}{256 \t
 - Trigger Output (TRGO) Parameters - When you want one timer to trigger another timer.
 
 - `HAL_Delay(ms)`
-- 
-- millis(), micros()
+- `HAL_GetTick()` - Return milliseconds(ms) since startup.
 
 - A watchdog timer - A timer that needs to be periodically refreshed within a time interval, otherwise it resets the device because it indivates the code is no longer runnign corrently.
 
