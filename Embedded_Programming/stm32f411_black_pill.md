@@ -6,19 +6,20 @@
 
 ![Pinout](./black_pill_pinout.png)
 
-| Feature             | Specs            |
-|---------------------|------------------|
-| CPU                 | Cortex-M4 100MHz |
-| RAM                 | 128kB            |
-| Flash               | 512kB            |
-| GPIO                | 32               |
-| ADC                 | 12 bit           |
-| USB                 | 1.1 Host/Device  |
-| UART                | 3                |
-| I2C                 | 3                |
-| SPI                 | 5                |
-| I2S                 | 2                |
-| Current consumption | 26mA             |
+| Feature             | Specs                             |
+|---------------------|-----------------------------------|
+| CPU                 | Cortex-M4 100MHz                  |
+| RAM                 | 128kB                             |
+| Flash               | 512kB                             |
+| GPIO                | 32                                |
+| ADC                 | 12 bit                            |
+| USB                 | 1.1 Host/Device                   |
+| UART                | 3                                 |
+| I2C                 | 3                                 |
+| SPI                 | 5                                 |
+| I2S                 | 2                                 |
+| Current consumption | 26mA                              |
+| 32-bit FPU          | Use `float`s instead of `double`s |
 
 <!-- TOC -->
 
@@ -32,8 +33,8 @@
 - [ADC and DAC](#adc-and-dac)
 - [Interrupts](#interrupts)
 - [USB](#usb)
+	- [Serial output via USB-C](#serial-output-via-usb-c)
 - [DMA](#dma)
-- [Serial output via debugger](#serial-output-via-debugger)
 - [Set up](#set-up)
 - [Other](#other)
 	- [Memory layout](#memory-layout)
@@ -142,6 +143,7 @@ $\frac{72,000,000 \text{ counts}}{1 \text{ sec}} * \frac{1 \text{ cycle}}{256 \t
 
 - `HAL_Delay(ms)`
 - `HAL_GetTick()` - Return milliseconds(ms) since startup.
+	- Need to use some other timer to get it in microseconds(us).
 
 - A watchdog timer - A timer that needs to be periodically refreshed within a time interval, otherwise it resets the device because it indivates the code is no longer runnign corrently.
 
@@ -172,24 +174,51 @@ $\frac{72,000,000 \text{ counts}}{1 \text{ sec}} * \frac{1 \text{ cycle}}{256 \t
 
 ## [USB](#stm32f411-black-pill)
 
+### [Serial output via USB-C](#stm32f411-black-pill)
+
+- CubeMX
+	- Under System Core: RCC
+	- High Speed Clock (HSE): Crystal/Ceramic Resonator
+	- Low Speed Clock (LSE): Crystal/Ceramic Resonator
+	- Under Connectivity: USB_OTG_FS
+	- Mode: Device_Only
+	- Under Middleware and Software Packs: USB_DEVICE
+	- Class For FS IP: Communication Device Class (Cirtual Port Com)
+	- Select Clock Configuration tab
+	- Resolve Clock Issues
+
+```C++
+// In my_main.h
+#include "usbd_cdc_if.h"
+#include <stdio.h>
+
+// Wrapped in extern c
+int _write(int file, char *ptr, int len);
+
+// In my_main.cpp wrapped in extern c
+int _write(int file, char *ptr, int len) {
+	while (CDC_Transmit_FS((uint8_t*)ptr, len) == USBD_BUSY) {}
+	return len;
+}
+
+// Usage example
+printf("Hello world!\r\n"); // You need \r
+```
+
+- The pins for usb(PA12 and PA11) are automatically connected to the onboard usb-c connector.
+- Make sure your usb-c cable supports data.
+- `screen /dev/ttyACM0 115200` to see terminal output.
+- Add this to CMakeLists.txt to enable floats(`%f`) in printf.
+
+```
+# Create an executable object type
+add_executable(${CMAKE_PROJECT_NAME})
+set_target_properties(${CMAKE_PROJECT_NAME} PROPERTIES LINK_FLAGS "-u _printf_float")
+```
+
 ## [DMA](#stm32f411-black-pill)
 Direct memory access.
 - Allows a pin to directly set addresses.
-
-## [Serial output via debugger](#stm32f411-black-pill)
-
-```C++
-#include "core_cm4.h"
-
-void ITM_Print(char *s) {
-    while (*s) {
-        ITM_SendChar(*s++);
-    }
-}
-
-// usage
-ITM_Print("Hello SWO\n");
-```
 
 ## [Set up](#stm32f411-black-pill)
 1. Install: [CubeMX](https://www.st.com/en/development-tools/stm32cubemx.html) and STM32CubeIDE for Visual Studio Code(stmicroelectronics.stm32-vscode-extension).
@@ -245,10 +274,7 @@ extern "C" {
 #endif
 
 void myCode(){
-	// Init code
-	while(true) {
-		// Loop code
-	}
+	while(true) {}
 }
 
 #ifdef __cplusplus
@@ -282,6 +308,7 @@ target_sources(${CMAKE_PROJECT_NAME} PRIVATE
 
 6. Compiling, Flashing, and Debugging
 	- Top bar -> Run -> Start Debugging or Run Without Debugging
+		- Select: STM32Cube: STLink GDB Server
 	- If it's your first time, you'll have to accept the popups that show up in the bottom right.
 	- If you add new .cpp files, you may have to delete build/ to ensure CMake adds it in.
 
