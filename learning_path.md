@@ -34,17 +34,6 @@
 	- "Feedback Systems: An Introduction for Scientists and Engineers" by Karl J. Astrom and Richard
 	- "C++ in Embedded Systems: A practical transition from C to modern C++" by Amar Mahmutbegovic
 
-- Why C++ for embedded
-	- Classes, overloading methods, and RAII(destructor automatically runs when obj out of scope.)
-	- `#progma once` instead of `#ifndef`
-	- `constexpr` instead of `#define`
-	- Templates
-	- Enum class insead of enums
-	- Compile time checks
-	- Better casts. Easier to search for.
-	- Binary literals(`0b0101`)
-	- Digit separators(`123'456`)
-
 ## Text Books
 - Sources:
 	- https://www.getcracked.io/

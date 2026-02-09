@@ -4,7 +4,7 @@ My personal notes(some are unfinished).
 <!-- TOC -->
 
 - [Tools](#tools)
-- [C++](#c)
+- [C++ Needs better organization](#c-needs-better-organization)
 - [Embedded Programming](#embedded-programming)
 - [Data Structures](#data-structures)
 - [Algorithms](#algorithms)
@@ -27,7 +27,7 @@ My personal notes(some are unfinished).
 - [Programming Tips](./Tools/programming_tips.md)
 - PGP Encryption
 
-## [C++](#ryan-sheehy-cheat-sheets)
+## [C++](#ryan-sheehy-cheat-sheets) (Needs better organization)
 - [CMake](./C++/cmake.md)
 	- [Make Files](./C++/make_files.md)
 - [C++ Notes](./C++/cpp.md)
@@ -37,7 +37,7 @@ My personal notes(some are unfinished).
 - Memory Management
 - Concurrency
 - [Compile time C++](./C++/compile_time_cpp.md)
-- QML
+- [C++ for embedded](./C++/cpp_for_embedded.md)
 
 ## [Embedded Programming](#ryan-sheehy-cheat-sheets)
 - [Low level concepts](./Embedded_Programming/low_level_concepts.md)

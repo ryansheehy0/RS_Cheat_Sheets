@@ -19,6 +19,7 @@
 	- [Calculate control axes](#calculate-control-axes)
 	- [Set motor outputs](#set-motor-outputs)
 	- [Safety checks](#safety-checks)
+- [Other](#other)
 
 <!-- /TOC -->
 
@@ -135,3 +136,21 @@ Usually ESCs have a range from 1000-2000 PWM.
 	- This is done by converting the controller output to an angle/rotation rate.
 - Check for stale IMU or controller data.
 - Prevent motors from exceeding a certain limit when testing.
+
+## Other
+- Explain integrals and reiman sum
+	- Computers us riman sum
+- Implement that in code with velocity exampl
+- Explain dead recknoning with boats and have to corrct for errors from an outside source
+- Introduce the IMU with gyro to get angle and then acc and magnometer to correct for errors.
+	- Explain acro mode vs stabalized mode
+- Explain full loop of drone
+	- Calcualte delta time
+	- Get info from IMU
+	- Estimate angl of the drone
+	- Get controller input
+	- Feed into PIDs
+	- Motor mixing
+- Explain PIDs and how each variabl controls the shap of the graph
+- Explain flight controllers vs flight computers
+- Building is much harder. 90% safe, but last 10% with props is dangerous.
