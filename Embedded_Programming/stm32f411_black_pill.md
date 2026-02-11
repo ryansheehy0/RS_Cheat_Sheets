@@ -116,6 +116,9 @@ $\frac{72,000,000 \text{ counts}}{1 \text{ sec}} * \frac{1 \text{ cycle}}{256 \t
 	- `HAL_I2C_Master_Receive(hi2c, address, buffer, size, timeout);`
 	- `HAL_I2C_Slave_Transmit(hi2c, buffer, size, timeout);`
 	- `HAL_I2C_Slave_Receive(hi2c, buffer, size, timeout);`
+	
+	- HAL_I2C_Mem_Write(&hi2c, _BMI160_ADDR, CMD_ADDR, I2C_MEMADD_SIZE_8BIT, &gyroNormalMode, 1, HAL_MAX_DELAY);
+	- 
 - Arguments
 	- hi2c: `&hi2c1`, `&hi2c2`, etc. of type I2C_HandleTypeDef
 	- address is the address left shifted by 1 of typ uint8_t. `0x3C << 1`
@@ -197,7 +200,7 @@ int _write(int file, char *ptr, int len);
 
 // In my_main.cpp wrapped in extern c
 int _write(int file, char *ptr, int len) {
-	while (CDC_Transmit_FS((uint8_t*)ptr, len) == USBD_BUSY) {}
+	CDC_Transmit_FS((uint8_t*)ptr, len);
 	return len;
 }
 
