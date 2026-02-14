@@ -25,7 +25,6 @@ My personal notes(some are unfinished).
 - [Git](./Tools/git.md)
 - [Networking](./Tools/networking.md)
 - [Programming Tips](./Tools/programming_tips.md)
-- PGP Encryption
 
 ## [C++](#ryan-sheehy-cheat-sheets) (Needs better organization)
 - [CMake](./C++/cmake.md)
@@ -65,11 +64,7 @@ My personal notes(some are unfinished).
 	- [Search Algorithms](./Algorithms/search.md)
 	- [Sorting Algorithms](./Algorithms/sorting.md)
 - [Miscellaneous](./Algorithms/miscellaneous.md)
-- Compression: [Huffman codes](./Algorithms/huffman_codes.md)
-- Encryption
-	- RSA
-	- Diffie-Hellman Key Exchange(Include 2 lock key exchange)
-- Error correction: Read-Solomon Codes
+- [Huffman codes](./Algorithms/huffman_codes.md)
 
 ## [Web Dev](#ryan-sheehy-cheat-sheets)
 - [Deploying Websites](./Web_Dev/deploying_websites.md)

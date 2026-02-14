@@ -178,7 +178,8 @@ $\frac{72,000,000 \text{ counts}}{1 \text{ sec}} * \frac{1 \text{ cycle}}{256 \t
 ## [USB](#stm32f411-black-pill)
 
 ### [Serial output via USB-C](#stm32f411-black-pill)
-
+- This doesn't work well with I2C or other serial communicatoin timing!!!
+	- Use SWO debugger instead.
 - CubeMX
 	- Under System Core: RCC
 	- High Speed Clock (HSE): Crystal/Ceramic Resonator

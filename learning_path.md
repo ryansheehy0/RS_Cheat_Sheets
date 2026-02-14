@@ -8,7 +8,6 @@
 	- Serial protocals
 	- FreeRTOS
 - C++
-	- CMAKE
 	- OOP
 	- Low level concepts
 - Algorithms
