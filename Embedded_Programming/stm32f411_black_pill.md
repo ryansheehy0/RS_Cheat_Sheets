@@ -29,7 +29,9 @@
 - [I2C](#i2c)
 - [SPI](#spi)
 - [I2S](#i2s)
-- [Timers, watchdogs, and power modes](#timers-watchdogs-and-power-modes)
+- [Timers](#timers)
+- [Watchdog](#watchdog)
+- [Power mods](#power-mods)
 - [ADC and DAC](#adc-and-dac)
 - [Interrupts](#interrupts)
 - [USB](#usb)
@@ -112,16 +114,20 @@ $\frac{72,000,000 \text{ counts}}{1 \text{ sec}} * \frac{1 \text{ cycle}}{256 \t
 	- Under Connectivity: I2C#
 	- Set Primary slave address: Is your device's slave address if it's used as an I2C slave.
 - HAL
+	- `HAL_I2C_Mem_Write(hi2c, address, regAddress, I2C_MEMADD_SIZE_8BIT, buffer, size, timeout);`
+		- Write to register on the I2C.
+	- `HAL_I2C_Mem_Read(hi2c, address, regAddress, I2C_MEMADD_SIZE_8BIT, buffer, size, timeout);`
+		- Read from register on the I2C.
 	- `HAL_I2C_Master_Transmit(hi2c, address, buffer, size, timeout);`
+		- Transmit info to I2C device
 	- `HAL_I2C_Master_Receive(hi2c, address, buffer, size, timeout);`
+		- Read from to I2C device
 	- `HAL_I2C_Slave_Transmit(hi2c, buffer, size, timeout);`
 	- `HAL_I2C_Slave_Receive(hi2c, buffer, size, timeout);`
-	
-	- HAL_I2C_Mem_Write(&hi2c, _BMI160_ADDR, CMD_ADDR, I2C_MEMADD_SIZE_8BIT, &gyroNormalMode, 1, HAL_MAX_DELAY);
-	- 
 - Arguments
 	- hi2c: `&hi2c1`, `&hi2c2`, etc. of type I2C_HandleTypeDef
 	- address is the address left shifted by 1 of typ uint8_t. `0x3C << 1`
+	- regAddrss is the address for the register you want to write to or read from on the I2C device.
 	- buffer is usually an array of uint8_t
 	- size is the number of bytes to transmit or receive(uint16_t).
 	- timeout in milliseconds
@@ -129,40 +135,36 @@ $\frac{72,000,000 \text{ counts}}{1 \text{ sec}} * \frac{1 \text{ cycle}}{256 \t
 ## [SPI](#stm32f411-black-pill)
 ## [I2S](#stm32f411-black-pill)
 
-
-## [Timers, watchdogs, and power modes](#stm32f411-black-pill)
-- Timers
+## [Timers](#stm32f411-black-pill)
+- Timers - Each one controls certain pins. The channel sets which particular pin.
 	- RTC - Low power real time clock.
 	- TIM1 - Advanced control timer.
 		- For precise PWM and motor control.
 	- TIM2 and TIM5 - 32 bit general purpose timers.
 	- TIM3 and TIM4 - 16 bit general purpose timers.
 	- TIM9, TIM10, and TIM11 - 16 bit general purpose timers.
-- Each timer controlls certain pins(~4).
-	- The channel sets which particular pin.
+- CubeMX - Setting a general purpose timer with a specific frequency.
+- HAL
+	- `HAL_Delay(uint32_t ms);`
+	- `HAL_GetTick()` - Return milliseconds(ms) since startup.
+	- `HAL_TIM_Base_Start(htim);`
+	- `HAL_TIM_Base_Stop(htim);`
+	- ` __HAL_TIM_GET_COUNTER(htim);`
+- Arguments
 
--
-- Trigger Output (TRGO) Parameters - When you want one timer to trigger another timer.
-
-- `HAL_Delay(ms)`
-- `HAL_GetTick()` - Return milliseconds(ms) since startup.
-	- Need to use some other timer to get it in microseconds(us).
-
+## [Watchdog](#stm32f411-black-pill)
 - A watchdog timer - A timer that needs to be periodically refreshed within a time interval, otherwise it resets the device because it indivates the code is no longer runnign corrently.
 
-- Timer
-	- HAL_Delay(uint32_t ms);
-	- HAL_TIM_Base_Init(TIM_HandleTypeDef *htim)
-	- HAL_TIM_Base_Start(TIM_HandleTypeDef *htim)
-	- HAL_TIM_Base_Stop(TIM_HandleTypeDef *htim)
+- HAL
+	- HAL_IWDG_Init(IWDG_HandleTypeDef *hiwdg)
+	- HAL_IWDG_Start(IWDG_HandleTypeDef *hiwdg)
+	- HAL_IWDG_Refresh(IWDG_HandleTypeDef *hiwdg) - Resets the watchdog timer to prevent a reset.
+
+## [Power mods](#stm32f411-black-pill)
 - Power modes
 	- HAL_PWR_EnterSleepMode(Regulator, SLEEPEntry);
 	- HAL_PWR_EnterStopMode(Regulator, STOPEntry);
 	- HAL_PWR_EnterStandbyMode();
-- Watchdog
-	- HAL_IWDG_Init(IWDG_HandleTypeDef *hiwdg)
-	- HAL_IWDG_Start(IWDG_HandleTypeDef *hiwdg)
-	- HAL_IWDG_Refresh(IWDG_HandleTypeDef *hiwdg) - Resets the watchdog timer to prevent a reset.
 
 ## [ADC and DAC](#stm32f411-black-pill)
 ## [Interrupts](#stm32f411-black-pill)
@@ -260,6 +262,9 @@ In my_main.h
 #ifdef __cplusplus
 extern "C" {
 #endif
+
+// Example of a variable that's declared in main.c
+extern TIM_HandleTypeDef htim2;
 
 void myCode();
 
