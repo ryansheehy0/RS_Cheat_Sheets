@@ -14,3 +14,4 @@
 - [Finding integrals overview](./finding_integral_overview.pdf)
 - [Finding integrals](./finding_integrals.pdf)
 - [Use cases for integrals](./use_cases_for_integrals.pdf)
+- [Differential equations](./differential_equations.pdf)
