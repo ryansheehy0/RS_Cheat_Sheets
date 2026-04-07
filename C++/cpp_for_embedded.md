@@ -14,3 +14,12 @@
 - C++14
 	- Binary literals(`0b0101`)
 	- Digit separators(`123'456`)
+
+- No excptions(throw/catch)
+	- Overload terminate function to catch exceptions.
+- Turn off RTTI in compiler options
+	- Removes runtime polymorphism
+- Overload new and delete so libraries don't use them.
+- Use printf instead of cout
+	- cout uses a buffer
+- 

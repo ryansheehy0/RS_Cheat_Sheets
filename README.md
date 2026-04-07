@@ -88,21 +88,8 @@ My personal notes(some are unfinished).
 	- [Cross Site Request Forgery(CSRF)](./Web_Dev/cross_site_request_forgery.md)
 
 ## [Physics](#ryan-sheehy-cheat-sheets)
-- [Error propigation](./Physics/error_propagation.pdf)
-- [Kinematic equations](./Physics/kinematic_equations.pdf)
-- [Uniform circular motion](./Physics/uniform_circular_motion.pdf)
-- [Forces](./Physics/force.pdf)
-- [Circular forces](./Physics/circular_forces.pdf)
-- [Work/Energy](./Physics/work_energy.pdf)
-- [Collisions and momentum](./Physics/collisions.pdf)
-- [Rocket equation](./Physics/rocket_equation.pdf)
-- [Center of Mass](./Physics/center_of_mass.pdf)
-- [Rotation around an axis](./Physics/rotation_around_an_axis.pdf)
-- [Angular momentum](./Physics/angular_momentum.pdf)
-- [Gravity](./Physics/gravity.pdf)
-- Extra credit
-	- [Extra credit rain](./Physics/extra_credit_rain.pdf)
-	- [Extra credit spring](./Physics/extra_credit_spring.pdf)
+- [Newtonian Mechanics](./Physics/Newtonian_Mechanics/newtonian_mechanics.md)
+- [Electricity and Magnetism](./Physics/Electricity_And_Magnetism/electricity_and_magnetism.md)
 
 ## [Math](#ryan-sheehy-cheat-sheets)
 - [Calculus](./Math/Calculus/calculus.md)

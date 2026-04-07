@@ -316,7 +316,7 @@ target_sources(${CMAKE_PROJECT_NAME} PRIVATE
 ```
 
 6. Compiling, Flashing, and Debugging
-	- Top bar -> Run -> Start Debugging or Run Without Debugging
+	- (From main.c)Top bar -> Run -> Start Debugging or Run Without Debugging
 		- Select: STM32Cube: STLink GDB Server
 	- If it's your first time, you'll have to accept the popups that show up in the bottom right.
 	- If you add new .cpp files, you may have to delete build/ to ensure CMake adds it in.

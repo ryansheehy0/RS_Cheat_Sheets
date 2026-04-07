@@ -1,4 +1,9 @@
 # Learning Path for Job in Embedded programming
+- Top three skills
+	- C++
+	- STM32
+	- Embedded algorithms
+
 - Electrical engineering
 	- Ohms law, resistor dividers, capacitors, and inductors.
 	- Analog filters

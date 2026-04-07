@@ -8,10 +8,12 @@
 - [Continuity](./continuity.pdf)
 - [Finding derivatives](./finding_derivatives.pdf)
 - [Use cases for derivatives](./use_cases_for_derivatives.pdf)
-- [Parametric Equations](./parametric_equations.pdf)
 
 ## Calc 2
 - [Finding integrals overview](./finding_integral_overview.pdf)
 - [Finding integrals](./finding_integrals.pdf)
 - [Use cases for integrals](./use_cases_for_integrals.pdf)
 - [Differential equations](./differential_equations.pdf)
+
+## Calc 3
+- [Parametric Equations](./parametric_equations.pdf)
