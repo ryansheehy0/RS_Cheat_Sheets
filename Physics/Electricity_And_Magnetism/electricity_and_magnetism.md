@@ -1,3 +1,13 @@
 [Home](../../README.md#physics)
 
 # Electricity and magnetism
+- [Intro](./intro.pdf)
+- [Dipoles and torque](./dipoles_and_torque.pdf)
+- [Continuous distribution of charge](./continuous_distribution_of_charge.pdf)
+- [Gauss's law](./gauss_s_law.pdf)
+- [Electric potential](./electric_potential.pdf)
+- [Capacitance](./capacitance.pdf)
+- [Circuits](./circuits.pdf)
+- [Magnetic force](./magnetic_force.pdf)
+- [Making magnetic fields](./making_magnetic_fields.pdf)
+- []
