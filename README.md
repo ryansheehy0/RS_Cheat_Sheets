@@ -93,9 +93,7 @@ My personal notes(some are unfinished).
 
 ## [Math](#ryan-sheehy-cheat-sheets)
 - [Calculus](./Math/Calculus/calculus.md)
-- [Dot and Cross product](./Math/dot_and_cross_product.pdf)
-- Linear algibra
-- [Probability](./Math/Probability/probability.md)
+- [Basic Probability](./Math/Probability/probability.md)
 - [Basic Graphing](./Math/Basic_Graphing/basic_graphing.md)
 - [Trigonometric Functions](./Math/Trigonometric_Functions/trigonometric_functions.md)
-- [Taylor Series](./Math/Taylor_Series/taylor_series.md)
+	- Or [Memorize Trig](./Math/Trigonometric_Functions/memorize_trig.pdf)
