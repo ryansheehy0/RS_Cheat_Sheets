@@ -10,4 +10,6 @@
 - [Circuits](./circuits.pdf)
 - [Magnetic force](./magnetic_force.pdf)
 - [Making magnetic fields](./making_magnetic_fields.pdf)
-- []
+- [Faraday's law](./faraday_s_law.pdf)
+- [Inductance](./inductance.pdf)
+- [AC](./ac.pdf)
