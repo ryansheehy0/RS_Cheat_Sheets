@@ -45,6 +45,10 @@
 	- https://zybooks.com
 	- Library Genesis - https://libgen.is/
 	- https://build-your-own-x.vercel.app/
+- Drone books
+	- Small Unmanned Aircraft: Theory and Practice by Randal W. Beard and Timothy W. McLain
+	- Hands-On RTOS with Microcontrollers by Jim Yuill, Penn Linder
+	- Real-Time C++: Efficient Object-Oriented and Template Microcontroller Programming by Christopher Kormanyos
 
 ## Skills
 - Master the fundimental questions

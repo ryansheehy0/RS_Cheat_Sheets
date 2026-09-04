@@ -136,6 +136,7 @@ File types
 | clear                | Clears the contents of the terminal                       |
 | dirname filePath     | Gets the directory portion of a file path                 |
 | xxd <file>           | Hexadecimal dump of a file                                |
+| uxplay -avdec        | Allow airplay on linux                                    |
 
 ## [Installation](#linux-commands)
 
