@@ -3,7 +3,7 @@
 # Calculus
 
 ## Calc 1
-- [Finding the limit](./Calc_1/finding_derivatives.pdf)
+- [Finding the limit](./Calc_1/finding_the_limit.pdf)
 - [Continuity](./Calc_1/continuity.pdf)
 - [Finding derivatives](./Calc_1/finding_derivatives.pdf)
 - [Use cases for derivatives](./Calc_1/use_cases_for_derivatives.pdf)
