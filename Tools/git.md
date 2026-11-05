@@ -29,6 +29,15 @@ Git comrpresses files and if a file doesn't change between commits, it's only st
 
 <!-- /TOC -->
 
+## [First Push](#git)
+1. Create repo on github, create local folder, add readme.md
+2. `git init`
+3. `git remote add origin <ssh link>`
+4. `git branch -M main`
+5. `git add -A`
+6. `git commit -m "First push"`
+7. `git push origin main`
+
 ## [Config](#git)
 
 | Config commands                          | Description                                         |
