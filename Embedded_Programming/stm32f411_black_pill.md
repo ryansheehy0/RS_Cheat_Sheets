@@ -189,19 +189,19 @@ $\frac{72,000,000 \text{ counts}}{1 \text{ sec}} * \frac{1 \text{ cycle}}{256 \t
 	- Under Connectivity: USB_OTG_FS
 	- Mode: Device_Only
 	- Under Middleware and Software Packs: USB_DEVICE
-	- Class For FS IP: Communication Device Class (Cirtual Port Com)
+	- Class For FS IP: Communication Device Class (Virtual Port Com)
 	- Select Clock Configuration tab
 	- Resolve Clock Issues
 
 ```C++
-// In my_main.h
+// In run.h
 #include "usbd_cdc_if.h"
 #include <stdio.h>
 
 // Wrapped in extern c
 int _write(int file, char *ptr, int len);
 
-// In my_main.cpp wrapped in extern c
+// In run.cpp wrapped in extern c
 int _write(int file, char *ptr, int len) {
 	CDC_Transmit_FS((uint8_t*)ptr, len);
 	return len;
@@ -227,7 +227,10 @@ Direct memory access.
 - Allows a pin to directly set addresses.
 
 ## [Set up](#stm32f411-black-pill)
-1. Install: [CubeMX](https://www.st.com/en/development-tools/stm32cubemx.html) and STM32CubeIDE for Visual Studio Code(stmicroelectronics.stm32-vscode-extension).
+1. Install:
+	- [CubeMX](https://www.st.com/en/development-tools/stm32cubemx.html)
+	- [CubeProgrammer](https://www.st.com/en/development-tools/stm32cubeprog.html)
+	- (Optional) STM32CubeIDE for Visual Studio Code(stmicroelectronics.stm32-vscode-extension).
 2. Generate starter code for CubeMX
 	1. File -> New Project
 	2. Type in your Commercial part number: STM32F411CEU6
@@ -252,9 +255,10 @@ Direct memory access.
 	- Under STM32CUBE DEVICES AND BOARDS at the bottom left
 		- Click the little download icon
 5. Setup your code
-	1. Create My_Code folder at the root level of your project.
+	1. Create Generated_Code folder and have CubeMX generate it's code in there.
+		- Put run.h and run.cpp outside the Generated_Code folder
 
-In my_main.h
+In run.h
 
 ```C
 #include "stm32f4xx_hal.h"
@@ -266,23 +270,23 @@ extern "C" {
 // Example of a variable that's declared in main.c
 extern TIM_HandleTypeDef htim2;
 
-void myCode();
+void run();
 
 #ifdef __cplusplus
 }
 #endif
 ```
 
-In my_main.cpp
+In run.cpp
 
 ```C
-#include "my_main.h"
+#include "run.h"
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-void myCode(){
+void run(){
 	while(true) {}
 }
 
@@ -295,31 +299,44 @@ void myCode(){
 
 ```C
 /* USER CODE BEGIN Includes */
-#include "../../My_Code/my_main.h"
+#include "../../../run.h"
 /* USER CODE END Includes */
 
 // ...
 
 /* USER CODE BEGIN WHILE */
-myCode();
+run();
 /* USER CODE END WHILE */
 ```
 
 3. In CMakeLists.txt
 
 ```
-file(GLOB MY_CODE_SOURCES My_Code/*.cpp)
+# Add sources to executable
+file(GLOB RUN_SOURCES ../*.cpp)
+	# Make sure to add any more .cpp files used
 target_sources(${CMAKE_PROJECT_NAME} PRIVATE
 	# Add user sources here
-	${MY_CODE_SOURCES}
+	${RUN_SOURCES}
 )
 ```
 
 6. Compiling, Flashing, and Debugging
-	- (From main.c)Top bar -> Run -> Start Debugging or Run Without Debugging
-		- Select: STM32Cube: STLink GDB Server
-	- If it's your first time, you'll have to accept the popups that show up in the bottom right.
-	- If you add new .cpp files, you may have to delete build/ to ensure CMake adds it in.
+	- Option 1: Terminal and CubeProgrammer
+		- In Generated_Code folder
+			- `rm -rf build`
+			- `cmake -S . -B build -DCMAKE_TOOLCHAIN_FILE=cmake/gcc-arm-none-eabi.cmake`
+			- `cmake --build build -j$(nproc)`
+		- In CubeProgrammer
+			- Connect ST-LINK to laptop, select ST-LINK in the top right and press Connect
+			- Go to Erasing & Programming tab on the left side
+			- Browse for Generated_Code.elf in the build folder
+			- Then click Start Program ... which should flash it to the device.
+	- Option 2: VsCode
+		- (From main.c)Top bar -> Run -> Start Debugging or Run Without Debugging
+			- Select: STM32Cube: STLink GDB Server
+		- If it's your first time, you'll have to accept the popups that show up in the bottom right.
+		- If you add new .cpp files, you may have to delete build/ to ensure CMake adds it in.
 
 ## [Other](#stm32f411-black-pill)
 ### [Memory layout](#stm32f411-black-pill)
