@@ -255,8 +255,8 @@ Direct memory access.
 	- Under STM32CUBE DEVICES AND BOARDS at the bottom left
 		- Click the little download icon
 5. Setup your code
-	1. Create Generated_Code folder and have CubeMX generate it's code in there.
-		- Put run.h and run.cpp outside the Generated_Code folder
+	- Create Generated_Code folder and have CubeMX generate it's code in there.
+	- Put run.h and run.cpp outside the Generated_Code folder
 
 In run.h
 
@@ -295,7 +295,7 @@ void run(){
 #endif
 ```
 
-2. In Core/Src/main.c
+In Core/Src/main.c
 
 ```C
 /* USER CODE BEGIN Includes */
@@ -309,7 +309,7 @@ run();
 /* USER CODE END WHILE */
 ```
 
-3. In CMakeLists.txt
+In CMakeLists.txt
 
 ```
 # Add sources to executable
